@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://timeorigin.cn/2016/09/14/My-New-Post/</loc>
+    <loc>http://timeorigin.cn/2016/09/14/Markdown-Learn/</loc>
     
-    <lastmod>2016-09-16T06:03:24.107Z</lastmod>
+    <lastmod>2016-09-16T06:32:57.602Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/tags/index.html</loc>
+    
+    <lastmod>2016-09-16T06:23:53.157Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/Test/index.html</loc>
+    
+    <lastmod>2016-09-16T06:20:33.915Z</lastmod>
     
   </url>
   
