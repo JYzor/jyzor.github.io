@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://timeorigin.cn/about/index.html</loc>
+    
+    <lastmod>2016-09-19T03:39:44.980Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://timeorigin.cn/2016/09/14/Markdown-Learn/</loc>
     
     <lastmod>2016-09-16T06:32:57.602Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://timeorigin.cn/Test/index.html</loc>
     
     <lastmod>2016-09-16T06:20:33.915Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/about/index.html</loc>
-    
-    <lastmod>2016-09-16T05:52:02.082Z</lastmod>
     
   </url>
   
