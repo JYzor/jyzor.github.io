@@ -2,16 +2,135 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://timeorigin.cn/about/index.html</loc>
+    <loc>http://timeorigin.cn/2015/11/10/tutorials/</loc>
     
-    <lastmod>2016-09-19T03:39:44.980Z</lastmod>
+    <lastmod>2016-09-30T05:46:27.978Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/2015/12/25/snowstorm/</loc>
+    
+    <lastmod>2016-09-30T05:45:30.891Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://timeorigin.cn/2016/09/14/Markdown-Learn/</loc>
     
-    <lastmod>2016-09-16T06:32:57.602Z</lastmod>
+    <lastmod>2016-09-30T05:44:52.262Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/2016/06/06/how-to-install-hadoop-on-ubuntu-13-10/</loc>
+    
+    <lastmod>2016-09-30T05:44:08.629Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/2016/02/04/Thelife/</loc>
+    
+    <lastmod>2016-09-30T05:43:09.388Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/2015/10/16/github-education-pack/</loc>
+    
+    <lastmod>2016-09-30T05:42:17.613Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/2015/09/17/digitalocean/</loc>
+    
+    <lastmod>2016-09-30T05:41:59.400Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/2016/03/10/ai/</loc>
+    
+    <lastmod>2016-09-30T05:41:42.171Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/2015/09/23/ipv6/</loc>
+    
+    <lastmod>2016-09-30T05:31:26.742Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/2015/10/01/introducing-the-nexus-6p/</loc>
+    
+    <lastmod>2016-09-30T05:16:44.349Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/install-wordpress-on-centos-7/index.html</loc>
+    
+    <lastmod>2016-09-30T04:40:51.802Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/picture/index.html</loc>
+    
+    <lastmod>2016-09-30T04:40:51.801Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/e5-85-8d-e8-b4-b9-e5-9b-be-e5-ba-8a-e7-a9-ba-e9-97-b4/index.html</loc>
+    
+    <lastmod>2016-09-30T04:40:51.801Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/aboutme/index.html</loc>
+    
+    <lastmod>2016-09-30T04:40:51.798Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/v6ss/index.html</loc>
+    
+    <lastmod>2016-09-30T04:40:51.798Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/2016/01/02/gigapixels-of-andromeda/</loc>
+    
+    <lastmod>2016-09-30T04:40:51.796Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/2015/09/30/googles-2015-nexus-event/</loc>
+    
+    <lastmod>2016-09-30T04:40:51.785Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/2015/09/18/steve-cutts/</loc>
+    
+    <lastmod>2016-09-30T04:40:51.777Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/about/index.html</loc>
+    
+    <lastmod>2016-09-19T03:39:44.980Z</lastmod>
     
   </url>
   
@@ -26,13 +145,6 @@
     <loc>http://timeorigin.cn/Test/index.html</loc>
     
     <lastmod>2016-09-16T06:20:33.915Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/2016/09/14/hello-world/</loc>
-    
-    <lastmod>2016-09-14T02:50:09.131Z</lastmod>
     
   </url>
   

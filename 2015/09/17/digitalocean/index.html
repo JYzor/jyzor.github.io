@@ -1,0 +1,786 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="时间原点" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www.v6ss.club搭建ipv6的SS背景自从在VPS搭建了ipv6-Shadowscoks以后就一直觉得有这样一个免流量无墙的通道不好好玩一玩貌似可惜了。 于是本人折腾了半天的时间，租用了DigitalOcean一个VPS搭建了一个支持ipv6的VPN，不仅可以免流量还自带科学上网。支持ipv6免流量的高校应该都是可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="教育网利用DigitalOcean搭建IPv6—Shadowscoks实现免流量&科学上网">
+<meta property="og:url" content="http://timeorigin.cn/2015/09/17/digitalocean/index.html">
+<meta property="og:site_name" content="时间原点">
+<meta property="og:description" content="博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www.v6ss.club搭建ipv6的SS背景自从在VPS搭建了ipv6-Shadowscoks以后就一直觉得有这样一个免流量无墙的通道不好好玩一玩貌似可惜了。 于是本人折腾了半天的时间，租用了DigitalOcean一个VPS搭建了一个支持ipv6的VPN，不仅可以免流量还自带科学上网。支持ipv6免流量的高校应该都是可">
+<meta property="og:image" content="https://blog.flove.me/wp-content/uploads/2015/09/232f911521ae4018.jpg">
+<meta property="og:image" content="https://blog.flove.me/wp-content/uploads/2015/09/c1fb293881f2c6c2.png">
+<meta property="og:updated_time" content="2016-09-30T05:41:59.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="教育网利用DigitalOcean搭建IPv6—Shadowscoks实现免流量&科学上网">
+<meta name="twitter:description" content="博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www.v6ss.club搭建ipv6的SS背景自从在VPS搭建了ipv6-Shadowscoks以后就一直觉得有这样一个免流量无墙的通道不好好玩一玩貌似可惜了。 于是本人折腾了半天的时间，租用了DigitalOcean一个VPS搭建了一个支持ipv6的VPN，不仅可以免流量还自带科学上网。支持ipv6免流量的高校应该都是可">
+<meta name="twitter:image" content="https://blog.flove.me/wp-content/uploads/2015/09/232f911521ae4018.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://timeorigin.cn/2015/09/17/digitalocean/"/>
+
+  <title> 教育网利用DigitalOcean搭建IPv6—Shadowscoks实现免流量&科学上网 | 时间原点 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67741178-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">时间原点</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                教育网利用DigitalOcean搭建IPv6—Shadowscoks实现免流量&科学上网
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-17T21:58:10+08:00" content="2015-09-17">
+              2015-09-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Personal/" itemprop="url" rel="index">
+                    <span itemprop="name">Personal</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/17/digitalocean/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/17/digitalocean/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www-v6ss-club"><a href="#博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www-v6ss-club" class="headerlink" title="博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www.v6ss.club"></a>博主搭建了shadowsocks-manyuser，可以来我的网站免费试用<a href="https://www.v6ss.club" target="_blank" rel="external">www.v6ss.club</a></h2><h2 id="搭建ipv6的SS背景"><a href="#搭建ipv6的SS背景" class="headerlink" title="搭建ipv6的SS背景"></a><strong>搭建ipv6的SS背景</strong></h2><p>自从在VPS搭建了ipv6-Shadowscoks以后就一直觉得有这样一个免流量无墙的通道不好好玩一玩貌似可惜了。 于是本人折腾了半天的时间，租用了DigitalOcean一个VPS搭建了一个支持ipv6的VPN，不仅可以免流量还自带科学上网。支持ipv6免流量的高校应该都是可以的。</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a><strong>效果</strong></h2><p>效果自然是非常的感人</p>
+<ul>
+<li>全局免流量，虽然走的是美国服务器，墙内的网站访问同样正常。</li>
+<li>科学上网，打开youtube的速度很快，1080P的视频无压力。</li>
+<li>可以分享，可以将你的服务分享出去，由于带宽非常高，基本不会互相影响。</li>
+<li>迅雷代理，室友得到分享以后挂上了迅雷……速度可以达到20MBps</li>
+<li>费用较低，5$一月价格对比起来已经很低，如果能获得github教育认证的话会有50$的赠送。相当于免费使用10个月。<br><strong>下面我就将这个过程总结一下，手把手教你搭建自己的VPN。</strong><a id="more"></a></li>
+</ul>
+<ol>
+<li>注册和激活DigitalOcean账号</li>
+<li>购买主机</li>
+<li>配置主机服务端</li>
+<li>使用ShadowSocks客户端完成连接</li>
+<li>其它相关内容</li>
+</ol>
+<ul>
+<li><span style="color: #000000;"><strong>Digital Ocean注册</strong></span></li>
+</ul>
+<p>首先注册账号，访问DigitalOcean并进行注册，（<a href="https://www.digitalocean.com/?refcode=4bd0152b0aa6" target="_blank" rel="external">点击这里注册</a>）这里我给出的是我的推广链接，通过这个链接你可以获得10$的资金，虽然我并不能直接获得奖励。完成注册以后可能需要激活你的账号，根据提示填写相关信息。然后就是绑定信用卡或者使用<a href="https://www.paypal.com/signup/account" target="_blank" rel="external">PayPal</a>进行一次充值。我没有信用卡并且paypal可以使用银联卡付款，因此我进行了一次付款5$。至此你已经完成了账号的注册和激活。此时账号上应该有15$的余额，够使用3个月。按我当时的汇率总共是¥31.87。ps.日本的vps提供商服务更稳定速度更快就是有点贵（土豪无视）土豪你就能错过了吗？点击<a href="https://cloud.z.com/jp/zh/signup/?token=59A3Q4Uc_rz1nQtW_GpBQUUixLhOaNwWaRsFj42gYlxThnLXMGo-8UA" target="_blank" rel="external">这里</a></p>
+<p>新增日本便宜VPS（Vultr）最低配置5刀每月，<a href="http://www.vultr.com/?ref=6912327" target="_blank" rel="external">点击这里注册</a>。<span style="color: #ff0000;"><strong>注：2016年暑期优惠注册即送20$，最低配置可用半年，不可错过哦！</strong></span></p>
+<ul>
+<li><p><strong>购买主机</strong><br>下面就是进行购买和配置VPS 在DigitalOcean中选择Droplets</p>
+</li>
+<li><p>主机名字可以任意</p>
+</li>
+<li>费用选择最便宜的5刀每月即可</li>
+<li>主机我选择的San Francisco速度挺不错，也可以选择其它地址。（DO主机按小时计费随便试，不得不说很良心）</li>
+<li><strong>记得勾选IPV6</strong></li>
+<li><strong>注意勾选Backups是要单独收费的，选不选请根据个人情况决定</strong></li>
+<li>如果你希望搭建Blog（wordpress）等站点，请务必勾选User Data，内容可以按照<span style="color: #0000ff;"><a href="https://github.com/digitalocean/do_user_scripts/blob/master/CentOS-7/web-servers/lamp.yml" target="_blank" rel="external">这里</a></span>填写（LAMP安装很麻烦的）</li>
+<li>操作系统选择CentOS 7 x64</li>
+<li><strong>添加SSH Key（在创建主机之前）以提高访问的安全性，具体方法参见<a href="https://www.zxc.so/do-ssh-key.html" target="_blank" rel="external">这里</a>.（注：强列建议添加SSH，以后用Putty管理VPS很方便）</strong><br>&nbsp;</li>
+</ul>
+<p><strong><a href="https://blog.flove.me/wp-content/uploads/2015/09/232f911521ae4018.jpg" target="_blank" rel="external"><img src="https://blog.flove.me/wp-content/uploads/2015/09/232f911521ae4018.jpg" alt="232f911521ae4018"></a></strong></p>
+<p>&nbsp;</p>
+<p>完成配置以后点击Create，等待大约一分钟，你就可以管理主机了</p>
+<p><a href="https://blog.flove.me/wp-content/uploads/2015/09/c1fb293881f2c6c2.png" target="_blank" rel="external"><img src="https://blog.flove.me/wp-content/uploads/2015/09/c1fb293881f2c6c2.png" alt="c1fb293881f2c6c2"></a></p>
+<p>记下主机的ipv6地址，用putty登录，主机填ipv6的地址也是可以的，而且速度更快相比于ipv4。</p>
+<ul>
+<li><strong>配置主机服务端</strong><br>下面的过程就是最有技术含量的东西，技术细节可以<a href="http://blog.kyangcis.me/2015/01/01/my-first-vps/" target="_blank" rel="external">参考这里</a>，不过在这里我只介绍最简单的方式。</li>
+</ul>
+<p>连接你的主机</p>
+<ol>
+<li>一种最直接的方法就是在<a href="https://cloud.digitalocean.com/droplets/" target="_blank" rel="external">这里</a>选择你的Droplet然后Access=》[console access] <strong>（不推荐）</strong></li>
+<li>另外一种方法就是参照上面提到的添加SSH key方法一文使用客户端连接<strong>。（强烈推荐）</strong><br>我用的是putty登陆，所以以下就以 此为例</li>
+</ol>
+<ul>
+<li><p><strong>部署环境</strong></p>
+</li>
+<li><p>另注： 如果你嫌太麻烦，可以直接来我的网站<a href="https://www.v6ss.club" target="_blank" rel="external">www.v6ss.club</a>。。零基础教你免流量！<br>鉴于你们比较懒，请直接把下面的magical phrase复制粘贴回车<br><div class="highlight"><br><pre class="prettyprint lang-bsh">wget –no-check-certificate <a href="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh" target="_blank" rel="external">https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</a><br>chmod +x shadowsocks.sh<br>./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</pre><br></div><br>请坐好不要乱动……直到提示修改密码，修改一下。 然后会提示</p>
+<div class="highlight">
+
+<p>Congratulations, shadowsocks install completed!<br>Your Server IP:your_server_ip<br>Your Server Port:8989<br>Your Password:your_password<br>Your Local IP:127.0.0.1<br>Your Local Port:1080<br>Your Encryption Method:aes-256-cfb</p>
+<p>Welcome to visit:<a href="http://teddysun.com/342.html" target="_blank" rel="external">http://teddysun.com/342.html</a><br>Enjoy it!<br>`<br></p></div><br>&nbsp;<p></p>
+</li>
+<li><p>以上使用的是<a href="https://teddysun.com/342.html" target="_blank" rel="external">秋水逸冰</a>大神的一键安装脚本，不过我们还需要修改配置以适合我们的ipv6环境。 输入</p>
+<div class="highlight"><br><pre><code>vi /etc/shadowsocks.json</code></pre><br></div>
+</li>
+<li><p>按i进入编辑模式 将文件内容编辑成如下（此部分可以用Winscp直接修改）<br><div class="highlight"><br><pre><code>{
+  &quot;server&quot;:&quot;::&quot;,
+  &quot;server_port&quot;:8989,
+  &quot;local_address&quot;:&quot;127.0.0.1&quot;,
+  &quot;local_port&quot;:1080,
+  &quot;password&quot;:&quot;yourpassword&quot;,
+  &quot;timeout&quot;:300,
+  &quot;method&quot;:&quot;aes-256-cfb&quot;,
+  &quot;fast_open&quot;: false
+}</code></pre><br></div><br>&nbsp;</p>
+</li>
+<li><p>注意上面把yourpassword改为你的密码</p>
+</li>
+<li>ctrl+c退出编辑模式</li>
+<li>输入 “:x” （英文冒号+x）保存并退出</li>
+<li>输以下命令重启SS让配置生效<br><div class="highlight"><br><pre>/etc/init.d/shadowsocks restart</pre></div></li>
+</ul>
+<p><br>至此环境已经完全配好，赶快连接去上网吧~！</p>
+<ul>
+<li><strong>使用ShadowSocks客户端完成连接</strong><br>下载ShadowSocks客户端，只有200kb非常的精简</li>
+</ul>
+<p><a href="https://cloud.cokebar.info/index.php/s/rKTIRmkNXn1VUZ4/download?path=%2F&amp;files=Shadowsocks-win-2.5.6.zip" target="_blank" rel="external">Shadowsocks-win-2.5.6</a></p>
+<p>注意ip地址一定要像这样 [2604:a880:12:200::13e:8000]（不用加/64） 用左右方括号框起来。</p>
+<p><strong>OK!至此你已经完成所有的工作，快使用 127.0.0.1:1080 Socks5代理端口来试一试吧。</strong></p>
+<h2 id="其它相关内容"><a href="#其它相关内容" class="headerlink" title="其它相关内容"></a><strong>其它相关内容</strong></h2><ul>
+<li>浏览器相关设置请参照<a href="https://ttt.tt/150/" target="_blank" rel="external">这里</a></li>
+<li>设置迅雷代理百度云代理均可速度很棒</li>
+<li><a href="https://education.github.com/" target="_blank" rel="external">GitHub Edu</a>认证以后可以获得Digital Ocean 100$礼品码，不过目前只有50$了，而且要新用户才能用。</li>
+<li>另 如果你嫌太麻烦，可以直接来我的网站<a href="https://www.v6ss.club" target="_blank" rel="external">www.v6ss.club</a>。。零基础教你免流量！<!--more-->
+</li>
+</ul>
+<p>如有问题请留言评论!</p>
+<p>&nbsp;</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>我知道是不会有人点的，但万一有人想不开呢？！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/weixincode.jpg" alt="Junyangz WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay.png" alt="Junyangz Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/18/steve-cutts/" rel="prev" title="Steve Cutts">
+                Steve Cutts <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/09/17/digitalocean/"
+           data-title="教育网利用DigitalOcean搭建IPv6—Shadowscoks实现免流量&科学上网" data-url="http://timeorigin.cn/2015/09/17/digitalocean/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/02.png"
+               alt="Junyangz" />
+          <p class="site-author-name" itemprop="name">Junyangz</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JYzor" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.timeorigin.cn" title="Home" target="_blank">Home</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.v6ss.club" title="v6ss" target="_blank">v6ss</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www-v6ss-club"><span class="nav-number">1.</span> <span class="nav-text">博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www.v6ss.club</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建ipv6的SS背景"><span class="nav-number">2.</span> <span class="nav-text">搭建ipv6的SS背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">3.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它相关内容"><span class="nav-number">4.</span> <span class="nav-text">其它相关内容</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junyangz</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"timeorigin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" src="/js/src/particle.js"></script>
+</body>
+</html>

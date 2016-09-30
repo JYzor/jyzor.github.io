@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://timeorigin.cn/"/>
-  <updated>2016-09-16T06:32:57.602Z</updated>
+  <updated>2016-09-30T05:44:52.262Z</updated>
   <id>http://timeorigin.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://timeorigin.cn/2016/09/14/Markdown-Learn/"/>
     <id>http://timeorigin.cn/2016/09/14/Markdown-Learn/</id>
     <published>2016-09-14T03:30:30.000Z</published>
-    <updated>2016-09-16T06:32:57.602Z</updated>
+    <updated>2016-09-30T05:44:52.262Z</updated>
     
     <content type="html"><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p># 一级标题</p>
 <h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>代码行</p>
@@ -28,6 +28,7 @@
 <p>代码</p>
 <p>```</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">代码行</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>超链接:  [链接名](<a href="http://www.v6ss.club" target="_blank" rel="external">http://www.v6ss.club</a>)</p>
 <p><a href="http://www.v6ss.club" target="_blank" rel="external">链接名</a></p>
 <p><em>斜体</em><br>*斜体*  </p>
@@ -71,7 +72,11 @@
     <summary type="html">
     
       &lt;h1 id=&quot;一级标题&quot;&gt;&lt;a href=&quot;#一级标题&quot; class=&quot;headerlink&quot; title=&quot;一级标题&quot;&gt;&lt;/a&gt;一级标题&lt;/h1&gt;&lt;p&gt;# 一级标题&lt;/p&gt;
-&lt;h2 id=&quot;二级标题&quot;&gt;&lt;a href=&quot;#二级标题&quot; class=&quot;headerlink&quot; ti
+&lt;h2 id=&quot;二级标题&quot;&gt;&lt;a href=&quot;#二级标题&quot; class=&quot;headerlink&quot; title=&quot;二级标题&quot;&gt;&lt;/a&gt;二级标题&lt;/h2&gt;&lt;h3 id=&quot;三级标题&quot;&gt;&lt;a href=&quot;#三级标题&quot; class=&quot;headerlink&quot; title=&quot;三级标题&quot;&gt;&lt;/a&gt;三级标题&lt;/h3&gt;&lt;p&gt;代码行&lt;/p&gt;
+&lt;p&gt;``` bash&lt;/p&gt;
+&lt;p&gt;代码&lt;/p&gt;
+&lt;p&gt;```&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;代码行&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -81,28 +86,583 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://timeorigin.cn/2016/09/14/hello-world/"/>
-    <id>http://timeorigin.cn/2016/09/14/hello-world/</id>
-    <published>2016-09-14T02:50:09.129Z</published>
-    <updated>2016-09-14T02:50:09.131Z</updated>
+    <title>How to Install Hadoop on Ubuntu 13.10</title>
+    <link href="http://timeorigin.cn/2016/06/06/how-to-install-hadoop-on-ubuntu-13-10/"/>
+    <id>http://timeorigin.cn/2016/06/06/how-to-install-hadoop-on-ubuntu-13-10/</id>
+    <published>2016-06-06T09:29:49.000Z</published>
+    <updated>2016-09-30T05:44:08.629Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p>The only prerequisite for this tutorial is a VPS with <strong>Ubuntu 13.10 x64</strong> installed.</p>
+<p>You will need to execute commands from the command line which you can do in one of the two ways:</p>
+<ol>
+<li>Use SSH to access the droplet.</li>
+<li>Use the ‘Console Access’ from the Digital Ocean Droplet Management Panel<div data-unique="what-is-hadoop"></div>
+
+</li>
+</ol>
+<h2 id="What-is-Hadoop"><a href="#What-is-Hadoop" class="headerlink" title="What is Hadoop?"></a>What is Hadoop?</h2><a id="more"></a>
+<p><a href="http://hadoop.apache.org/" target="_blank" rel="external">Hadoop</a> is a framework (consisting of software libraries) which simplifies the processing of data sets distributed across clusters of servers. Two of the main components of Hadoop are <strong>HDFS</strong> and <strong>MapReduce</strong>.</p>
+<p>HDFS is the filesystem that is used by Hadoop to store all the data on. This file system spans across all the nodes that are being used by Hadoop. These nodes could be on a single VPS or they can be spread across a large number of virtual servers.</p>
+<p>MapReduce is the framework that orchestrates all of Hadoop’s activities. It handles the assignment of work to different nodes in the cluster.</p>
+<div data-unique="benefits-of-using-hadoop"></div>
+
+<h2 id="Benefits-of-using-Hadoop"><a href="#Benefits-of-using-Hadoop" class="headerlink" title="Benefits of using Hadoop"></a>Benefits of using Hadoop</h2><p>The architecture of Hadoop allows you to scale your hardware as and when you need to. New nodes can be added incrementally without having to worry about the change in data formats or the handling of applications that sit on the file system.</p>
+<p>One of the most important features of Hadoop is that it allows you to save enormous amounts of money by substituting cheap commodity servers for expensive ones. This is possible because Hadoop transfers the responsibility of fault tolerance from the hardware layer to the application layer.</p>
+<div data-unique="installing-hadoop"></div>
+
+<h2 id="Installing-Hadoop"><a href="#Installing-Hadoop" class="headerlink" title="Installing Hadoop"></a>Installing Hadoop</h2><p>Installing and getting Hadoop up and running is quite straightforward. However, since this process requires editing multiple configuration and setup files, make sure that each step is properly followed.</p>
+<h3 id="1-Install-Java"><a href="#1-Install-Java" class="headerlink" title="1. Install Java"></a>1. Install Java</h3><p>Hadoop requires Java to be installed, so let’s begin by installing Java:</p>
+<pre><code>apt-get update
+apt-get install default-jdk
+`&lt;/pre&gt;
+These commands will update the package information on your VPS and then install Java. After executing these commands, execute the following command to verify that Java has been installed:
+&lt;pre class=&quot;code-pre &quot;&gt;`java -version
+`&lt;/pre&gt;
+If Java has been installed, this should display the version details as illustrated in the following image:
+
+![Java Verification](https://assets.digitalocean.com/articles/Ubuntu_Hadoop/1.png &quot;Java Verification&quot;)
+
+### 2\. Create and Setup SSH Certificates
+
+Hadoop uses SSH (to access its nodes) which would normally require the user to enter a password. However, this requirement can be eliminated by creating and setting up SSH certificates using the following commands:
+&lt;pre class=&quot;code-pre &quot;&gt;`ssh-keygen -t rsa -P &apos;&apos;
+cat ~/.ssh/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys
+`&lt;/pre&gt;
+After executing the first of these two commands, you might be asked for a filename. Just leave it blank and press the enter key to continue. The second command adds the newly created key to the list of authorized keys so that Hadoop can use SSH without prompting for a password.
+
+![Setup SSH Certificates](https://assets.digitalocean.com/articles/Ubuntu_Hadoop/2.png &quot;Setup SSH Certificates&quot;)
+
+### 3\. Fetch and Install Hadoop
+
+First let&apos;s fetch Hadoop from one of the mirrors using the following command:
+&lt;pre class=&quot;code-pre &quot;&gt;`wget http://www.motorlogy.com/apache/hadoop/common/current/hadoop-2.3.0.tar.gz
+`&lt;/pre&gt;
+**Note:** _This command uses a download a link on one of the mirrors listed on the Hadoop website. The list of mirrors can be found [on this link](http://www.apache.org/dyn/closer.cgi/hadoop/common/). You can choose any other mirror if you want to. To download the latest stable version, choose the *_hadoop-X.Y.Z.tar.gz** file from the **current** or the **current2** directory on your chosen mirror.*
+
+After downloading the Hadoop package, execute the following command to extract it:
+&lt;pre class=&quot;code-pre &quot;&gt;`tar xfz hadoop-2.3.0.tar.gz
+`&lt;/pre&gt;
+This command will extract all the files in this package in a directory named `hadoop-2.3.0`. For this tutorial, the Hadoop installation will be moved to the `/usr/local/hadoop` directory using the following command:
+&lt;pre class=&quot;code-pre &quot;&gt;`mv hadoop-2.3.0 /usr/local/hadoop 
+`&lt;/pre&gt;
+**Note:** _The name of the extracted folder depends on the Hadoop version your have downloaded and extracted. If your version differs from the one used in this tutorial, change the above command accordingly._
+
+### 4\. Edit and Setup Configuration Files
+
+To complete the setup of Hadoop, the following files will have to be modified:
+</code></pre><ul>
+<li>~/.bashrc</li>
+<li>/usr/local/hadoop/etc/hadoop/hadoop-env.sh</li>
+<li>/usr/local/hadoop/etc/hadoop/core-site.xml</li>
+<li>/usr/local/hadoop/etc/hadoop/yarn-site.xml</li>
+<li>/usr/local/hadoop/etc/hadoop/mapred-site.xml.template</li>
+<li><p>/usr/local/hadoop/etc/hadoop/hdfs-site.xml</p>
+<h4 id="i-Editing-bashrc"><a href="#i-Editing-bashrc" class="headerlink" title="i. Editing ~/.bashrc"></a>i. Editing ~/.bashrc</h4><p>Before editing the <code>.bashrc</code> file in your home directory, we need to find the path where Java has been installed to set the <code>JAVA_HOME</code> environment variable. Let’s use the following command to do that:<br><pre class="code-pre "><code>update-alternatives --config java</code></pre><br>This will display something like the following:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/3.png" alt="Get Java Path" title="Get Java Path"></p>
+<p>The complete path displayed by this command is:<br><pre class="code-pre "><code>/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java</code></pre><br>The value for <code>JAVA_HOME</code> is everything before <code>/jre/bin/java</code> in the above path - in this case,<code>/usr/lib/jvm/java-7-openjdk-amd64</code>. Make a note of this as we’ll be using this value in this step and in one other step.</p>
+<p>Now use <code>nano</code> (or your favored editor) to edit ~/.bashrc using the following command:<br><pre class="code-pre "><code>nano ~/.bashrc</code></pre><br>This will open the <code>.bashrc</code> file in a text editor. Go to the end of the file and paste/type the following content in it:<br><pre class="code-pre "><code>#HADOOP VARIABLES START
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export HADOOP_INSTALL=/usr/local/hadoop
+export PATH=$PATH:$HADOOP_INSTALL/bin
+export PATH=$PATH:$HADOOP_INSTALL/sbin
+export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
+export HADOOP_COMMON_HOME=$HADOOP_INSTALL
+export HADOOP_HDFS_HOME=$HADOOP_INSTALL
+export YARN_HOME=$HADOOP_INSTALL
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
+export HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_INSTALL/lib&quot;
+#HADOOP VARIABLES END</code></pre><br><strong>Note 1:</strong> _If the value of <code>JAVA_HOME</code> is different on your VPS, make sure to alter the first <code>export</code> statement in the above content accordingly._</p>
+<p><strong>Note 2:</strong> <em>Files opened and edited using nano can be saved using <code>Ctrl + X</code>. Upon the prompt to save changes, type <code>Y</code>. If you are asked for a filename, just press the enter key.</em></p>
+<p>The end of the <code>.bashrc</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/4.png" alt=".bashrc contents" title=".bashrc contens"></p>
+<p>After saving and closing the <code>.bashrc</code> file, execute the following command so that your system recognizes the newly created environment variables:<br><pre class="code-pre "><code>source ~/.bashrc</code></pre><br>Putting the above content in the <code>.bashrc</code> file ensures that these variables are always available when your VPS starts up.</p>
+<h3 id="ii-Editing-usr-local-hadoop-etc-hadoop-hadoop-env-sh"><a href="#ii-Editing-usr-local-hadoop-etc-hadoop-hadoop-env-sh" class="headerlink" title="ii. Editing /usr/local/hadoop/etc/hadoop/hadoop-env.sh"></a>ii. Editing /usr/local/hadoop/etc/hadoop/hadoop-env.sh</h3><p>Open the <code>/usr/local/hadoop/etc/hadoop/hadoop-env.sh</code> file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/hadoop-env.sh</code></pre><br>In this file, locate the line that exports the <code>JAVA_HOME</code> variable. Change this line to the following:<br><pre class="code-pre "><code>export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64</code></pre><br><strong>Note:</strong> _If the value of <code>JAVA_HOME</code> is different on your VPS, make sure to alter this line accordingly._</p>
+<p>The <code>hadoop-env.sh</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/5.png" alt="hadoop-env.sh contents" title="hadoop-env.sh contents"></p>
+<p>Save and close this file. Adding the above statement in the <code>hadoop-env.sh</code> file ensures that the value of<code>JAVA_HOME</code> variable will be available to Hadoop whenever it is started up.</p>
+<h3 id="iii-Editing-usr-local-hadoop-etc-hadoop-core-site-xml"><a href="#iii-Editing-usr-local-hadoop-etc-hadoop-core-site-xml" class="headerlink" title="iii. Editing /usr/local/hadoop/etc/hadoop/core-site.xml"></a>iii. Editing /usr/local/hadoop/etc/hadoop/core-site.xml</h3><p>The <code>/usr/local/hadoop/etc/hadoop/core-site.xml</code> file contains configuration properties that Hadoop uses when starting up. This file can be used to override the default settings that Hadoop starts with.</p>
+<p>Open this file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/core-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;fs.default.name&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;hdfs://localhost:9000&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;</code></pre><br>The <code>core-site.xml</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/6.png" alt="core-site.xml contents" title="core-site.xml contents"></p>
+<p>Save and close this file.</p>
+<h3 id="iv-Editing-usr-local-hadoop-etc-hadoop-yarn-site-xml"><a href="#iv-Editing-usr-local-hadoop-etc-hadoop-yarn-site-xml" class="headerlink" title="iv. Editing /usr/local/hadoop/etc/hadoop/yarn-site.xml"></a>iv. Editing /usr/local/hadoop/etc/hadoop/yarn-site.xml</h3><p>The <code>/usr/local/hadoop/etc/hadoop/yarn-site.xml</code> file contains configuration properties that MapReduce uses when starting up. This file can be used to override the default settings that MapReduce starts with.</p>
+<p>Open this file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/yarn-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;yarn.nodemanager.aux-services&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;mapreduce_shuffle&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;yarn.nodemanager.aux-services.mapreduce.shuffle.class&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;org.apache.hadoop.mapred.ShuffleHandler&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;</code></pre><br>The <code>yarn-site.xml</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/7.png" alt="yarn-site.xml contents" title="yarn-site.xml contents"></p>
+<p>Save and close this file.</p>
+<h3 id="v-Creating-and-Editing-usr-local-hadoop-etc-hadoop-mapred-site-xml"><a href="#v-Creating-and-Editing-usr-local-hadoop-etc-hadoop-mapred-site-xml" class="headerlink" title="v. Creating and Editing /usr/local/hadoop/etc/hadoop/mapred-site.xml"></a>v. Creating and Editing /usr/local/hadoop/etc/hadoop/mapred-site.xml</h3><p>By default, the <code>/usr/local/hadoop/etc/hadoop/</code> folder contains the <code>/usr/local/hadoop/etc/hadoop/mapred-site.xml.template</code> file which has to be renamed/copied with the name <code>mapred-site.xml</code>. This file is used to specify which framework is being used for MapReduce.</p>
+<p>This can be done using the following command:<br><pre class="code-pre "><code>cp /usr/local/hadoop/etc/hadoop/mapred-site.xml.template /usr/local/hadoop/etc/hadoop/mapred-site.xml</code></pre><br>Once this is done, open the newly created file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/mapred-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;mapreduce.framework.name&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;yarn&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;</code></pre><br>The <code>mapred-site.xml</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/8.png" alt="mapred-site.xml contents" title="mapred-site.xml contents"></p>
+<p>Save and close this file.</p>
+<h3 id="vi-Editing-usr-local-hadoop-etc-hadoop-hdfs-site-xml"><a href="#vi-Editing-usr-local-hadoop-etc-hadoop-hdfs-site-xml" class="headerlink" title="vi. Editing /usr/local/hadoop/etc/hadoop/hdfs-site.xml"></a>vi. Editing /usr/local/hadoop/etc/hadoop/hdfs-site.xml</h3><p>The <code>/usr/local/hadoop/etc/hadoop/hdfs-site.xml</code> has to be configured for each host in the cluster that is being used. It is used to specify the directories which will be used as the <strong>namenode</strong> and the <strong>datanode</strong> on that host.</p>
+<p>Before editing this file, we need to create two directories which will contain the <strong>namenode</strong> and the<strong>datanode</strong> for this Hadoop installation. This can be done using the following commands:<br><pre class="code-pre "><code>mkdir -p /usr/local/hadoop_store/hdfs/namenode
+mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</strong> <em>You can create these directories in different locations, but make sure to modify the contents of<code>hdfs-site.xml</code> accordingly.</em></p>
+<p>Once this is done, open the <code>/usr/local/hadoop/etc/hadoop/hdfs-site.xml</code> file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;dfs.replication&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;1&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+ &amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;dfs.namenode.name.dir&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;file:/usr/local/hadoop_store/hdfs/namenode&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+ &amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;dfs.datanode.data.dir&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;file:/usr/local/hadoop_store/hdfs/datanode&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;</code></pre><br>The <code>hdfs-site.xml</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/9.png" alt="hdfs-site.xml contents" title="hdfs-site.xml contents"></p>
+<p>Save and close this file.</p>
+<div data-unique="format-the-new-hadoop-filesystem"></div>
+
+<h2 id="Format-the-New-Hadoop-Filesystem"><a href="#Format-the-New-Hadoop-Filesystem" class="headerlink" title="Format the New Hadoop Filesystem"></a>Format the New Hadoop Filesystem</h2><p>After completing all the configuration outlined in the above steps, the Hadoop filesystem needs to be formatted so that it can start being used. This is done by executing the following command:<br><pre class="code-pre "><code>hdfs namenode -format</code></pre><br><strong>Note:</strong> <em>This only needs to be done once before you start using Hadoop. If this command is executed again after Hadoop has been used, it’ll destroy all the data on the Hadoop file system.</em></p>
+<div data-unique="start-hadoop"></div>
+
+<h2 id="Start-Hadoop"><a href="#Start-Hadoop" class="headerlink" title="Start Hadoop"></a>Start Hadoop</h2><p>All that remains to be done is starting the newly installed single node cluster:<br><pre class="code-pre "><code>start-dfs.sh</code></pre><br>While executing this command, you’ll be prompted twice with a message similar to the following:</p>
+<blockquote>
+<p>Are you sure you want to continue connecting (yes/no)?<br>Type in <code>yes</code> for both these prompts and press the enter key. Once this is done, execute the following command:<br><pre class="code-pre "><code>start-yarn.sh</code></pre><br>Executing the above two commands will get Hadoop up and running. You can verify this by typing in the following command:<br><pre class="code-pre ">`jps</pre></p>
+</blockquote>
+</li>
+</ul>
+<p>Executing this command should show you something similar to the following:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/10.png" alt="jps command" title="jps command"></p>
+<p>If you can see a result similar to the depicted in the screenshot above, it means that you now have a functional instance of Hadoop running on your VPS.</p>
+<h3 id="Next-Steps"><a href="#Next-Steps" class="headerlink" title="Next Steps"></a>Next Steps</h3><p>If you have an application that is set up to use Hadoop, you can fire that up and start using it with the new installation. On the other hand, if you’re just playing around and exploring Hadoop, you can start by adding/manipulating data or files on the new filesystem to get a feel for it.</p>
+<div class="author">Submitted by: <a href="http://javascript.asia/" target="_blank" rel="external">Jay</a></div><br><div class="author">Refer to :<a href="https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-on-ubuntu-13-10" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-on-ubuntu-13-10</a></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Prerequisites&quot;&gt;&lt;a href=&quot;#Prerequisites&quot; class=&quot;headerlink&quot; title=&quot;Prerequisites&quot;&gt;&lt;/a&gt;Prerequisites&lt;/h3&gt;&lt;p&gt;The only prerequisite for this tutorial is a VPS with &lt;strong&gt;Ubuntu 13.10 x64&lt;/strong&gt; installed.&lt;/p&gt;
+&lt;p&gt;You will need to execute commands from the command line which you can do in one of the two ways:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use SSH to access the droplet.&lt;/li&gt;
+&lt;li&gt;Use the ‘Console Access’ from the Digital Ocean Droplet Management Panel&lt;div data-unique=&quot;what-is-hadoop&quot;&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;What-is-Hadoop&quot;&gt;&lt;a href=&quot;#What-is-Hadoop&quot; class=&quot;headerlink&quot; title=&quot;What is Hadoop?&quot;&gt;&lt;/a&gt;What is Hadoop?&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="Apache" scheme="http://timeorigin.cn/categories/Apache/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>人工智能对人类真正的威胁是什么？--李开复</title>
+    <link href="http://timeorigin.cn/2016/03/10/ai/"/>
+    <id>http://timeorigin.cn/2016/03/10/ai/</id>
+    <published>2016-03-10T05:58:10.000Z</published>
+    <updated>2016-09-30T05:41:42.171Z</updated>
+    
+    <content type="html"><![CDATA[<div align="left">昨天AlphaGo第一盘棋战胜了李世石，激起了各种“机器超越人类，科幻小说将成真”的讨论。特别有趣的是有人揣测AlphaGo下面会不会故意输下几盘棋，以免人类起疑心，阻挡了它统治人类的野心。其实，虽然机器在逻辑分析推算方面，能力会远超人类，但是依然是属于人类操控的工具。AlphaGo这类的“人工智能”机器真正可能带来的危机，不是奴役人类，而是让人类丧失斗志，无所事事。</div><br><a id="more"></a><br>&nbsp;<br><div align="left">有些人描述AlphaGo是“和人一样的方式思考，但是比人快无数倍”。这么说并不精确。AlphaGo确实比人快无数倍，但是AlphaGo的思考只能说是“被人的大脑启发”，而非和人类思考一样。AlphaGo是一个能自我学习的深度学习，经过专家的调节，它能在任何在可以纯凭逻辑分析推算的问题上，把人类远远低抛在后面。机器速度会越来越快，学习能力会越来越强，数据会越来越多。</div><br>&nbsp;<br><div align="left">基于深度学习的人工智能将带来什么改变呢？我们将看到无数的商机和产品，能够解决问题、拯救生命、产生巨大的商业和用户价值。未来，自动交易能得到更高的投资回报和风险比例，自动诊断+基因排序会达到个性化精准医疗，推荐引擎将能推荐你最可能会买的产品、想吃的菜，想认识的人。在拥有大数据+大计算+专家调节的领域，就不必再跟人类相比了，因为人类根本差的太远了（就像没有人能打败搜索引擎一样）。</div><br>&nbsp;<br><div align="left">这些技术可能辅助专家，也可能取代专家。非专家的工作者很多将会面临失业。未来十年，大部分今天的人类工作可被机器取代。机器将取代许多的护士、记者、会计、教师、股理财师。。。的工作。任何带有“助理”、“代理”或“经纪”等字样的职位都很可能被取代。 这些机器不需要工资，只需要供电和网，就会一年365天，一天24小时“上班”。这些机器将帮助我们创造世界上的大部分财富。</div><br>&nbsp;<br><div align="left">虽然这些机器确实很“聪明”，而且又高效、勤奋、低廉，但是他们并不“人性化”，只是冷冰冰的机器和工具。比如说，AlphaGo第一场就战胜了李世石，但是它不会感觉高兴，也不会理解我们对于它的讨论。甚至，它说不上这局棋是怎么赢的。因为，它的思考虽然周密，但是它不懂“赢了有什么感受？”，也不懂“为什么围棋好玩”，更不懂“人为什么要下棋？”，甚至连“你今天怎么赢的？”都说不上。今天的机器完全无法理解人的情感、喜怒哀乐、七情六欲、信任尊重、价值观等方面 。对于人文艺术、美和爱、幽默感，机器更是丝毫不懂。有位AI研究员做了一套研究幽默感的系统，然后输入了一篇文章，这个系统看了每句话，都说“哈哈”！今天的机器连个两岁小孩都不如。对人工智能的研究者，这应该是一大未来的挑战。</div><br>&nbsp;<br><div align="left"><img src="http://ww2.sinaimg.cn/large/475b3d56jw1f1rkukhf2kj20gg09wq4m.jpg" alt=""><br>图一：未来机器统治人类的预测还很遥远</div><br>&nbsp;<br><div align="left">所以，今天这些机器仅仅是我们的工具，会为创造价值。至少今天，我们不必担心人工智奴役我们（不过要盯好拥有机器学习+大数据的公司，别来作恶伤害用户）。那我们该担心什么呢？这些强大的机器，将带来人类能否度过有史以来最大的“下岗潮”。这次的“机器取代人类”将远超过去的工业革命和信息革命。不过，“下岗”还不是最可怕的，因为这些机器会产生巨大的商业价值，养活着这些下岗者，进而养活着人类。人类最应该担心的是：一旦当机器供养着人类，人类达到了马斯洛需求的基本需求，人类真的还会有动力去追求更宏伟的目标，自我实现吗？还是会醉生梦死、无所事事地或者？</div><br>&nbsp;<br><div align="left"><img src="http://ww4.sinaimg.cn/crop.0.0.580.325.1000.562/475b3d56jw1f1rks1gk11j20g40c4tb2.jpg" alt=""><br>图二：未来机器养活无所事事的人：真实的危机</div><br>&nbsp;<br><div align="left">面对这个担心，我们应该：</div><br>&nbsp;<br><div align="left">①关注启发式教育，用互动式教育启发孩子对学习的兴趣和效率。AlphaGo愿意跟人类学习，我们当然也要善用最善于分析，最博学的机器。善于学习，乐于学习的孩子，是不会醉生梦死的。</div><br>&nbsp;<br><div align="left">②正视发育右脑的学科领域，平衡文理。塞翁失马，焉知非福？机器超越人类的左脑（工程逻辑思维），也许就是要人类从过去几十年重视理工，倾斜回来，花更多的精力在机器不擅长的右脑，例如：文学诗歌、艺术音乐、电影话剧、文创设计、工匠之美、宗教哲学、沟通情商。这不是说就不要学理工了，而是说应该让适合理工，爱好理工的人学理工，适合人文，爱好人文的人学人文。我们应该平等看待文理，并且鼓励发展文理双全的人才。</div><br>&nbsp;<br><div align="left">③鼓励有上进心的年轻人挑战自己， 孜孜以求，成为专才。不要把时间浪费在“安稳”但是重复性的工作上，而要以“成为某个特殊又有用领域的最顶尖人才”为目标，为己任。</div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;div align=&quot;left&quot;&gt;昨天AlphaGo第一盘棋战胜了李世石，激起了各种“机器超越人类，科幻小说将成真”的讨论。特别有趣的是有人揣测AlphaGo下面会不会故意输下几盘棋，以免人类起疑心，阻挡了它统治人类的野心。其实，虽然机器在逻辑分析推算方面，能力会远超人类，但是依然是属于人类操控的工具。AlphaGo这类的“人工智能”机器真正可能带来的危机，不是奴役人类，而是让人类丧失斗志，无所事事。&lt;/div&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Share" scheme="http://timeorigin.cn/categories/Share/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>短篇｜王充闾：谈写流年</title>
+    <link href="http://timeorigin.cn/2016/02/04/Thelife/"/>
+    <id>http://timeorigin.cn/2016/02/04/Thelife/</id>
+    <published>2016-02-04T12:21:27.000Z</published>
+    <updated>2016-09-30T05:43:09.388Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="https://ooo.0o0.ooo/2016/02/04/56b3427290eaf.jpeg" alt=""></p>
+<p><strong>作者｜王充闾</strong></p>
+<p>伴随着人生阅历的增加，人们心目中的宇宙会不断地向外扩张开去，而就个体生命来说，人生的风景却在这种扩张中相对地敛缩，曾经喧嚣灵海的汐潮，在时序的迁流中，已如浅水浮花，波澜不兴了。谈写流年，就是要恬淡而缓和地解读生命，通过文字来重现一个鲜活的生命真实，描绘一种生灭流转的人生风景。<br><a id="more"></a></p>
+<p>时间在销蚀生命的同时，自然也接受了记忆力的对抗——往事总要竭力挣脱流光的裹挟，让自己沉淀下来，留存些许痕迹，使已逝的云烟在现实的屏幕上重现婆娑的光影。而所谓解读生命真实，描绘人生风景，也就是要捕捉这些光影，设法将淹没于岁月烟尘中的般般情事勾勒下来。</p>
+<p>回忆是中老年人的一种特有的专利。它是对于遥远的童心的痴情呼唤，是重新感受年轻，追忆逝水年华的一种心灵履约，是对于昔日芳华的斜陽系缆。普通的人们毕竟还都天机太浅，既不具备佛家的顿悟，也没有道家坐忘的功夫，总是像《世说新语》中说的“未免有情”，因此，在展现飞逝的生命的过程中，在感受几丝甜美，几许温馨的同时，难免会带上一些淡淡的留连，悠悠的怅惋；而且，由于想像中的完美和过于热切的期待终究代替不了实际上的近乎无情的变迁，所以，回忆常常带有感伤的味道。早在一千一百多年前，玉溪生就在《锦瑟》诗中慨乎言之：“此情可待成追忆，只是当时已惘然。”当时既已惘然，更不要说事后追忆了。</p>
+<p>许多生命的图像，在心灵的长期浸染下，已经成为一种前尘梦影，旧时月色，一似飘逝的过眼云烟，或则了无踪影，或则漫漶模糊。由于追忆属于想像的领域，它是在时空变换条件下的一种新的综合，新的加工，因此，凡是追忆都会或多或少、或显或隐地夹杂着本人对于过往情事的重新诠释，包括赋予它以当时未必具备的新的意蕴，新的感受。也正因为这样，所以，无论回忆也好，捕捉光影，勾勒情怀也好，充其量只能是粗具形体的原始素描，而绝非摄影机下原原本本的照相，更不可能是那种记录三维空间整体信息的全息影片。</p>
+<p>当然，就算是原原本本的摄像或者全息影片又怎么样，年光已如飞鸟般地飘逝了，留下来的只是一个个空巢，挂在那里任由后人去指认、评说。有人说得更为形象：照片这东西不过是生命的碎壳，纷纷的岁月已经过去，瓜子仁一粒粒咽了下去，滋味各人自己知道，留给大家看的唯有那满地狼藉的黑白瓜子壳。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2016/02/04/56b3427290eaf.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;作者｜王充闾&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;伴随着人生阅历的增加，人们心目中的宇宙会不断地向外扩张开去，而就个体生命来说，人生的风景却在这种扩张中相对地敛缩，曾经喧嚣灵海的汐潮，在时序的迁流中，已如浅水浮花，波澜不兴了。谈写流年，就是要恬淡而缓和地解读生命，通过文字来重现一个鲜活的生命真实，描绘一种生灭流转的人生风景。&lt;br&gt;
     
     </summary>
+    
+      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Gigapixels of Andromeda</title>
+    <link href="http://timeorigin.cn/2016/01/02/gigapixels-of-andromeda/"/>
+    <id>http://timeorigin.cn/2016/01/02/gigapixels-of-andromeda/</id>
+    <published>2016-01-02T06:27:53.000Z</published>
+    <updated>2016-09-30T04:40:51.796Z</updated>
+    
+    <content type="html"><![CDATA[<p>浩瀚的宇宙！</p>
+<iframe src="https://www.youtube.com/embed/udAL48P5NJU" width="600" height="350" frameborder="100" allowfullscreen="allowfullscreen"></iframe>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;浩瀚的宇宙！&lt;/p&gt;
+&lt;iframe src=&quot;https://www.youtube.com/embed/udAL48P5NJU&quot; width=&quot;600&quot; height=&quot;350&quot; frameborder=&quot;100&quot; allowfullscreen=&quot;allowfulls
+    
+    </summary>
+    
+      <category term="给人以震撼" scheme="http://timeorigin.cn/categories/%E7%BB%99%E4%BA%BA%E4%BB%A5%E9%9C%87%E6%92%BC/"/>
+    
+    
+      <category term="宇宙" scheme="http://timeorigin.cn/tags/%E5%AE%87%E5%AE%99/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网站添加Snowstorm下雪效果</title>
+    <link href="http://timeorigin.cn/2015/12/25/snowstorm/"/>
+    <id>http://timeorigin.cn/2015/12/25/snowstorm/</id>
+    <published>2015-12-25T05:48:26.000Z</published>
+    <updated>2016-09-30T05:45:30.891Z</updated>
+    
+    <content type="html"><![CDATA[<div align="left"></div><br><div align="left">&lt;/body&gt;前加入这行代码</div><br><div class="highlight"><br><pre class="prettyprint lang-bsh">&lt;script type=’text/javascript’ src=’snow.js’&gt;&lt;/script&gt;<br></pre><br></div><br><a id="more"></a><br><div align="left">将snow.js放入网站根目录</div><br><div align="left">将png图片放入static/image/snow/ 文件夹下</div><br><div align="left"></div><br>&nbsp;<br><div align="left">ps:代码都是<a href="http://zhixing.bjtu.edu.cn" target="_blank" rel="external">知行</a>上的，自己扒下来玩玩！</div><br><div align="left">More：</div><br><div align="left">ProjectHome: <a href="http://www.schillmania.com/projects/snowstorm/" target="_blank" rel="external">http://www.schillmania.com/projects/snowstorm/</a></div><br><div align="left">Github: <a href="http://github.com/scottschiller/snowstorm/" target="_blank" rel="external">github.com/scottschiller/snowstorm/</a></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;div align=&quot;left&quot;&gt;&lt;/div&gt;&lt;br&gt;&lt;div align=&quot;left&quot;&gt;&amp;lt;/body&amp;gt;前加入这行代码&lt;/div&gt;&lt;br&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;br&gt;&lt;pre class=&quot;prettyprint lang-bsh&quot;&gt;&amp;lt;script type=’text/javascript’ src=’snow.js’&amp;gt;&amp;lt;/script&amp;gt;&lt;br&gt;&lt;/pre&gt;&lt;br&gt;&lt;/div&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="小Tips" scheme="http://timeorigin.cn/categories/%E5%B0%8FTips/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>v6SS使用教程</title>
+    <link href="http://timeorigin.cn/2015/11/10/tutorials/"/>
+    <id>http://timeorigin.cn/2015/11/10/tutorials/</id>
+    <published>2015-11-10T07:23:19.000Z</published>
+    <updated>2016-09-30T05:46:27.978Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="网站地址：https-www-v6ss-club"><a href="#网站地址：https-www-v6ss-club" class="headerlink" title="网站地址：https://www.v6ss.club/"></a>网站地址：<a href="https://www.v6ss.club/" target="_blank" rel="external">https://www.v6ss.club/</a></h2><h1 id="Windows平台安装使用教程"><a href="#Windows平台安装使用教程" class="headerlink" title="Windows平台安装使用教程"></a>Windows平台安装使用教程</h1><h3 id="———————"><a href="#———————" class="headerlink" title="———————"></a><strong>———————</strong></h3><p><strong>配置客户端软件：</strong><br><a id="more"></a></p>
+<ul>
+<li>下载Windows平台的客户端：<strong><a href="https://blog.flove.me/wp-content/uploads/Shadowsocks-2.5.8.zip" target="_blank" rel="external">Windows客户端</a></strong></li>
+<li>启动客户端</li>
+<li>选择<strong>启用系统代理</strong>，系统代理模式为“<strong>全局模式</strong>”</li>
+</ul>
+<h3 id="———————-1"><a href="#———————-1" class="headerlink" title="———————"></a><strong>———————</strong></h3><p><img src="https://ooo.0o0.ooo/2016/04/25/571e342fdd0cc.png" alt=""></p>
+<p>### </p>
+<h3 id="———————-2"><a href="#———————-2" class="headerlink" title="———————"></a><strong>———————</strong></h3><h3 id="点击右边栏的节点列表-选择IPv6二维码"><a href="#点击右边栏的节点列表-选择IPv6二维码" class="headerlink" title="点击右边栏的节点列表,选择IPv6二维码"></a><strong>点击右边栏的节点列表,选择<strong>IPv6二维码</strong></strong></h3><h3 id="———————-3"><a href="#———————-3" class="headerlink" title="———————"></a><strong>———————</strong></h3><p><img src="https://ooo.0o0.ooo/2016/04/25/571e373d94b38.png" alt=""></p>
+<h3 id="———————-4"><a href="#———————-4" class="headerlink" title="———————"></a><strong>———————</strong></h3><h3 id="打开客户端，选择扫描屏幕上的二维码"><a href="#打开客户端，选择扫描屏幕上的二维码" class="headerlink" title="打开客户端，选择扫描屏幕上的二维码"></a>打开客户端，选择<strong>扫描屏幕上的二维码</strong></h3><h3 id="———————-5"><a href="#———————-5" class="headerlink" title="———————"></a><strong>———————</strong></h3><p><img src="https://ooo.0o0.ooo/2016/04/25/571e39183595f.png" alt=""></p>
+<h3 id="———————-6"><a href="#———————-6" class="headerlink" title="———————"></a><strong>———————</strong></h3><h3 id="打开浏览器即可免流量上网"><a href="#打开浏览器即可免流量上网" class="headerlink" title="打开浏览器即可免流量上网"></a>打开浏览器即可免流量上网</h3><p><em>断开时<strong>关闭系统代理</strong>即可</em></p>
+<h3 id="———————-7"><a href="#———————-7" class="headerlink" title="———————"></a><strong>———————</strong></h3><p><img src="https://ooo.0o0.ooo/2015/12/01/565e738b9ca4e.png" alt=""></p>
+<h3 id="———————-8"><a href="#———————-8" class="headerlink" title="———————"></a><strong>———————</strong></h3><h3 id="More：浏览器切换配置（Chrome）"><a href="#More：浏览器切换配置（Chrome）" class="headerlink" title="More：浏览器切换配置（Chrome）"></a>More：浏览器切换配置（Chrome）</h3><!--more-->
+<ul>
+<li>下载安装<a href="http://down.tech.sina.com.cn/page/40975.html" target="_blank" rel="external">Chrome浏览器</a>，推荐安装64位 。</li>
+<li>下载切换插件：<a href="https://github.com/FelisCatus/SwitchyOmega/releases/download/v2.3.19/SwitchyOmega.crx" target="_blank" rel="external">SwitchyOmega.crx</a></li>
+<li><p>打开Chrome的开发者模式：<br><img src="https://ooo.0o0.ooo/2016/04/25/571e3cec95eb4.png" alt=""></p>
+</li>
+<li><p>将下载的SwitchyOmega.crx添加进去<br><img src="https://ooo.0o0.ooo/2016/04/25/571e3e0b3ea3a.png" alt=""></p>
+</li>
+<li><p>添加扩展文件<br><img src="https://ooo.0o0.ooo/2016/04/25/571e3e0b2b266.png" alt=""></p>
+</li>
+<li><p>根据内置教程，添加不同的代理规则。或者直接导入v6ss的备份文件。</p>
+<blockquote>
+<p><span style="color: #ff0000;"><a href="https://www.v6ss.club/v6ss.bak" target="_blank" rel="external">https://www.v6ss.club/v6ss.bak</a></span><br><img src="https://ooo.0o0.ooo/2016/04/25/571e4024b8dd0.png" alt=""></p>
+</blockquote>
+</li>
+<li><p>需要使用代理时，点击浏览器右上角的圆圈，切换到v6ss模式，不需要时选择直接连接模式。<strong>注意 </strong><span style="color: #ff0000;">如果想使用切换规则，请不要选择客户端的系统代理。</span></p>
+</li>
+</ul>
+<p>### </p>
+<p>&nbsp;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;网站地址：https-www-v6ss-club&quot;&gt;&lt;a href=&quot;#网站地址：https-www-v6ss-club&quot; class=&quot;headerlink&quot; title=&quot;网站地址：https://www.v6ss.club/&quot;&gt;&lt;/a&gt;网站地址：&lt;a href=&quot;https://www.v6ss.club/&quot;&gt;https://www.v6ss.club/&lt;/a&gt;&lt;/h2&gt;&lt;h1 id=&quot;Windows平台安装使用教程&quot;&gt;&lt;a href=&quot;#Windows平台安装使用教程&quot; class=&quot;headerlink&quot; title=&quot;Windows平台安装使用教程&quot;&gt;&lt;/a&gt;Windows平台安装使用教程&lt;/h1&gt;&lt;h3 id=&quot;———————&quot;&gt;&lt;a href=&quot;#———————&quot; class=&quot;headerlink&quot; title=&quot;———————&quot;&gt;&lt;/a&gt;&lt;strong&gt;———————&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;配置客户端软件：&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="教程" scheme="http://timeorigin.cn/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于申请Github Education Pack</title>
+    <link href="http://timeorigin.cn/2015/10/16/github-education-pack/"/>
+    <id>http://timeorigin.cn/2015/10/16/github-education-pack/</id>
+    <published>2015-10-16T09:17:18.000Z</published>
+    <updated>2016-09-30T05:42:17.613Z</updated>
+    
+    <content type="html"><![CDATA[<p>Github的education pack真的是一个良心惠民政策啊，免费提供给学生的大福利（具体请查看<a href="https://www.caoqq.net/github-pack.html" target="_blank" rel="external">这里</a>的介绍）。<br><a id="more"></a></p>
+<p>如果全部使用的话，初步估算，就算按照你明年毕业，相当于近百万美元 ($143 万 +)。当然，作为学生也没有精力和必要去使用这么多软件包，但至少有几个很值得使用（比如 DO 和 SSL），真是超级给力。</p>
+<p>可是由于国内的很多无良人士，明明不是学生却绞尽脑汁伪造学生身份骗取education优惠。导致现在的申请大环境非常恶劣，真正的学生却很难申请到优惠。不幸的是我知道这个优惠的时候大环境已经是这样了，用学校edu邮箱申请直接给秒拒了。所以我只好上传了一张学生证的照片，但是我在申请原因里写了大概有四五百字，把我的情况仔细阐述了一遍，说了中国学生没有信用卡怎么怎么不方便，这个优惠会对我有什么什么样的帮助，过了将近两个星期给我发邮件说“Unfortunately, we weren’t able to approve your educational discount request.”就是拒了。无奈只能再次申请，仔细想了下上次申请失败的原因，我认为估计是Github那边对于中文学生证的认可不太高，其次就是只能上传一张图片，无法全方位的展示学生身份信息，于是我就直接发邮件给github education，上传了4张学生证照片，涵盖了学生证每页的信息。然后再在网页端再次申请，这次我上传了邮件中的其中一张照片（学生信息的那一页），说明下我没有英文学生证还有我真的很需要这份discount等等。13号发的邮件，今天中午回到寝室Gmail推送了一封邮件，Powerup get！给过了。</p>
+<p>在这里给大家的经验就是一定要诚信，不要因为自己的行为使整个中国开发者群体的形象受损。还有就是给github赞一个，看来他们是认真看了每个申请请求的，那些迟迟不过的，多半是你的申请写的太简单了吧。</p>
+<p>&nbsp;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Github的education pack真的是一个良心惠民政策啊，免费提供给学生的大福利（具体请查看&lt;a href=&quot;https://www.caoqq.net/github-pack.html&quot;&gt;这里&lt;/a&gt;的介绍）。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Introducing the Nexus 6P</title>
+    <link href="http://timeorigin.cn/2015/10/01/introducing-the-nexus-6p/"/>
+    <id>http://timeorigin.cn/2015/10/01/introducing-the-nexus-6p/</id>
+    <published>2015-10-01T15:01:03.000Z</published>
+    <updated>2016-09-30T05:16:44.349Z</updated>
+    
+    <content type="html"><![CDATA[<iframe width="560" height="315" src="https://www.youtube.com/embed/4cAHL4LMNlY" frameborder="0" allowfullscreen></iframe>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/4cAHL4LMNlY&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
+
+    
+    </summary>
+    
+      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Google&#39;s 2015 Nexus Event</title>
+    <link href="http://timeorigin.cn/2015/09/30/googles-2015-nexus-event/"/>
+    <id>http://timeorigin.cn/2015/09/30/googles-2015-nexus-event/</id>
+    <published>2015-09-29T16:00:33.000Z</published>
+    <updated>2016-09-30T04:40:51.785Z</updated>
+    
+    <content type="html"><![CDATA[<p>期待Nexus!!!!</p>
+<p>———–我的第三部SmartPhone</p>
+<iframe src="https://www.youtube.com/embed/1JCrC__khYo" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+<p>期待惊喜！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;期待Nexus!!!!&lt;/p&gt;
+&lt;p&gt;———–我的第三部SmartPhone&lt;/p&gt;
+&lt;iframe src=&quot;https://www.youtube.com/embed/1JCrC__khYo&quot; width=&quot;560&quot; height=&quot;315&quot; frameborder=&quot;
+    
+    </summary>
+    
+      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>教育网简单配置访问Youtube</title>
+    <link href="http://timeorigin.cn/2015/09/23/ipv6/"/>
+    <id>http://timeorigin.cn/2015/09/23/ipv6/</id>
+    <published>2015-09-23T03:23:25.000Z</published>
+    <updated>2016-09-30T05:31:26.742Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="wp-content/uploads/2015/09/N_IEJMPPRWGHR6NOMD4VDO.jpg"><img src="https://blog.flove.me/wp-content/uploads/2015/09/N_IEJMPPRWGHR6NOMD4VDO.jpg" alt="N_IEJMPPRWGHR6NOMD4V$DO"></a></p>
+<p><strong>哦哦哦！Follow me！</strong><br><a id="more"></a><br><!--more--></p>
+<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a><strong>前言：</strong></h1><p>前段时间这个blog刚建立的时候，写过这么一篇文章，中间出现了服务器崩溃，数据库数据没能保存下来。所以就有了现在这份。</p>
+<h1 id="流程："><a href="#流程：" class="headerlink" title="流程："></a><strong>流程：</strong></h1><p>简化了配置流程，操作仅需以下几步(我发现这真的很难懂欸！！）：</p>
+<ul>
+<li>先从这里<a href="http://go.netsh.org/link/getipv6hosts" target="_blank" rel="external">获取hosts</a>；</li>
+<li>在选择并获取到相应的 hosts 后，按下 “全部选中” 按钮，并右键选择 “复制”，您需要将它们粘贴到文件里使用。</li>
+</ul>
+<p><span class="date">Windows</span> 在开始屏幕搜索 “notepad”，右键选择 “以管理员身份运行” 记事本程序，按下 Ctrl+O 定位到 hosts 文件修改并直接保存。</p>
+<p><span class="date">OS X</span> 在 Finder 窗口按下［前往］［前往文件夹…］，输入 <strong>/etc</strong> 回车，将 hosts 文件拖拽到桌面，双击修改保存，再将其拖拽回 <strong>/etc</strong> ，鉴定替换。</p>
+<p><span class="date">Linux</span> 在终端运行命令 <strong>sudo vi /etc/hosts</strong> 修改。</p>
+<p><span class="date">Android、iOS</span> 使用 iFile 或其它文件管理器应用修改 <strong>/etc/hosts</strong>，并照原样修改好权限和所有者。</p>
+<p>修改完成之后，您可以参照上一点刷新 DNS 缓存。</p>
+<ul>
+<li>控制面板\网络和 Internet\网络连接—-&gt;以太网属性 修改 IPV6 协议（双击Internet 协议版本6）DNS 为 2001:470:20::2 、 2001:638:902:1::10 、 2001:4860:4860::8888（推荐） 、 2001:4860:4860::8844（推荐），考虑到教育网需要内部 DNS 解析内网地址，所以仍然需要保留校内的 DNS，一般是默认的内网 DNS 配置。</li>
+<li>对于 Windows/Mac 等桌面操作系统，下载使用 <a href="https://chrome.google.com/" target="_blank" rel="external">Chrome 浏览器</a>。</li>
+<li>对于 Windows/Mac 等桌面操作系统，用 Chrome 打开 chrome://flags ，并把下述的选项改为 Enabled (已启用)。可能要求浏览器重新启动。chrome://flags/#enable-quic</li>
+<li><p><a href="http://blog.netsh.org/posts/chrome-http-redirect-https_369.netsh.html" target="_blank" rel="external">总是以 HTTPS 的方式</a>打开 Youtube。下面详细步骤。</p>
+<ul>
+<li>1、打开<a href="chrome://net-internals/#hsts" target="_blank" rel="external">chrome://net-internals/#hsts</a>2、在HSTS选项卡下的Domain中输入你想要实现这个强制跳转的域名，比如Twitter.com，plus.google.com等，如下图：</li>
+</ul>
+</li>
+</ul>
+<p><a href="http://blog.netsh.org/posts/chrome-http-redirect-https_369.netsh.html/chrome-redirect-http-to-https" target="_blank" rel="external"><img src="https://o1lk7rmd9.qnssl.com/wp-content/uploads/2011/07/chrome-redirect-http-to-https-600x297.gif" alt="chrome-redirect-http-to-https" title="chrome-redirect-http-to-https"></a></p>
+<p>3、最后勾选上Include subdomains，这样可以确保Twitter的所有二级域名都被重定向到https，比如<a href="http://search.twitter.com/" title="Twitter搜索" target="_blank" rel="external">search.twitter.com</a>。</p>
+<p>4、点击Add按钮，现在大功告成。<br>更新于:20160707</p>
+<!--more-->
+<p>refer to:</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;a href=&quot;wp-content/uploads/2015/09/N_IEJMPPRWGHR6NOMD4VDO.jpg&quot;&gt;&lt;img src=&quot;https://blog.flove.me/wp-content/uploads/2015/09/N_IEJMPPRWGHR6NOMD4VDO.jpg&quot; alt=&quot;N_IEJMPPRWGHR6NOMD4V$DO&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;哦哦哦！Follow me！&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Steve Cutts</title>
+    <link href="http://timeorigin.cn/2015/09/18/steve-cutts/"/>
+    <id>http://timeorigin.cn/2015/09/18/steve-cutts/</id>
+    <published>2015-09-18T05:38:22.000Z</published>
+    <updated>2016-09-30T04:40:51.777Z</updated>
+    
+    <content type="html"><![CDATA[<p>推荐一个频道</p>
+<iframe src="https://www.youtube.com/embed/td2wFcD424Y" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;推荐一个频道&lt;/p&gt;
+&lt;iframe src=&quot;https://www.youtube.com/embed/td2wFcD424Y&quot; width=&quot;560&quot; height=&quot;315&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;allowfullscr
+    
+    </summary>
+    
+      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>教育网利用DigitalOcean搭建IPv6—Shadowscoks实现免流量&amp;科学上网</title>
+    <link href="http://timeorigin.cn/2015/09/17/digitalocean/"/>
+    <id>http://timeorigin.cn/2015/09/17/digitalocean/</id>
+    <published>2015-09-17T13:58:10.000Z</published>
+    <updated>2016-09-30T05:41:59.400Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www-v6ss-club"><a href="#博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www-v6ss-club" class="headerlink" title="博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www.v6ss.club"></a>博主搭建了shadowsocks-manyuser，可以来我的网站免费试用<a href="https://www.v6ss.club" target="_blank" rel="external">www.v6ss.club</a></h2><h2 id="搭建ipv6的SS背景"><a href="#搭建ipv6的SS背景" class="headerlink" title="搭建ipv6的SS背景"></a><strong>搭建ipv6的SS背景</strong></h2><p>自从在VPS搭建了ipv6-Shadowscoks以后就一直觉得有这样一个免流量无墙的通道不好好玩一玩貌似可惜了。 于是本人折腾了半天的时间，租用了DigitalOcean一个VPS搭建了一个支持ipv6的VPN，不仅可以免流量还自带科学上网。支持ipv6免流量的高校应该都是可以的。</p>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a><strong>效果</strong></h2><p>效果自然是非常的感人</p>
+<ul>
+<li>全局免流量，虽然走的是美国服务器，墙内的网站访问同样正常。</li>
+<li>科学上网，打开youtube的速度很快，1080P的视频无压力。</li>
+<li>可以分享，可以将你的服务分享出去，由于带宽非常高，基本不会互相影响。</li>
+<li>迅雷代理，室友得到分享以后挂上了迅雷……速度可以达到20MBps</li>
+<li>费用较低，5$一月价格对比起来已经很低，如果能获得github教育认证的话会有50$的赠送。相当于免费使用10个月。<br><strong>下面我就将这个过程总结一下，手把手教你搭建自己的VPN。</strong><a id="more"></a></li>
+</ul>
+<ol>
+<li>注册和激活DigitalOcean账号</li>
+<li>购买主机</li>
+<li>配置主机服务端</li>
+<li>使用ShadowSocks客户端完成连接</li>
+<li>其它相关内容</li>
+</ol>
+<ul>
+<li><span style="color: #000000;"><strong>Digital Ocean注册</strong></span></li>
+</ul>
+<p>首先注册账号，访问DigitalOcean并进行注册，（<a href="https://www.digitalocean.com/?refcode=4bd0152b0aa6" target="_blank" rel="external">点击这里注册</a>）这里我给出的是我的推广链接，通过这个链接你可以获得10$的资金，虽然我并不能直接获得奖励。完成注册以后可能需要激活你的账号，根据提示填写相关信息。然后就是绑定信用卡或者使用<a href="https://www.paypal.com/signup/account" target="_blank" rel="external">PayPal</a>进行一次充值。我没有信用卡并且paypal可以使用银联卡付款，因此我进行了一次付款5$。至此你已经完成了账号的注册和激活。此时账号上应该有15$的余额，够使用3个月。按我当时的汇率总共是¥31.87。ps.日本的vps提供商服务更稳定速度更快就是有点贵（土豪无视）土豪你就能错过了吗？点击<a href="https://cloud.z.com/jp/zh/signup/?token=59A3Q4Uc_rz1nQtW_GpBQUUixLhOaNwWaRsFj42gYlxThnLXMGo-8UA" target="_blank" rel="external">这里</a></p>
+<p>新增日本便宜VPS（Vultr）最低配置5刀每月，<a href="http://www.vultr.com/?ref=6912327" target="_blank" rel="external">点击这里注册</a>。<span style="color: #ff0000;"><strong>注：2016年暑期优惠注册即送20$，最低配置可用半年，不可错过哦！</strong></span></p>
+<ul>
+<li><p><strong>购买主机</strong><br>下面就是进行购买和配置VPS 在DigitalOcean中选择Droplets</p>
+</li>
+<li><p>主机名字可以任意</p>
+</li>
+<li>费用选择最便宜的5刀每月即可</li>
+<li>主机我选择的San Francisco速度挺不错，也可以选择其它地址。（DO主机按小时计费随便试，不得不说很良心）</li>
+<li><strong>记得勾选IPV6</strong></li>
+<li><strong>注意勾选Backups是要单独收费的，选不选请根据个人情况决定</strong></li>
+<li>如果你希望搭建Blog（wordpress）等站点，请务必勾选User Data，内容可以按照<span style="color: #0000ff;"><a href="https://github.com/digitalocean/do_user_scripts/blob/master/CentOS-7/web-servers/lamp.yml" target="_blank" rel="external">这里</a></span>填写（LAMP安装很麻烦的）</li>
+<li>操作系统选择CentOS 7 x64</li>
+<li><strong>添加SSH Key（在创建主机之前）以提高访问的安全性，具体方法参见<a href="https://www.zxc.so/do-ssh-key.html" target="_blank" rel="external">这里</a>.（注：强列建议添加SSH，以后用Putty管理VPS很方便）</strong><br>&nbsp;</li>
+</ul>
+<p><strong><a href="https://blog.flove.me/wp-content/uploads/2015/09/232f911521ae4018.jpg" target="_blank" rel="external"><img src="https://blog.flove.me/wp-content/uploads/2015/09/232f911521ae4018.jpg" alt="232f911521ae4018"></a></strong></p>
+<p>&nbsp;</p>
+<p>完成配置以后点击Create，等待大约一分钟，你就可以管理主机了</p>
+<p><a href="https://blog.flove.me/wp-content/uploads/2015/09/c1fb293881f2c6c2.png" target="_blank" rel="external"><img src="https://blog.flove.me/wp-content/uploads/2015/09/c1fb293881f2c6c2.png" alt="c1fb293881f2c6c2"></a></p>
+<p>记下主机的ipv6地址，用putty登录，主机填ipv6的地址也是可以的，而且速度更快相比于ipv4。</p>
+<ul>
+<li><strong>配置主机服务端</strong><br>下面的过程就是最有技术含量的东西，技术细节可以<a href="http://blog.kyangcis.me/2015/01/01/my-first-vps/" target="_blank" rel="external">参考这里</a>，不过在这里我只介绍最简单的方式。</li>
+</ul>
+<p>连接你的主机</p>
+<ol>
+<li>一种最直接的方法就是在<a href="https://cloud.digitalocean.com/droplets/" target="_blank" rel="external">这里</a>选择你的Droplet然后Access=》[console access] <strong>（不推荐）</strong></li>
+<li>另外一种方法就是参照上面提到的添加SSH key方法一文使用客户端连接<strong>。（强烈推荐）</strong><br>我用的是putty登陆，所以以下就以 此为例</li>
+</ol>
+<ul>
+<li><p><strong>部署环境</strong></p>
+</li>
+<li><p>另注： 如果你嫌太麻烦，可以直接来我的网站<a href="https://www.v6ss.club" target="_blank" rel="external">www.v6ss.club</a>。。零基础教你免流量！<br>鉴于你们比较懒，请直接把下面的magical phrase复制粘贴回车<br><div class="highlight"><br><pre class="prettyprint lang-bsh">wget –no-check-certificate <a href="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh" target="_blank" rel="external">https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</a><br>chmod +x shadowsocks.sh<br>./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</pre><br></div><br>请坐好不要乱动……直到提示修改密码，修改一下。 然后会提示</p>
+<div class="highlight">
+
+<p>Congratulations, shadowsocks install completed!<br>Your Server IP:your_server_ip<br>Your Server Port:8989<br>Your Password:your_password<br>Your Local IP:127.0.0.1<br>Your Local Port:1080<br>Your Encryption Method:aes-256-cfb</p>
+<p>Welcome to visit:<a href="http://teddysun.com/342.html" target="_blank" rel="external">http://teddysun.com/342.html</a><br>Enjoy it!<br>`<br></p></div><br>&nbsp;<p></p>
+</li>
+<li><p>以上使用的是<a href="https://teddysun.com/342.html" target="_blank" rel="external">秋水逸冰</a>大神的一键安装脚本，不过我们还需要修改配置以适合我们的ipv6环境。 输入</p>
+<div class="highlight"><br><pre><code>vi /etc/shadowsocks.json</code></pre><br></div>
+</li>
+<li><p>按i进入编辑模式 将文件内容编辑成如下（此部分可以用Winscp直接修改）<br><div class="highlight"><br><pre><code>{
+  &quot;server&quot;:&quot;::&quot;,
+  &quot;server_port&quot;:8989,
+  &quot;local_address&quot;:&quot;127.0.0.1&quot;,
+  &quot;local_port&quot;:1080,
+  &quot;password&quot;:&quot;yourpassword&quot;,
+  &quot;timeout&quot;:300,
+  &quot;method&quot;:&quot;aes-256-cfb&quot;,
+  &quot;fast_open&quot;: false
+}</code></pre><br></div><br>&nbsp;</p>
+</li>
+<li><p>注意上面把yourpassword改为你的密码</p>
+</li>
+<li>ctrl+c退出编辑模式</li>
+<li>输入 “:x” （英文冒号+x）保存并退出</li>
+<li>输以下命令重启SS让配置生效<br><div class="highlight"><br><pre>/etc/init.d/shadowsocks restart</pre></div></li>
+</ul>
+<p><br>至此环境已经完全配好，赶快连接去上网吧~！</p>
+<ul>
+<li><strong>使用ShadowSocks客户端完成连接</strong><br>下载ShadowSocks客户端，只有200kb非常的精简</li>
+</ul>
+<p><a href="https://cloud.cokebar.info/index.php/s/rKTIRmkNXn1VUZ4/download?path=%2F&amp;files=Shadowsocks-win-2.5.6.zip" target="_blank" rel="external">Shadowsocks-win-2.5.6</a></p>
+<p>注意ip地址一定要像这样 [2604:a880:12:200::13e:8000]（不用加/64） 用左右方括号框起来。</p>
+<p><strong>OK!至此你已经完成所有的工作，快使用 127.0.0.1:1080 Socks5代理端口来试一试吧。</strong></p>
+<h2 id="其它相关内容"><a href="#其它相关内容" class="headerlink" title="其它相关内容"></a><strong>其它相关内容</strong></h2><ul>
+<li>浏览器相关设置请参照<a href="https://ttt.tt/150/" target="_blank" rel="external">这里</a></li>
+<li>设置迅雷代理百度云代理均可速度很棒</li>
+<li><a href="https://education.github.com/" target="_blank" rel="external">GitHub Edu</a>认证以后可以获得Digital Ocean 100$礼品码，不过目前只有50$了，而且要新用户才能用。</li>
+<li>另 如果你嫌太麻烦，可以直接来我的网站<a href="https://www.v6ss.club" target="_blank" rel="external">www.v6ss.club</a>。。零基础教你免流量！<!--more-->
+</li>
+</ul>
+<p>如有问题请留言评论!</p>
+<p>&nbsp;</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www-v6ss-club&quot;&gt;&lt;a href=&quot;#博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www-v6ss-club&quot; class=&quot;headerlink&quot; title=&quot;博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www.v6ss.club&quot;&gt;&lt;/a&gt;博主搭建了shadowsocks-manyuser，可以来我的网站免费试用&lt;a href=&quot;https://www.v6ss.club&quot;&gt;www.v6ss.club&lt;/a&gt;&lt;/h2&gt;&lt;h2 id=&quot;搭建ipv6的SS背景&quot;&gt;&lt;a href=&quot;#搭建ipv6的SS背景&quot; class=&quot;headerlink&quot; title=&quot;搭建ipv6的SS背景&quot;&gt;&lt;/a&gt;&lt;strong&gt;搭建ipv6的SS背景&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;自从在VPS搭建了ipv6-Shadowscoks以后就一直觉得有这样一个免流量无墙的通道不好好玩一玩貌似可惜了。 于是本人折腾了半天的时间，租用了DigitalOcean一个VPS搭建了一个支持ipv6的VPN，不仅可以免流量还自带科学上网。支持ipv6免流量的高校应该都是可以的。&lt;/p&gt;
+&lt;h2 id=&quot;效果&quot;&gt;&lt;a href=&quot;#效果&quot; class=&quot;headerlink&quot; title=&quot;效果&quot;&gt;&lt;/a&gt;&lt;strong&gt;效果&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;效果自然是非常的感人&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;全局免流量，虽然走的是美国服务器，墙内的网站访问同样正常。&lt;/li&gt;
+&lt;li&gt;科学上网，打开youtube的速度很快，1080P的视频无压力。&lt;/li&gt;
+&lt;li&gt;可以分享，可以将你的服务分享出去，由于带宽非常高，基本不会互相影响。&lt;/li&gt;
+&lt;li&gt;迅雷代理，室友得到分享以后挂上了迅雷……速度可以达到20MBps&lt;/li&gt;
+&lt;li&gt;费用较低，5$一月价格对比起来已经很低，如果能获得github教育认证的话会有50$的赠送。相当于免费使用10个月。&lt;br&gt;&lt;strong&gt;下面我就将这个过程总结一下，手把手教你搭建自己的VPN。&lt;/strong&gt;
+    
+    </summary>
+    
+      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
     
     
   </entry>

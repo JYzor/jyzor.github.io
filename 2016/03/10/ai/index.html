@@ -1,0 +1,698 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="时间原点" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="昨天AlphaGo第一盘棋战胜了李世石，激起了各种“机器超越人类，科幻小说将成真”的讨论。特别有趣的是有人揣测AlphaGo下面会不会故意输下几盘棋，以免人类起疑心，阻挡了它统治人类的野心。其实，虽然机器在逻辑分析推算方面，能力会远超人类，但是依然是属于人类操控的工具。AlphaGo这类的“人工智能”机器真正可能带来的危机，不是奴役人类，而是让人类丧失斗志，无所事事。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能对人类真正的威胁是什么？--李开复">
+<meta property="og:url" content="http://timeorigin.cn/2016/03/10/ai/index.html">
+<meta property="og:site_name" content="时间原点">
+<meta property="og:description" content="昨天AlphaGo第一盘棋战胜了李世石，激起了各种“机器超越人类，科幻小说将成真”的讨论。特别有趣的是有人揣测AlphaGo下面会不会故意输下几盘棋，以免人类起疑心，阻挡了它统治人类的野心。其实，虽然机器在逻辑分析推算方面，能力会远超人类，但是依然是属于人类操控的工具。AlphaGo这类的“人工智能”机器真正可能带来的危机，不是奴役人类，而是让人类丧失斗志，无所事事。">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/475b3d56jw1f1rkukhf2kj20gg09wq4m.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/crop.0.0.580.325.1000.562/475b3d56jw1f1rks1gk11j20g40c4tb2.jpg">
+<meta property="og:updated_time" content="2016-09-30T05:41:42.171Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人工智能对人类真正的威胁是什么？--李开复">
+<meta name="twitter:description" content="昨天AlphaGo第一盘棋战胜了李世石，激起了各种“机器超越人类，科幻小说将成真”的讨论。特别有趣的是有人揣测AlphaGo下面会不会故意输下几盘棋，以免人类起疑心，阻挡了它统治人类的野心。其实，虽然机器在逻辑分析推算方面，能力会远超人类，但是依然是属于人类操控的工具。AlphaGo这类的“人工智能”机器真正可能带来的危机，不是奴役人类，而是让人类丧失斗志，无所事事。">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/475b3d56jw1f1rkukhf2kj20gg09wq4m.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://timeorigin.cn/2016/03/10/ai/"/>
+
+  <title> 人工智能对人类真正的威胁是什么？--李开复 | 时间原点 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67741178-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">时间原点</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                人工智能对人类真正的威胁是什么？--李开复
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-10T13:58:10+08:00" content="2016-03-10">
+              2016-03-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Share/" itemprop="url" rel="index">
+                    <span itemprop="name">Share</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/10/ai/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/10/ai/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div align="left">昨天AlphaGo第一盘棋战胜了李世石，激起了各种“机器超越人类，科幻小说将成真”的讨论。特别有趣的是有人揣测AlphaGo下面会不会故意输下几盘棋，以免人类起疑心，阻挡了它统治人类的野心。其实，虽然机器在逻辑分析推算方面，能力会远超人类，但是依然是属于人类操控的工具。AlphaGo这类的“人工智能”机器真正可能带来的危机，不是奴役人类，而是让人类丧失斗志，无所事事。</div><br><a id="more"></a><br>&nbsp;<br><div align="left">有些人描述AlphaGo是“和人一样的方式思考，但是比人快无数倍”。这么说并不精确。AlphaGo确实比人快无数倍，但是AlphaGo的思考只能说是“被人的大脑启发”，而非和人类思考一样。AlphaGo是一个能自我学习的深度学习，经过专家的调节，它能在任何在可以纯凭逻辑分析推算的问题上，把人类远远低抛在后面。机器速度会越来越快，学习能力会越来越强，数据会越来越多。</div><br>&nbsp;<br><div align="left">基于深度学习的人工智能将带来什么改变呢？我们将看到无数的商机和产品，能够解决问题、拯救生命、产生巨大的商业和用户价值。未来，自动交易能得到更高的投资回报和风险比例，自动诊断+基因排序会达到个性化精准医疗，推荐引擎将能推荐你最可能会买的产品、想吃的菜，想认识的人。在拥有大数据+大计算+专家调节的领域，就不必再跟人类相比了，因为人类根本差的太远了（就像没有人能打败搜索引擎一样）。</div><br>&nbsp;<br><div align="left">这些技术可能辅助专家，也可能取代专家。非专家的工作者很多将会面临失业。未来十年，大部分今天的人类工作可被机器取代。机器将取代许多的护士、记者、会计、教师、股理财师。。。的工作。任何带有“助理”、“代理”或“经纪”等字样的职位都很可能被取代。 这些机器不需要工资，只需要供电和网，就会一年365天，一天24小时“上班”。这些机器将帮助我们创造世界上的大部分财富。</div><br>&nbsp;<br><div align="left">虽然这些机器确实很“聪明”，而且又高效、勤奋、低廉，但是他们并不“人性化”，只是冷冰冰的机器和工具。比如说，AlphaGo第一场就战胜了李世石，但是它不会感觉高兴，也不会理解我们对于它的讨论。甚至，它说不上这局棋是怎么赢的。因为，它的思考虽然周密，但是它不懂“赢了有什么感受？”，也不懂“为什么围棋好玩”，更不懂“人为什么要下棋？”，甚至连“你今天怎么赢的？”都说不上。今天的机器完全无法理解人的情感、喜怒哀乐、七情六欲、信任尊重、价值观等方面 。对于人文艺术、美和爱、幽默感，机器更是丝毫不懂。有位AI研究员做了一套研究幽默感的系统，然后输入了一篇文章，这个系统看了每句话，都说“哈哈”！今天的机器连个两岁小孩都不如。对人工智能的研究者，这应该是一大未来的挑战。</div><br>&nbsp;<br><div align="left"><img src="http://ww2.sinaimg.cn/large/475b3d56jw1f1rkukhf2kj20gg09wq4m.jpg" alt=""><br>图一：未来机器统治人类的预测还很遥远</div><br>&nbsp;<br><div align="left">所以，今天这些机器仅仅是我们的工具，会为创造价值。至少今天，我们不必担心人工智奴役我们（不过要盯好拥有机器学习+大数据的公司，别来作恶伤害用户）。那我们该担心什么呢？这些强大的机器，将带来人类能否度过有史以来最大的“下岗潮”。这次的“机器取代人类”将远超过去的工业革命和信息革命。不过，“下岗”还不是最可怕的，因为这些机器会产生巨大的商业价值，养活着这些下岗者，进而养活着人类。人类最应该担心的是：一旦当机器供养着人类，人类达到了马斯洛需求的基本需求，人类真的还会有动力去追求更宏伟的目标，自我实现吗？还是会醉生梦死、无所事事地或者？</div><br>&nbsp;<br><div align="left"><img src="http://ww4.sinaimg.cn/crop.0.0.580.325.1000.562/475b3d56jw1f1rks1gk11j20g40c4tb2.jpg" alt=""><br>图二：未来机器养活无所事事的人：真实的危机</div><br>&nbsp;<br><div align="left">面对这个担心，我们应该：</div><br>&nbsp;<br><div align="left">①关注启发式教育，用互动式教育启发孩子对学习的兴趣和效率。AlphaGo愿意跟人类学习，我们当然也要善用最善于分析，最博学的机器。善于学习，乐于学习的孩子，是不会醉生梦死的。</div><br>&nbsp;<br><div align="left">②正视发育右脑的学科领域，平衡文理。塞翁失马，焉知非福？机器超越人类的左脑（工程逻辑思维），也许就是要人类从过去几十年重视理工，倾斜回来，花更多的精力在机器不擅长的右脑，例如：文学诗歌、艺术音乐、电影话剧、文创设计、工匠之美、宗教哲学、沟通情商。这不是说就不要学理工了，而是说应该让适合理工，爱好理工的人学理工，适合人文，爱好人文的人学人文。我们应该平等看待文理，并且鼓励发展文理双全的人才。</div><br>&nbsp;<br><div align="left">③鼓励有上进心的年轻人挑战自己， 孜孜以求，成为专才。不要把时间浪费在“安稳”但是重复性的工作上，而要以“成为某个特殊又有用领域的最顶尖人才”为目标，为己任。</div>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>我知道是不会有人点的，但万一有人想不开呢？！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/weixincode.jpg" alt="Junyangz WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay.png" alt="Junyangz Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/04/Thelife/" rel="next" title="短篇｜王充闾：谈写流年">
+                <i class="fa fa-chevron-left"></i> 短篇｜王充闾：谈写流年
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/06/how-to-install-hadoop-on-ubuntu-13-10/" rel="prev" title="How to Install Hadoop on Ubuntu 13.10">
+                How to Install Hadoop on Ubuntu 13.10 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/10/ai/"
+           data-title="人工智能对人类真正的威胁是什么？--李开复" data-url="http://timeorigin.cn/2016/03/10/ai/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/02.png"
+               alt="Junyangz" />
+          <p class="site-author-name" itemprop="name">Junyangz</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JYzor" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.timeorigin.cn" title="Home" target="_blank">Home</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.v6ss.club" title="v6ss" target="_blank">v6ss</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junyangz</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"timeorigin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" src="/js/src/particle.js"></script>
+</body>
+</html>
