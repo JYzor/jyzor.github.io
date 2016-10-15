@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://timeorigin.cn/"/>
-  <updated>2016-09-30T05:44:52.262Z</updated>
+  <updated>2016-10-15T16:56:28.000Z</updated>
   <id>http://timeorigin.cn/</id>
   
   <author>
@@ -16,11 +16,91 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Let&#39;s Encrypt，免费好用的 HTTPS 证书</title>
+    <link href="http://timeorigin.cn/2016/10/16/letsencrypt-certificate/"/>
+    <id>http://timeorigin.cn/2016/10/16/letsencrypt-certificate/</id>
+    <published>2016-10-16T03:30:30.000Z</published>
+    <updated>2016-10-15T16:56:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>很早之前我就在关注 <a href="https://letsencrypt.org" target="_blank" rel="external">Let’s Encrypt</a> 这个免费、自动化、开放的证书签发服务。它由 ISRG（Internet Security Research Group，互联网安全研究小组）提供服务，而 ISRG 是来自于美国加利福尼亚州的一个公益组织。Let’s Encrypt 得到了 Mozilla、Cisco、Akamai、Electronic Frontier Foundation 和 Chrome 等众多公司和机构的支持，发展十分迅猛。</p>
+<p>申请 Let’s Encrypt 证书不但免费，还非常简单，虽然每次只有 90 天的有效期，但可以通过脚本定期更新，配好之后一劳永逸。经过一段时间的观望，我也正式启用 Let’s Encrypt 证书了，本文记录本站申请过程和遇到的问题。<a id="more"></a></p>
+<p>我没有使用 Let’s Encrypt 官网提供的工具来申请证书，而是用了 <a href="https://github.com/diafygi/acme-tiny" target="_blank" rel="external">acme-tiny</a> 这个更为小巧的开源工具。以下内容基本按照 acme-tiny 的说明文档写的，省略了一些我不需要的步骤。</p>
+<p>ACME 全称是 Automated Certificate Management Environment，直译过来是自动化证书管理环境的意思，Let’s Encrypt 的证书签发过程使用的就是 ACME 协议。有关 ACME 协议的更多资料可以在<a href="https://github.com/ietf-wg-acme/acme/" target="_blank" rel="external">这个仓库</a>找到。</p>
+<h3 id="创建帐号"><a href="#创建帐号" class="headerlink" title="创建帐号"></a>创建帐号</h3><p>首先创建一个目录，例如 <code>ssl</code>，用来存放各种临时文件和最后的证书文件。进入这个目录，创建一个 RSA 私钥用于 Let’s Encrypt 识别你的身份：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl genrsa 4096 &gt; account.key</div></pre></td></tr></table></figure>
+<h3 id="创建-CSR-文件"><a href="#创建-CSR-文件" class="headerlink" title="创建 CSR 文件"></a>创建 CSR 文件</h3><p>接着就可以生成 CSR（Certificate Signing Request，证书签名请求）文件了。在这之前，还需要创建域名私钥（一定不要使用上面的账户私钥），根据证书不同类型，域名私钥也可以选择 RSA 和 ECC 两种不同类型。以下两种方式请根据实际情况二选一。</p>
+<p>1）创建 RSA 私钥（兼容性好）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl genrsa 4096 &gt; domain.key</div></pre></td></tr></table></figure>
+<p>2）创建 ECC 私钥（部分老旧操作系统、浏览器不支持。优点是证书体积小）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#secp256r1</span></div><div class="line">openssl ecparam -genkey -name secp256r1 | openssl ec -out domain.key</div><div class="line"></div><div class="line"><span class="comment">#secp384r1</span></div><div class="line">openssl ecparam -genkey -name secp384r1 | openssl ec -out domain.key</div></pre></td></tr></table></figure>
+<p>有关 ECC 证书的更多介绍，请<a href="https://imququ.com/post/optimize-tls-handshake.html#toc-2-1" target="_blank" rel="external">点击这里</a>。</p>
+<p>有了私钥文件，就可以生成 CSR 文件了。在 CSR 中推荐至少把域名带 <code>www</code> 和不带 <code>www</code> 的两种情况都加进去，其它子域可以根据需要添加（目前一张证书最多可以包含 100 个域名）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl req -new -sha256 -key domain.key -subj <span class="string">"/"</span> -reqexts SAN -config &lt;(cat /etc/ssl/openssl.cnf &lt;(<span class="built_in">printf</span> <span class="string">"[SAN]\nsubjectAltName=DNS:yoursite.com,DNS:www.yoursite.com"</span>)) &gt; domain.csr</div></pre></td></tr></table></figure>
+<p>执行这一步时，如果提示找不到 <code>/etc/ssl/openssl.cnf</code> 文件，请看看 <code>/usr/local/openssl/ssl/openssl.cnf</code> 是否存在。如果还是不行，也可以使用交互方式创建 CSR（需要注意 Common Name 必须为你的域名）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">openssl req -new -sha256 -key domain.key -out domain.csr</div></pre></td></tr></table></figure>
+<h3 id="配置验证服务"><a href="#配置验证服务" class="headerlink" title="配置验证服务"></a>配置验证服务</h3><p>我们知道，CA 在签发 DV（Domain Validation）证书时，需要验证域名所有权。传统 CA 的验证方式一般是往 <code>admin@yoursite.com</code> 发验证邮件，而 Let’s Encrypt 是在你的服务器上生成一个随机验证文件，再通过创建 CSR 时指定的域名访问，如果可以访问则表明你对这个域名有控制权。</p>
+<p>首先创建用于存放验证文件的目录，例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir ~/www/challenges/</div></pre></td></tr></table></figure>
+<p>然后配置一个 HTTP 服务，以 Nginx 为例：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">    <span class="attribute">server_name</span> www.yoursite.com yoursite.com;</div><div class="line"></div><div class="line">    <span class="attribute">location</span><span class="regexp"> ^~</span> /.well-known/acme-challenge/ &#123;</div><div class="line">        <span class="attribute">alias</span> /home/xxx/www/challenges/;</div><div class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> =<span class="number">404</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="attribute">location</span> / &#123;</div><div class="line">        <span class="attribute">rewrite</span><span class="regexp"> ^/(.*)$</span> https://yoursite.com/<span class="variable">$1</span> <span class="literal">permanent</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以上配置优先查找 <code>~/www/challenges/</code> 目录下的文件，如果找不到就重定向到 HTTPS 地址。这个验证服务以后更新证书还要用到，建议一直保留。</p>
+<h3 id="获取网站证书"><a href="#获取网站证书" class="headerlink" title="获取网站证书"></a>获取网站证书</h3><p>先把 acme-tiny 脚本保存到之前的 <code>ssl</code> 目录：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://raw.githubusercontent.com/diafygi/acme-tiny/master/acme_tiny.py</div></pre></td></tr></table></figure>
+<p>指定账户私钥、CSR 以及验证目录，执行脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python acme_tiny.py --account-key ./account.key --csr ./domain.csr --acme-dir ~/www/challenges/ &gt; ./signed.crt</div></pre></td></tr></table></figure>
+<p>如果一切正常，当前目录下就会生成一个 <code>signed.crt</code>，这就是申请好的证书文件。</p>
+<p>如果你把域名 DNS 解析放在国内，这一步很可能会遇到类似这样的错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ValueError: Wrote file to /home/xxx/www/challenges/oJbvpIhkwkBGBAQUklWJXyC8VbWAdQqlgpwUJkgC1Vg, but couldn&apos;t download http://www.yoursite.com/.well-known/acme-challenge/oJbvpIhkwkBGBAQUklWJXyC8VbWAdQqlgpwUJkgC1Vg</div></pre></td></tr></table></figure>
+<p>这是因为你的域名很可能在国外无法解析，可以找台国外 VPS 验证下。我的域名最近从 DNSPod 换到了阿里云解析，最后又换到了 CloudXNS，就是因为最近前两家在国外都很不稳定。如果你也遇到了类似情况，可以暂时使用国外的 DNS 解析服务商，例如 <a href="https://dns.he.net/" target="_blank" rel="external">dns.he.net</a>。如果还是搞不定，也可以试试「<a href="https://github.com/Neilpang/le" target="_blank" rel="external">Neilpang/le</a>」这个工具的 DNS Mode。</p>
+<p>搞定网站证书后，还要下载 Let’s Encrypt 的中间证书。我在之前的文章中讲过，配置 HTTPS 证书时既不要漏掉中间证书，也不要包含根证书。在 Nginx 配置中，需要把中间证书和网站证书合在一起：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem &gt; intermediate.pem</div><div class="line">cat signed.crt intermediate.pem &gt; chained.pem</div></pre></td></tr></table></figure>
+<p>为了后续能顺利启用 <a href="https://imququ.com/post/why-can-not-turn-on-ocsp-stapling.html#toc-2" target="_blank" rel="external">OCSP Stapling</a>，我们再把根证书和中间证书合在一起：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget -O - https://letsencrypt.org/certs/isrgrootx1.pem &gt; root.pem</div><div class="line">cat intermediate.pem root.pem &gt; full_chained.pem</div></pre></td></tr></table></figure>
+<p>最终，修改 Nginx 中有关证书的配置并 reload 服务即可：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ssl_certificate</span>     ~/www/ssl/chained.pem;</div><div class="line"><span class="attribute">ssl_certificate_key</span> ~/www/ssl/domain.key;</div></pre></td></tr></table></figure>
+<p>Nginx 中与 HTTPS 有关的配置项很多，这里不一一列举了。如有需要，<a href="https://imququ.com/post/my-nginx-conf.html" target="_blank" rel="external">请参考本站配置</a>。</p>
+<h3 id="配置自动更新"><a href="#配置自动更新" class="headerlink" title="配置自动更新"></a>配置自动更新</h3><p>Let’s Encrypt 签发的证书只有 90 天有效期，推荐使用脚本定期更新。例如我就创建了一个 <code>renew_cert.sh</code> 并通过 <code>chmod a+x renew_cert.sh</code> 赋予执行权限。文件内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line"><span class="built_in">cd</span> /home/xxx/www/ssl/</div><div class="line">python acme_tiny.py --account-key account.key --csr domain.csr --acme-dir /home/xxx/www/challenges/ &gt; signed.crt || <span class="built_in">exit</span></div><div class="line">wget -O - https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem &gt; intermediate.pem</div><div class="line">cat signed.crt intermediate.pem &gt; chained.pem</div><div class="line">service nginx reload</div></pre></td></tr></table></figure>
+<p>crontab 中使用绝对路径比较保险，<code>crontab -e</code> 加入以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0 0 1 * * /home/xxx/shell/renew_cert.sh &gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
+<p>这样以后证书每个月都会自动更新，一劳永逸。实际上，Let’s Encrypt 官方将证书有效期定为 90 天一方面是为了更安全，更重要的是鼓励用户采用自动化部署方案。</p>
+<h3 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h3><p>Let’s Encrypt 证书的兼容性，所有操作系统、浏览器默认是否都能识别是大家最关心的问题。实际上，由于 Let’s Encrypt 与 IdenTrust 的 DST Root CA 做了交叉认证，兼容性还是不错的，目前我只是发现在 Android 2 和 Windows XP 下有问题（Firefox 的证书那一套是自己实现的，不依赖于系统，XP 下只有 Firefox 信任 Let’s Encrypt 证书），其它环境都正常。</p>
+<p><img alt="letsencrypt intermediate cert on winxp" src="https://st.imququ.com/static/uploads/2015/12/letsencrypt-intermediate-cert-on-winxp.png" width="413" itemprop="image">（Windows XP 不信任 Let’s Encrypt 的中间证书）</p>
+<p>更新：根据 Let’s Encrypt 官方说明，Windows XP 下的问题很快就会解决：</p>
+<blockquote>
+<p>A bug in Windows XP causes parsing of our current cross-signature from IdenTrust to fail. We will be correcting this by getting new cross-signatures from IdenTrust which work on Windows XP.<br><br>注：已于 2016 年 3 月 26 日解决。</p>
+</blockquote>
+<p>另外一个问题有关 ECC 证书，官网表示计划将在 2016 年提供对 ECC 证书的支持：</p>
+<blockquote>
+<p>Right now all of our root and intermediate keys use RSA. We’re planning to generate ECC keys and make an ECC option available to subscribers in 2016. <a href="https://community.letsencrypt.org/t/elliptic-curve-cryptography-ecc-support/34" target="_blank" rel="external">via</a><br><br>注：Let’s Encrypt 已于 2016 年 2 月 11 日开始支持签发 ECC 证书。</p>
+</blockquote>
+<p>Let’s Encrypt 官方的新特性预告可以在<a href="https://letsencrypt.org/upcoming-features/" target="_blank" rel="external">这个页面查看</a>。</p>
+<p>我个人建议：对于个人用户来说，如果非常在意证书兼容性，可以购买 RapidSSL Standard 或者 Comodo Positive SSL 这两种证书。其中 RapidSSL 证书一共才三级，比较小；Comodo Positive 有四级，但可以申请 ECC 证书；二者都有着不错的兼容性，也非常廉价（一年不到 10$）。当然，如果不用考虑 Windows XP 用户，那么强烈推荐 Let’s Encrypt！</p>
+<p>更新：Let’s Encrypt 已经支持 Windows XP 和签发 ECC 证书，对于个人用户来说，目前 Let’s Encrypt 无疑是最好的选择。</p>
+<p>本文先写到这里，如果你在申请 Let’s Encrypt 证书的过程中遇到问题，可以给我留言，也欢迎交流各种心得！</p>
+<p>原文链接：<a href="https://imququ.com/post/letsencrypt-certificate.html" target="_blank" rel="external">https://imququ.com/post/letsencrypt-certificate.html</a>，<a href="https://imququ.com/post/letsencrypt-certificate.html#comments" target="_blank" rel="external">前往原文评论 »</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;很早之前我就在关注 &lt;a href=&quot;https://letsencrypt.org&quot;&gt;Let’s Encrypt&lt;/a&gt; 这个免费、自动化、开放的证书签发服务。它由 ISRG（Internet Security Research Group，互联网安全研究小组）提供服务，而 ISRG 是来自于美国加利福尼亚州的一个公益组织。Let’s Encrypt 得到了 Mozilla、Cisco、Akamai、Electronic Frontier Foundation 和 Chrome 等众多公司和机构的支持，发展十分迅猛。&lt;/p&gt;
+&lt;p&gt;申请 Let’s Encrypt 证书不但免费，还非常简单，虽然每次只有 90 天的有效期，但可以通过脚本定期更新，配好之后一劳永逸。经过一段时间的观望，我也正式启用 Let’s Encrypt 证书了，本文记录本站申请过程和遇到的问题。
+    
+    </summary>
+    
+    
+      <category term="Let&#39;s Encrypt" scheme="http://timeorigin.cn/tags/Let-s-Encrypt/"/>
+    
+      <category term="HTTPS" scheme="http://timeorigin.cn/tags/HTTPS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>学习Markdown写作</title>
     <link href="http://timeorigin.cn/2016/09/14/Markdown-Learn/"/>
     <id>http://timeorigin.cn/2016/09/14/Markdown-Learn/</id>
     <published>2016-09-14T03:30:30.000Z</published>
-    <updated>2016-09-30T05:44:52.262Z</updated>
+    <updated>2016-10-03T04:50:02.480Z</updated>
     
     <content type="html"><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p># 一级标题</p>
 <h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>代码行</p>
