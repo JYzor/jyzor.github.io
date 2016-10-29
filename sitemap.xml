@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://timeorigin.cn/about/index.html</loc>
+    
+    <lastmod>2016-10-29T16:49:37.428Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://timeorigin.cn/2015/09/17/digitalocean/</loc>
     
     <lastmod>2016-10-22T10:34:03.655Z</lastmod>
@@ -103,13 +110,6 @@
     <loc>http://timeorigin.cn/2015/09/18/steve-cutts/</loc>
     
     <lastmod>2016-09-30T04:40:51.777Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/about/index.html</loc>
-    
-    <lastmod>2016-09-19T03:39:44.980Z</lastmod>
     
   </url>
   
