@@ -96,76 +96,6 @@
   </entry>
   
   <entry>
-    <title>学习Markdown写作</title>
-    <link href="http://timeorigin.cn/2016/09/14/Markdown-Learn/"/>
-    <id>http://timeorigin.cn/2016/09/14/Markdown-Learn/</id>
-    <published>2016-09-14T03:30:30.000Z</published>
-    <updated>2016-10-03T04:50:02.480Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p># 一级标题</p>
-<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><p>代码行</p>
-<p>``` bash</p>
-<p>代码</p>
-<p>```</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">代码行</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>超链接:  [链接名](<a href="http://www.v6ss.club" target="_blank" rel="external">http://www.v6ss.club</a>)</p>
-<p><a href="http://www.v6ss.club" target="_blank" rel="external">链接名</a></p>
-<p><em>斜体</em><br>*斜体*  </p>
-<p><em>斜体</em><br>_斜体_</p>
-<p><strong>粗体</strong><br>*<em>粗体*</em></p>
-<p><strong><em>粗体+斜体</em></strong><br>***粗体+斜体***</p>
-<p><del>删除线</del><br>~~删除线~~</p>
-<p><del>就像这样</del></p>
-<blockquote>
-<p>引用格式<br>> 引用格式</p>
-<blockquote>
-<p>引用嵌套<br>> > 引用嵌套</p>
-</blockquote>
-</blockquote>
-<ul>
-<li>列表1<br>* 列表</li>
-<li>列表2</li>
-<li>列表3</li>
-</ul>
-<ul>
-<li>red + red</li>
-<li>Green</li>
-<li>Blue</li>
-</ul>
-<ol>
-<li>有序列表为数字加一个英文.   1. </li>
-<li>数字不影响结果，即数字任意。</li>
-<li>此行数字为1</li>
-</ol>
-<hr>
-<p>分割线 </p>
-<p>***<br>* * *<br>- - -</p>
-<hr>
-<hr>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>[链接名](url)</p>
-<p><a href="http:url.com" target="_blank" rel="external">Link name</a></p>
-<h2 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h2><p>![Alt text](/uploads/02.png)</p>
-<p><img src="/uploads/02.png" alt="Alt text"></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;一级标题&quot;&gt;&lt;a href=&quot;#一级标题&quot; class=&quot;headerlink&quot; title=&quot;一级标题&quot;&gt;&lt;/a&gt;一级标题&lt;/h1&gt;&lt;p&gt;# 一级标题&lt;/p&gt;
-&lt;h2 id=&quot;二级标题&quot;&gt;&lt;a href=&quot;#二级标题&quot; class=&quot;headerlink&quot; title=&quot;二级标题&quot;&gt;&lt;/a&gt;二级标题&lt;/h2&gt;&lt;h3 id=&quot;三级标题&quot;&gt;&lt;a href=&quot;#三级标题&quot; class=&quot;headerlink&quot; title=&quot;三级标题&quot;&gt;&lt;/a&gt;三级标题&lt;/h3&gt;&lt;p&gt;代码行&lt;/p&gt;
-&lt;p&gt;``` bash&lt;/p&gt;
-&lt;p&gt;代码&lt;/p&gt;
-&lt;p&gt;```&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;代码行&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="Markdown" scheme="http://timeorigin.cn/tags/Markdown/"/>
-    
-  </entry>
-  
-  <entry>
     <title>How to Install Hadoop on Ubuntu 13.10</title>
     <link href="http://timeorigin.cn/2016/06/06/how-to-install-hadoop-on-ubuntu-13-10/"/>
     <id>http://timeorigin.cn/2016/06/06/how-to-install-hadoop-on-ubuntu-13-10/</id>
@@ -343,7 +273,7 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
     <link href="http://timeorigin.cn/2016/03/10/ai/"/>
     <id>http://timeorigin.cn/2016/03/10/ai/</id>
     <published>2016-03-10T05:58:10.000Z</published>
-    <updated>2016-09-30T05:41:42.171Z</updated>
+    <updated>2017-01-10T16:10:32.000Z</updated>
     
     <content type="html"><![CDATA[<div align="left">昨天AlphaGo第一盘棋战胜了李世石，激起了各种“机器超越人类，科幻小说将成真”的讨论。特别有趣的是有人揣测AlphaGo下面会不会故意输下几盘棋，以免人类起疑心，阻挡了它统治人类的野心。其实，虽然机器在逻辑分析推算方面，能力会远超人类，但是依然是属于人类操控的工具。AlphaGo这类的“人工智能”机器真正可能带来的危机，不是奴役人类，而是让人类丧失斗志，无所事事。</div><br><a id="more"></a><br>&nbsp;<br><div align="left">有些人描述AlphaGo是“和人一样的方式思考，但是比人快无数倍”。这么说并不精确。AlphaGo确实比人快无数倍，但是AlphaGo的思考只能说是“被人的大脑启发”，而非和人类思考一样。AlphaGo是一个能自我学习的深度学习，经过专家的调节，它能在任何在可以纯凭逻辑分析推算的问题上，把人类远远低抛在后面。机器速度会越来越快，学习能力会越来越强，数据会越来越多。</div><br>&nbsp;<br><div align="left">基于深度学习的人工智能将带来什么改变呢？我们将看到无数的商机和产品，能够解决问题、拯救生命、产生巨大的商业和用户价值。未来，自动交易能得到更高的投资回报和风险比例，自动诊断+基因排序会达到个性化精准医疗，推荐引擎将能推荐你最可能会买的产品、想吃的菜，想认识的人。在拥有大数据+大计算+专家调节的领域，就不必再跟人类相比了，因为人类根本差的太远了（就像没有人能打败搜索引擎一样）。</div><br>&nbsp;<br><div align="left">这些技术可能辅助专家，也可能取代专家。非专家的工作者很多将会面临失业。未来十年，大部分今天的人类工作可被机器取代。机器将取代许多的护士、记者、会计、教师、股理财师。。。的工作。任何带有“助理”、“代理”或“经纪”等字样的职位都很可能被取代。 这些机器不需要工资，只需要供电和网，就会一年365天，一天24小时“上班”。这些机器将帮助我们创造世界上的大部分财富。</div><br>&nbsp;<br><div align="left">虽然这些机器确实很“聪明”，而且又高效、勤奋、低廉，但是他们并不“人性化”，只是冷冰冰的机器和工具。比如说，AlphaGo第一场就战胜了李世石，但是它不会感觉高兴，也不会理解我们对于它的讨论。甚至，它说不上这局棋是怎么赢的。因为，它的思考虽然周密，但是它不懂“赢了有什么感受？”，也不懂“为什么围棋好玩”，更不懂“人为什么要下棋？”，甚至连“你今天怎么赢的？”都说不上。今天的机器完全无法理解人的情感、喜怒哀乐、七情六欲、信任尊重、价值观等方面 。对于人文艺术、美和爱、幽默感，机器更是丝毫不懂。有位AI研究员做了一套研究幽默感的系统，然后输入了一篇文章，这个系统看了每句话，都说“哈哈”！今天的机器连个两岁小孩都不如。对人工智能的研究者，这应该是一大未来的挑战。</div><br>&nbsp;<br><div align="left"><img src="http://ww2.sinaimg.cn/large/475b3d56jw1f1rkukhf2kj20gg09wq4m.jpg" alt=""><br>图一：未来机器统治人类的预测还很遥远</div><br>&nbsp;<br><div align="left">所以，今天这些机器仅仅是我们的工具，会为创造价值。至少今天，我们不必担心人工智奴役我们（不过要盯好拥有机器学习+大数据的公司，别来作恶伤害用户）。那我们该担心什么呢？这些强大的机器，将带来人类能否度过有史以来最大的“下岗潮”。这次的“机器取代人类”将远超过去的工业革命和信息革命。不过，“下岗”还不是最可怕的，因为这些机器会产生巨大的商业价值，养活着这些下岗者，进而养活着人类。人类最应该担心的是：一旦当机器供养着人类，人类达到了马斯洛需求的基本需求，人类真的还会有动力去追求更宏伟的目标，自我实现吗？还是会醉生梦死、无所事事地或者？</div><br>&nbsp;<br><div align="left"><img src="http://ww4.sinaimg.cn/crop.0.0.580.325.1000.562/475b3d56jw1f1rks1gk11j20g40c4tb2.jpg" alt=""><br>图二：未来机器养活无所事事的人：真实的危机</div><br>&nbsp;<br><div align="left">面对这个担心，我们应该：</div><br>&nbsp;<br><div align="left">①关注启发式教育，用互动式教育启发孩子对学习的兴趣和效率。AlphaGo愿意跟人类学习，我们当然也要善用最善于分析，最博学的机器。善于学习，乐于学习的孩子，是不会醉生梦死的。</div><br>&nbsp;<br><div align="left">②正视发育右脑的学科领域，平衡文理。塞翁失马，焉知非福？机器超越人类的左脑（工程逻辑思维），也许就是要人类从过去几十年重视理工，倾斜回来，花更多的精力在机器不擅长的右脑，例如：文学诗歌、艺术音乐、电影话剧、文创设计、工匠之美、宗教哲学、沟通情商。这不是说就不要学理工了，而是说应该让适合理工，爱好理工的人学理工，适合人文，爱好人文的人学人文。我们应该平等看待文理，并且鼓励发展文理双全的人才。</div><br>&nbsp;<br><div align="left">③鼓励有上进心的年轻人挑战自己， 孜孜以求，成为专才。不要把时间浪费在“安稳”但是重复性的工作上，而要以“成为某个特殊又有用领域的最顶尖人才”为目标，为己任。</div>]]></content>
     
@@ -383,50 +313,6 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
     </summary>
     
       <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Gigapixels of Andromeda</title>
-    <link href="http://timeorigin.cn/2016/01/02/gigapixels-of-andromeda/"/>
-    <id>http://timeorigin.cn/2016/01/02/gigapixels-of-andromeda/</id>
-    <published>2016-01-02T06:27:53.000Z</published>
-    <updated>2016-09-30T04:40:51.796Z</updated>
-    
-    <content type="html"><![CDATA[<p>浩瀚的宇宙！</p>
-<iframe src="https://www.youtube.com/embed/udAL48P5NJU" width="600" height="350" frameborder="100" allowfullscreen="allowfullscreen"></iframe>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;浩瀚的宇宙！&lt;/p&gt;
-&lt;iframe src=&quot;https://www.youtube.com/embed/udAL48P5NJU&quot; width=&quot;600&quot; height=&quot;350&quot; frameborder=&quot;100&quot; allowfullscreen=&quot;allowfulls
-    
-    </summary>
-    
-      <category term="给人以震撼" scheme="http://timeorigin.cn/categories/%E7%BB%99%E4%BA%BA%E4%BB%A5%E9%9C%87%E6%92%BC/"/>
-    
-    
-      <category term="宇宙" scheme="http://timeorigin.cn/tags/%E5%AE%87%E5%AE%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>网站添加Snowstorm下雪效果</title>
-    <link href="http://timeorigin.cn/2015/12/25/snowstorm/"/>
-    <id>http://timeorigin.cn/2015/12/25/snowstorm/</id>
-    <published>2015-12-25T05:48:26.000Z</published>
-    <updated>2016-09-30T05:45:30.891Z</updated>
-    
-    <content type="html"><![CDATA[<div align="left"></div><br><div align="left">&lt;/body&gt;前加入这行代码</div><br><div class="highlight"><br><pre class="prettyprint lang-bsh">&lt;script type=’text/javascript’ src=’snow.js’&gt;&lt;/script&gt;<br></pre><br></div><br><a id="more"></a><br><div align="left">将snow.js放入网站根目录</div><br><div align="left">将png图片放入static/image/snow/ 文件夹下</div><br><div align="left"></div><br>&nbsp;<br><div align="left">ps:代码都是<a href="http://zhixing.bjtu.edu.cn" target="_blank" rel="external">知行</a>上的，自己扒下来玩玩！</div><br><div align="left">More：</div><br><div align="left">ProjectHome: <a href="http://www.schillmania.com/projects/snowstorm/" target="_blank" rel="external">http://www.schillmania.com/projects/snowstorm/</a></div><br><div align="left">Github: <a href="http://github.com/scottschiller/snowstorm/" target="_blank" rel="external">github.com/scottschiller/snowstorm/</a></div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;div align=&quot;left&quot;&gt;&lt;/div&gt;&lt;br&gt;&lt;div align=&quot;left&quot;&gt;&amp;lt;/body&amp;gt;前加入这行代码&lt;/div&gt;&lt;br&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;br&gt;&lt;pre class=&quot;prettyprint lang-bsh&quot;&gt;&amp;lt;script type=’text/javascript’ src=’snow.js’&amp;gt;&amp;lt;/script&amp;gt;&lt;br&gt;&lt;/pre&gt;&lt;br&gt;&lt;/div&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="小Tips" scheme="http://timeorigin.cn/categories/%E5%B0%8FTips/"/>
     
     
   </entry>
@@ -509,63 +395,14 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
   </entry>
   
   <entry>
-    <title>Introducing the Nexus 6P</title>
-    <link href="http://timeorigin.cn/2015/10/01/introducing-the-nexus-6p/"/>
-    <id>http://timeorigin.cn/2015/10/01/introducing-the-nexus-6p/</id>
-    <published>2015-10-01T15:01:03.000Z</published>
-    <updated>2016-09-30T05:16:44.349Z</updated>
-    
-    <content type="html"><![CDATA[<iframe width="560" height="315" src="https://www.youtube.com/embed/4cAHL4LMNlY" frameborder="0" allowfullscreen></iframe>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/4cAHL4LMNlY&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
-
-    
-    </summary>
-    
-      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Google&#39;s 2015 Nexus Event</title>
-    <link href="http://timeorigin.cn/2015/09/30/googles-2015-nexus-event/"/>
-    <id>http://timeorigin.cn/2015/09/30/googles-2015-nexus-event/</id>
-    <published>2015-09-29T16:00:33.000Z</published>
-    <updated>2016-09-30T04:40:51.785Z</updated>
-    
-    <content type="html"><![CDATA[<p>期待Nexus!!!!</p>
-<p>———–我的第三部SmartPhone</p>
-<iframe src="https://www.youtube.com/embed/1JCrC__khYo" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-
-<p>期待惊喜！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;期待Nexus!!!!&lt;/p&gt;
-&lt;p&gt;———–我的第三部SmartPhone&lt;/p&gt;
-&lt;iframe src=&quot;https://www.youtube.com/embed/1JCrC__khYo&quot; width=&quot;560&quot; height=&quot;315&quot; frameborder=&quot;
-    
-    </summary>
-    
-      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>教育网简单配置访问Youtube</title>
     <link href="http://timeorigin.cn/2015/09/23/ipv6/"/>
     <id>http://timeorigin.cn/2015/09/23/ipv6/</id>
     <published>2015-09-23T03:23:25.000Z</published>
-    <updated>2016-09-30T05:31:26.742Z</updated>
+    <updated>2017-01-10T16:14:16.042Z</updated>
     
-    <content type="html"><![CDATA[<p><a href="wp-content/uploads/2015/09/N_IEJMPPRWGHR6NOMD4VDO.jpg"><img src="https://blog.flove.me/wp-content/uploads/2015/09/N_IEJMPPRWGHR6NOMD4VDO.jpg" alt="N_IEJMPPRWGHR6NOMD4V$DO"></a></p>
-<p><strong>哦哦哦！Follow me！</strong><br><a id="more"></a><br><!--more--></p>
+    <content type="html"><![CDATA[<p><img src="https://ooo.0o0.ooo/2017/01/11/5875067b49e34.jpg" alt=""></p>
+<p><strong>观看4K的速度！</strong><br><a id="more"></a><br><!--more--></p>
 <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a><strong>前言：</strong></h1><p>前段时间这个blog刚建立的时候，写过这么一篇文章，中间出现了服务器崩溃，数据库数据没能保存下来。所以就有了现在这份。</p>
 <h1 id="流程："><a href="#流程：" class="headerlink" title="流程："></a><strong>流程：</strong></h1><p>简化了配置流程，操作仅需以下几步(我发现这真的很难懂欸！！）：</p>
 <ul>
@@ -596,30 +433,8 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
     
     <summary type="html">
     
-      &lt;p&gt;&lt;a href=&quot;wp-content/uploads/2015/09/N_IEJMPPRWGHR6NOMD4VDO.jpg&quot;&gt;&lt;img src=&quot;https://blog.flove.me/wp-content/uploads/2015/09/N_IEJMPPRWGHR6NOMD4VDO.jpg&quot; alt=&quot;N_IEJMPPRWGHR6NOMD4V$DO&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;哦哦哦！Follow me！&lt;/strong&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Steve Cutts</title>
-    <link href="http://timeorigin.cn/2015/09/18/steve-cutts/"/>
-    <id>http://timeorigin.cn/2015/09/18/steve-cutts/</id>
-    <published>2015-09-18T05:38:22.000Z</published>
-    <updated>2016-09-30T04:40:51.777Z</updated>
-    
-    <content type="html"><![CDATA[<p>推荐一个频道</p>
-<iframe src="https://www.youtube.com/embed/td2wFcD424Y" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;推荐一个频道&lt;/p&gt;
-&lt;iframe src=&quot;https://www.youtube.com/embed/td2wFcD424Y&quot; width=&quot;560&quot; height=&quot;315&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;allowfullscr
+      &lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/01/11/5875067b49e34.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;观看4K的速度！&lt;/strong&gt;&lt;br&gt;
     
     </summary>
     
