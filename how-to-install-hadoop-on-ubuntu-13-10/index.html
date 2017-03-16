@@ -1,0 +1,857 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="hadoop,ubuntu,HDFS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TimeOrigin" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="PrerequisitesThe only prerequisite for this tutorial is a VPS with Ubuntu 13.10 x64 installed.
+You will need to execute commands from the command line which you can do in one of the two ways:
+
+Use SSH">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Install Hadoop on Ubuntu 13.10">
+<meta property="og:url" content="http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/index.html">
+<meta property="og:site_name" content="TimeOrigin">
+<meta property="og:description" content="PrerequisitesThe only prerequisite for this tutorial is a VPS with Ubuntu 13.10 x64 installed.
+You will need to execute commands from the command line which you can do in one of the two ways:
+
+Use SSH">
+<meta property="og:image" content="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/3.png">
+<meta property="og:image" content="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/4.png">
+<meta property="og:image" content="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/5.png">
+<meta property="og:image" content="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/6.png">
+<meta property="og:image" content="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/7.png">
+<meta property="og:image" content="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/8.png">
+<meta property="og:image" content="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/9.png">
+<meta property="og:image" content="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/10.png">
+<meta property="og:updated_time" content="2017-03-16T16:15:47.117Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Install Hadoop on Ubuntu 13.10">
+<meta name="twitter:description" content="PrerequisitesThe only prerequisite for this tutorial is a VPS with Ubuntu 13.10 x64 installed.
+You will need to execute commands from the command line which you can do in one of the two ways:
+
+Use SSH">
+<meta name="twitter:image" content="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/3.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Mod'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/"/>
+
+  <title> How to Install Hadoop on Ubuntu 13.10 | TimeOrigin </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67741178-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">TimeOrigin</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                How to Install Hadoop on Ubuntu 13.10
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-06-06T17:29:49+08:00" content="2016-06-06">
+              2016-06-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Tutorial/" itemprop="url" rel="index">
+                    <span itemprop="name">Tutorial</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/how-to-install-hadoop-on-ubuntu-13-10/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="how-to-install-hadoop-on-ubuntu-13-10/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p>The only prerequisite for this tutorial is a VPS with <strong>Ubuntu 13.10 x64</strong> installed.</p>
+<p>You will need to execute commands from the command line which you can do in one of the two ways:</p>
+<ol>
+<li>Use SSH to access the droplet.</li>
+<li>Use the ‘Console Access’ from the Digital Ocean Droplet Management Panel<div data-unique="what-is-hadoop"></div>
+
+</li>
+</ol>
+<h2 id="What-is-Hadoop"><a href="#What-is-Hadoop" class="headerlink" title="What is Hadoop?"></a>What is Hadoop?</h2><a id="more"></a>
+<p><a href="http://hadoop.apache.org/" target="_blank" rel="external">Hadoop</a> is a framework (consisting of software libraries) which simplifies the processing of data sets distributed across clusters of servers. Two of the main components of Hadoop are <strong>HDFS</strong> and <strong>MapReduce</strong>.</p>
+<p>HDFS is the filesystem that is used by Hadoop to store all the data on. This file system spans across all the nodes that are being used by Hadoop. These nodes could be on a single VPS or they can be spread across a large number of virtual servers.</p>
+<p>MapReduce is the framework that orchestrates all of Hadoop’s activities. It handles the assignment of work to different nodes in the cluster.</p>
+<div data-unique="benefits-of-using-hadoop"></div>
+
+<h2 id="Benefits-of-using-Hadoop"><a href="#Benefits-of-using-Hadoop" class="headerlink" title="Benefits of using Hadoop"></a>Benefits of using Hadoop</h2><p>The architecture of Hadoop allows you to scale your hardware as and when you need to. New nodes can be added incrementally without having to worry about the change in data formats or the handling of applications that sit on the file system.</p>
+<p>One of the most important features of Hadoop is that it allows you to save enormous amounts of money by substituting cheap commodity servers for expensive ones. This is possible because Hadoop transfers the responsibility of fault tolerance from the hardware layer to the application layer.</p>
+<div data-unique="installing-hadoop"></div>
+
+<h2 id="Installing-Hadoop"><a href="#Installing-Hadoop" class="headerlink" title="Installing Hadoop"></a>Installing Hadoop</h2><p>Installing and getting Hadoop up and running is quite straightforward. However, since this process requires editing multiple configuration and setup files, make sure that each step is properly followed.</p>
+<h3 id="1-Install-Java"><a href="#1-Install-Java" class="headerlink" title="1. Install Java"></a>1. Install Java</h3><p>Hadoop requires Java to be installed, so let’s begin by installing Java:</p>
+<pre><code>apt-get update
+apt-get install default-jdk
+`&lt;/pre&gt;
+These commands will update the package information on your VPS and then install Java. After executing these commands, execute the following command to verify that Java has been installed:
+&lt;pre class=&quot;code-pre &quot;&gt;`java -version
+`&lt;/pre&gt;
+If Java has been installed, this should display the version details as illustrated in the following image:
+
+![Java Verification](https://assets.digitalocean.com/articles/Ubuntu_Hadoop/1.png &quot;Java Verification&quot;)
+
+### 2\. Create and Setup SSH Certificates
+
+Hadoop uses SSH (to access its nodes) which would normally require the user to enter a password. However, this requirement can be eliminated by creating and setting up SSH certificates using the following commands:
+&lt;pre class=&quot;code-pre &quot;&gt;`ssh-keygen -t rsa -P &apos;&apos;
+cat ~/.ssh/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys
+`&lt;/pre&gt;
+After executing the first of these two commands, you might be asked for a filename. Just leave it blank and press the enter key to continue. The second command adds the newly created key to the list of authorized keys so that Hadoop can use SSH without prompting for a password.
+
+![Setup SSH Certificates](https://assets.digitalocean.com/articles/Ubuntu_Hadoop/2.png &quot;Setup SSH Certificates&quot;)
+
+### 3\. Fetch and Install Hadoop
+
+First let&apos;s fetch Hadoop from one of the mirrors using the following command:
+&lt;pre class=&quot;code-pre &quot;&gt;`wget http://www.motorlogy.com/apache/hadoop/common/current/hadoop-2.3.0.tar.gz
+`&lt;/pre&gt;
+**Note:** _This command uses a download a link on one of the mirrors listed on the Hadoop website. The list of mirrors can be found [on this link](http://www.apache.org/dyn/closer.cgi/hadoop/common/). You can choose any other mirror if you want to. To download the latest stable version, choose the *_hadoop-X.Y.Z.tar.gz** file from the **current** or the **current2** directory on your chosen mirror.*
+
+After downloading the Hadoop package, execute the following command to extract it:
+&lt;pre class=&quot;code-pre &quot;&gt;`tar xfz hadoop-2.3.0.tar.gz
+`&lt;/pre&gt;
+This command will extract all the files in this package in a directory named `hadoop-2.3.0`. For this tutorial, the Hadoop installation will be moved to the `/usr/local/hadoop` directory using the following command:
+&lt;pre class=&quot;code-pre &quot;&gt;`mv hadoop-2.3.0 /usr/local/hadoop 
+`&lt;/pre&gt;
+**Note:** _The name of the extracted folder depends on the Hadoop version your have downloaded and extracted. If your version differs from the one used in this tutorial, change the above command accordingly._
+
+### 4\. Edit and Setup Configuration Files
+
+To complete the setup of Hadoop, the following files will have to be modified:
+</code></pre><ul>
+<li>~/.bashrc</li>
+<li>/usr/local/hadoop/etc/hadoop/hadoop-env.sh</li>
+<li>/usr/local/hadoop/etc/hadoop/core-site.xml</li>
+<li>/usr/local/hadoop/etc/hadoop/yarn-site.xml</li>
+<li>/usr/local/hadoop/etc/hadoop/mapred-site.xml.template</li>
+<li><p>/usr/local/hadoop/etc/hadoop/hdfs-site.xml</p>
+<h4 id="i-Editing-bashrc"><a href="#i-Editing-bashrc" class="headerlink" title="i. Editing ~/.bashrc"></a>i. Editing ~/.bashrc</h4><p>Before editing the <code>.bashrc</code> file in your home directory, we need to find the path where Java has been installed to set the <code>JAVA_HOME</code> environment variable. Let’s use the following command to do that:<br><pre class="code-pre "><code>update-alternatives --config java</code></pre><br>This will display something like the following:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/3.png" alt="Get Java Path" title="Get Java Path"></p>
+<p>The complete path displayed by this command is:<br><pre class="code-pre "><code>/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java</code></pre><br>The value for <code>JAVA_HOME</code> is everything before <code>/jre/bin/java</code> in the above path - in this case,<code>/usr/lib/jvm/java-7-openjdk-amd64</code>. Make a note of this as we’ll be using this value in this step and in one other step.</p>
+<p>Now use <code>nano</code> (or your favored editor) to edit ~/.bashrc using the following command:<br><pre class="code-pre "><code>nano ~/.bashrc</code></pre><br>This will open the <code>.bashrc</code> file in a text editor. Go to the end of the file and paste/type the following content in it:<br><pre class="code-pre "><code>#HADOOP VARIABLES START
+export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export HADOOP_INSTALL=/usr/local/hadoop
+export PATH=$PATH:$HADOOP_INSTALL/bin
+export PATH=$PATH:$HADOOP_INSTALL/sbin
+export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
+export HADOOP_COMMON_HOME=$HADOOP_INSTALL
+export HADOOP_HDFS_HOME=$HADOOP_INSTALL
+export YARN_HOME=$HADOOP_INSTALL
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
+export HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_INSTALL/lib&quot;
+#HADOOP VARIABLES END</code></pre><br><strong>Note 1:</strong> _If the value of <code>JAVA_HOME</code> is different on your VPS, make sure to alter the first <code>export</code> statement in the above content accordingly._</p>
+<p><strong>Note 2:</strong> <em>Files opened and edited using nano can be saved using <code>Ctrl + X</code>. Upon the prompt to save changes, type <code>Y</code>. If you are asked for a filename, just press the enter key.</em></p>
+<p>The end of the <code>.bashrc</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/4.png" alt=".bashrc contents" title=".bashrc contens"></p>
+<p>After saving and closing the <code>.bashrc</code> file, execute the following command so that your system recognizes the newly created environment variables:<br><pre class="code-pre "><code>source ~/.bashrc</code></pre><br>Putting the above content in the <code>.bashrc</code> file ensures that these variables are always available when your VPS starts up.</p>
+<h3 id="ii-Editing-usr-local-hadoop-etc-hadoop-hadoop-env-sh"><a href="#ii-Editing-usr-local-hadoop-etc-hadoop-hadoop-env-sh" class="headerlink" title="ii. Editing /usr/local/hadoop/etc/hadoop/hadoop-env.sh"></a>ii. Editing /usr/local/hadoop/etc/hadoop/hadoop-env.sh</h3><p>Open the <code>/usr/local/hadoop/etc/hadoop/hadoop-env.sh</code> file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/hadoop-env.sh</code></pre><br>In this file, locate the line that exports the <code>JAVA_HOME</code> variable. Change this line to the following:<br><pre class="code-pre "><code>export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64</code></pre><br><strong>Note:</strong> _If the value of <code>JAVA_HOME</code> is different on your VPS, make sure to alter this line accordingly._</p>
+<p>The <code>hadoop-env.sh</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/5.png" alt="hadoop-env.sh contents" title="hadoop-env.sh contents"></p>
+<p>Save and close this file. Adding the above statement in the <code>hadoop-env.sh</code> file ensures that the value of<code>JAVA_HOME</code> variable will be available to Hadoop whenever it is started up.</p>
+<h3 id="iii-Editing-usr-local-hadoop-etc-hadoop-core-site-xml"><a href="#iii-Editing-usr-local-hadoop-etc-hadoop-core-site-xml" class="headerlink" title="iii. Editing /usr/local/hadoop/etc/hadoop/core-site.xml"></a>iii. Editing /usr/local/hadoop/etc/hadoop/core-site.xml</h3><p>The <code>/usr/local/hadoop/etc/hadoop/core-site.xml</code> file contains configuration properties that Hadoop uses when starting up. This file can be used to override the default settings that Hadoop starts with.</p>
+<p>Open this file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/core-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;fs.default.name&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;hdfs://localhost:9000&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;</code></pre><br>The <code>core-site.xml</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/6.png" alt="core-site.xml contents" title="core-site.xml contents"></p>
+<p>Save and close this file.</p>
+<h3 id="iv-Editing-usr-local-hadoop-etc-hadoop-yarn-site-xml"><a href="#iv-Editing-usr-local-hadoop-etc-hadoop-yarn-site-xml" class="headerlink" title="iv. Editing /usr/local/hadoop/etc/hadoop/yarn-site.xml"></a>iv. Editing /usr/local/hadoop/etc/hadoop/yarn-site.xml</h3><p>The <code>/usr/local/hadoop/etc/hadoop/yarn-site.xml</code> file contains configuration properties that MapReduce uses when starting up. This file can be used to override the default settings that MapReduce starts with.</p>
+<p>Open this file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/yarn-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;yarn.nodemanager.aux-services&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;mapreduce_shuffle&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;
+&amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;yarn.nodemanager.aux-services.mapreduce.shuffle.class&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;org.apache.hadoop.mapred.ShuffleHandler&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;</code></pre><br>The <code>yarn-site.xml</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/7.png" alt="yarn-site.xml contents" title="yarn-site.xml contents"></p>
+<p>Save and close this file.</p>
+<h3 id="v-Creating-and-Editing-usr-local-hadoop-etc-hadoop-mapred-site-xml"><a href="#v-Creating-and-Editing-usr-local-hadoop-etc-hadoop-mapred-site-xml" class="headerlink" title="v. Creating and Editing /usr/local/hadoop/etc/hadoop/mapred-site.xml"></a>v. Creating and Editing /usr/local/hadoop/etc/hadoop/mapred-site.xml</h3><p>By default, the <code>/usr/local/hadoop/etc/hadoop/</code> folder contains the <code>/usr/local/hadoop/etc/hadoop/mapred-site.xml.template</code> file which has to be renamed/copied with the name <code>mapred-site.xml</code>. This file is used to specify which framework is being used for MapReduce.</p>
+<p>This can be done using the following command:<br><pre class="code-pre "><code>cp /usr/local/hadoop/etc/hadoop/mapred-site.xml.template /usr/local/hadoop/etc/hadoop/mapred-site.xml</code></pre><br>Once this is done, open the newly created file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/mapred-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;mapreduce.framework.name&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;yarn&amp;lt;/value&amp;gt;
+&amp;lt;/property&amp;gt;</code></pre><br>The <code>mapred-site.xml</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/8.png" alt="mapred-site.xml contents" title="mapred-site.xml contents"></p>
+<p>Save and close this file.</p>
+<h3 id="vi-Editing-usr-local-hadoop-etc-hadoop-hdfs-site-xml"><a href="#vi-Editing-usr-local-hadoop-etc-hadoop-hdfs-site-xml" class="headerlink" title="vi. Editing /usr/local/hadoop/etc/hadoop/hdfs-site.xml"></a>vi. Editing /usr/local/hadoop/etc/hadoop/hdfs-site.xml</h3><p>The <code>/usr/local/hadoop/etc/hadoop/hdfs-site.xml</code> has to be configured for each host in the cluster that is being used. It is used to specify the directories which will be used as the <strong>namenode</strong> and the <strong>datanode</strong> on that host.</p>
+<p>Before editing this file, we need to create two directories which will contain the <strong>namenode</strong> and the<strong>datanode</strong> for this Hadoop installation. This can be done using the following commands:<br><pre class="code-pre "><code>mkdir -p /usr/local/hadoop_store/hdfs/namenode
+mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</strong> <em>You can create these directories in different locations, but make sure to modify the contents of<code>hdfs-site.xml</code> accordingly.</em></p>
+<p>Once this is done, open the <code>/usr/local/hadoop/etc/hadoop/hdfs-site.xml</code> file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;dfs.replication&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;1&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+ &amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;dfs.namenode.name.dir&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;file:/usr/local/hadoop_store/hdfs/namenode&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;
+ &amp;lt;property&amp;gt;
+   &amp;lt;name&amp;gt;dfs.datanode.data.dir&amp;lt;/name&amp;gt;
+   &amp;lt;value&amp;gt;file:/usr/local/hadoop_store/hdfs/datanode&amp;lt;/value&amp;gt;
+ &amp;lt;/property&amp;gt;</code></pre><br>The <code>hdfs-site.xml</code> file should look something like this:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/9.png" alt="hdfs-site.xml contents" title="hdfs-site.xml contents"></p>
+<p>Save and close this file.</p>
+<div data-unique="format-the-new-hadoop-filesystem"></div>
+
+<h2 id="Format-the-New-Hadoop-Filesystem"><a href="#Format-the-New-Hadoop-Filesystem" class="headerlink" title="Format the New Hadoop Filesystem"></a>Format the New Hadoop Filesystem</h2><p>After completing all the configuration outlined in the above steps, the Hadoop filesystem needs to be formatted so that it can start being used. This is done by executing the following command:<br><pre class="code-pre "><code>hdfs namenode -format</code></pre><br><strong>Note:</strong> <em>This only needs to be done once before you start using Hadoop. If this command is executed again after Hadoop has been used, it’ll destroy all the data on the Hadoop file system.</em></p>
+<div data-unique="start-hadoop"></div>
+
+<h2 id="Start-Hadoop"><a href="#Start-Hadoop" class="headerlink" title="Start Hadoop"></a>Start Hadoop</h2><p>All that remains to be done is starting the newly installed single node cluster:<br><pre class="code-pre "><code>start-dfs.sh</code></pre><br>While executing this command, you’ll be prompted twice with a message similar to the following:</p>
+<blockquote>
+<p>Are you sure you want to continue connecting (yes/no)?<br>Type in <code>yes</code> for both these prompts and press the enter key. Once this is done, execute the following command:<br><pre class="code-pre "><code>start-yarn.sh</code></pre><br>Executing the above two commands will get Hadoop up and running. You can verify this by typing in the following command:<br><pre class="code-pre ">`jps</pre></p>
+</blockquote>
+</li>
+</ul>
+<p>Executing this command should show you something similar to the following:</p>
+<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/10.png" alt="jps command" title="jps command"></p>
+<p>If you can see a result similar to the depicted in the screenshot above, it means that you now have a functional instance of Hadoop running on your VPS.</p>
+<h3 id="Next-Steps"><a href="#Next-Steps" class="headerlink" title="Next Steps"></a>Next Steps</h3><p>If you have an application that is set up to use Hadoop, you can fire that up and start using it with the new installation. On the other hand, if you’re just playing around and exploring Hadoop, you can start by adding/manipulating data or files on the new filesystem to get a feel for it.</p>
+<div class="author">Submitted by: <a href="http://javascript.asia/" target="_blank" rel="external">Jay</a></div><br><div class="author">Refer to :<a href="https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-on-ubuntu-13-10" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-on-ubuntu-13-10</a></div>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hadoop/" rel="tag">#hadoop</a>
+          
+            <a href="/tags/ubuntu/" rel="tag">#ubuntu</a>
+          
+            <a href="/tags/HDFS/" rel="tag">#HDFS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ai/" rel="next" title="人工智能对人类真正的威胁是什么？--李开复">
+                <i class="fa fa-chevron-left"></i> 人工智能对人类真正的威胁是什么？--李开复
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/letsencrypt-certificate/" rel="prev" title="Let's Encrypt，免费好用的 HTTPS 证书">
+                Let's Encrypt，免费好用的 HTTPS 证书 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="how-to-install-hadoop-on-ubuntu-13-10/"
+           data-title="How to Install Hadoop on Ubuntu 13.10" data-url="http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/02.png"
+               alt="Junyangz" />
+          <p class="site-author-name" itemprop="name">Junyangz</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JYzor" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.timeorigin.cn" title="Home" target="_blank">Home</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.v6ss.club" title="v6ss" target="_blank">v6ss</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prerequisites"><span class="nav-number">1.</span> <span class="nav-text">Prerequisites</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Hadoop"><span class="nav-number"></span> <span class="nav-text">What is Hadoop?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Benefits-of-using-Hadoop"><span class="nav-number"></span> <span class="nav-text">Benefits of using Hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-Hadoop"><span class="nav-number"></span> <span class="nav-text">Installing Hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Install-Java"><span class="nav-number">1.</span> <span class="nav-text">1. Install Java</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#i-Editing-bashrc"><span class="nav-number">1.1.</span> <span class="nav-text">i. Editing ~/.bashrc</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ii-Editing-usr-local-hadoop-etc-hadoop-hadoop-env-sh"><span class="nav-number">2.</span> <span class="nav-text">ii. Editing /usr/local/hadoop/etc/hadoop/hadoop-env.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iii-Editing-usr-local-hadoop-etc-hadoop-core-site-xml"><span class="nav-number">3.</span> <span class="nav-text">iii. Editing /usr/local/hadoop/etc/hadoop/core-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iv-Editing-usr-local-hadoop-etc-hadoop-yarn-site-xml"><span class="nav-number">4.</span> <span class="nav-text">iv. Editing /usr/local/hadoop/etc/hadoop/yarn-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-Creating-and-Editing-usr-local-hadoop-etc-hadoop-mapred-site-xml"><span class="nav-number">5.</span> <span class="nav-text">v. Creating and Editing /usr/local/hadoop/etc/hadoop/mapred-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vi-Editing-usr-local-hadoop-etc-hadoop-hdfs-site-xml"><span class="nav-number">6.</span> <span class="nav-text">vi. Editing /usr/local/hadoop/etc/hadoop/hdfs-site.xml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Format-the-New-Hadoop-Filesystem"><span class="nav-number"></span> <span class="nav-text">Format the New Hadoop Filesystem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-Hadoop"><span class="nav-number"></span> <span class="nav-text">Start Hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Next-Steps"><span class="nav-number">1.</span> <span class="nav-text">Next Steps</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junyangz</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"timeorigin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" src="/js/src/particle.js"></script>
+</body>
+</html>

@@ -2,30 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://timeorigin.cn/2017/03/07/ELK&SENSU_AWS_GUIDE/</loc>
+    <loc>http://timeorigin.cn/categories/index.html</loc>
     
-    <lastmod>2017-03-16T16:00:14.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/2015/11/10/tutorials/</loc>
-    
-    <lastmod>2017-02-26T10:21:03.000Z</lastmod>
+    <lastmod>2017-03-16T16:39:46.243Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://timeorigin.cn/2015/09/23/ipv6/</loc>
+    <loc>http://timeorigin.cn/v6ss_tutorials/</loc>
     
-    <lastmod>2017-01-10T16:14:16.042Z</lastmod>
+    <lastmod>2017-03-16T16:19:16.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://timeorigin.cn/2016/03/10/ai/</loc>
+    <loc>http://timeorigin.cn/ai/</loc>
     
-    <lastmod>2017-01-10T16:10:32.000Z</lastmod>
+    <lastmod>2017-03-16T16:17:32.820Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/ipv6/</loc>
+    
+    <lastmod>2017-03-16T16:16:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/digitalocean/</loc>
+    
+    <lastmod>2017-03-16T16:15:54.471Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/</loc>
+    
+    <lastmod>2017-03-16T16:15:47.117Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/letsencrypt-certificate/</loc>
+    
+    <lastmod>2017-03-16T16:14:52.646Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/Thelife/</loc>
+    
+    <lastmod>2017-03-16T16:14:45.248Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/ELK&SENSU_AWS_GUIDE/</loc>
+    
+    <lastmod>2017-03-16T16:14:10.000Z</lastmod>
     
   </url>
   
@@ -58,35 +93,7 @@
   </url>
   
   <url>
-    <loc>http://timeorigin.cn/2015/09/17/digitalocean/</loc>
-    
-    <lastmod>2016-10-22T10:34:03.655Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/2016/10/16/letsencrypt-certificate/</loc>
-    
-    <lastmod>2016-10-15T16:56:28.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/2016/06/06/how-to-install-hadoop-on-ubuntu-13-10/</loc>
-    
-    <lastmod>2016-09-30T05:44:08.629Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/2016/02/04/Thelife/</loc>
-    
-    <lastmod>2016-09-30T05:43:09.388Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/2015/10/16/github-education-pack/</loc>
+    <loc>http://timeorigin.cn/github-education-pack/</loc>
     
     <lastmod>2016-09-30T05:42:17.613Z</lastmod>
     

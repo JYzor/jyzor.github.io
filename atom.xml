@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>时间原点</title>
+  <title>TimeOrigin</title>
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://timeorigin.cn/"/>
-  <updated>2017-03-16T16:00:14.000Z</updated>
+  <updated>2017-03-16T16:14:10.000Z</updated>
   <id>http://timeorigin.cn/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>ELK&amp;SENSU_AWS_GUIDE</title>
-    <link href="http://timeorigin.cn/2017/03/07/ELK&amp;SENSU_AWS_GUIDE/"/>
-    <id>http://timeorigin.cn/2017/03/07/ELK&amp;SENSU_AWS_GUIDE/</id>
+    <link href="http://timeorigin.cn/ELK&amp;SENSU_AWS_GUIDE/"/>
+    <id>http://timeorigin.cn/ELK&amp;SENSU_AWS_GUIDE/</id>
     <published>2017-03-07T08:30:30.000Z</published>
-    <updated>2017-03-16T16:00:14.000Z</updated>
+    <updated>2017-03-16T16:14:10.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="SENSU"><a href="#SENSU" class="headerlink" title="SENSU"></a>SENSU</h2><h3 id="Sensu-Server-and-API-installation"><a href="#Sensu-Server-and-API-installation" class="headerlink" title="Sensu Server and API installation"></a>Sensu Server and API installation</h3><h4 id="Install-Redis-and-Configure-Redis"><a href="#Install-Redis-and-Configure-Redis" class="headerlink" title="Install Redis and Configure Redis"></a>Install Redis and Configure Redis</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get -y install redis-server</div><div class="line">sudo update-rc.d redis-server defaults</div><div class="line">sudo vim /etc/redis/redis.conf</div></pre></td></tr></table></figure>
 <blockquote>
@@ -120,10 +120,20 @@
     
     </summary>
     
+      <category term="ops" scheme="http://timeorigin.cn/categories/ops/"/>
+    
     
       <category term="SENSU" scheme="http://timeorigin.cn/tags/SENSU/"/>
     
-      <category term="elk" scheme="http://timeorigin.cn/tags/elk/"/>
+      <category term="ELK Stack" scheme="http://timeorigin.cn/tags/ELK-Stack/"/>
+    
+      <category term="Elasticsearch" scheme="http://timeorigin.cn/tags/Elasticsearch/"/>
+    
+      <category term="Kibana" scheme="http://timeorigin.cn/tags/Kibana/"/>
+    
+      <category term="Logstash" scheme="http://timeorigin.cn/tags/Logstash/"/>
+    
+      <category term="Grafana" scheme="http://timeorigin.cn/tags/Grafana/"/>
     
       <category term="AWS" scheme="http://timeorigin.cn/tags/AWS/"/>
     
@@ -131,10 +141,10 @@
   
   <entry>
     <title>Let&#39;s Encrypt，免费好用的 HTTPS 证书</title>
-    <link href="http://timeorigin.cn/2016/10/16/letsencrypt-certificate/"/>
-    <id>http://timeorigin.cn/2016/10/16/letsencrypt-certificate/</id>
+    <link href="http://timeorigin.cn/letsencrypt-certificate/"/>
+    <id>http://timeorigin.cn/letsencrypt-certificate/</id>
     <published>2016-10-16T03:30:30.000Z</published>
-    <updated>2016-10-15T16:56:28.000Z</updated>
+    <updated>2017-03-16T16:14:52.646Z</updated>
     
     <content type="html"><![CDATA[<p>很早之前我就在关注 <a href="https://letsencrypt.org" target="_blank" rel="external">Let’s Encrypt</a> 这个免费、自动化、开放的证书签发服务。它由 ISRG（Internet Security Research Group，互联网安全研究小组）提供服务，而 ISRG 是来自于美国加利福尼亚州的一个公益组织。Let’s Encrypt 得到了 Mozilla、Cisco、Akamai、Electronic Frontier Foundation 和 Chrome 等众多公司和机构的支持，发展十分迅猛。</p>
 <p>申请 Let’s Encrypt 证书不但免费，还非常简单，虽然每次只有 90 天的有效期，但可以通过脚本定期更新，配好之后一劳永逸。经过一段时间的观望，我也正式启用 Let’s Encrypt 证书了，本文记录本站申请过程和遇到的问题。<a id="more"></a></p>
@@ -202,6 +212,8 @@
     
     </summary>
     
+      <category term="Reprinted" scheme="http://timeorigin.cn/categories/Reprinted/"/>
+    
     
       <category term="Let&#39;s Encrypt" scheme="http://timeorigin.cn/tags/Let-s-Encrypt/"/>
     
@@ -211,10 +223,10 @@
   
   <entry>
     <title>How to Install Hadoop on Ubuntu 13.10</title>
-    <link href="http://timeorigin.cn/2016/06/06/how-to-install-hadoop-on-ubuntu-13-10/"/>
-    <id>http://timeorigin.cn/2016/06/06/how-to-install-hadoop-on-ubuntu-13-10/</id>
+    <link href="http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/"/>
+    <id>http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/</id>
     <published>2016-06-06T09:29:49.000Z</published>
-    <updated>2016-09-30T05:44:08.629Z</updated>
+    <updated>2017-03-16T16:15:47.117Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p>The only prerequisite for this tutorial is a VPS with <strong>Ubuntu 13.10 x64</strong> installed.</p>
 <p>You will need to execute commands from the command line which you can do in one of the two ways:</p>
@@ -377,17 +389,23 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
     
     </summary>
     
-      <category term="Apache" scheme="http://timeorigin.cn/categories/Apache/"/>
+      <category term="Tutorial" scheme="http://timeorigin.cn/categories/Tutorial/"/>
     
+    
+      <category term="hadoop" scheme="http://timeorigin.cn/tags/hadoop/"/>
+    
+      <category term="ubuntu" scheme="http://timeorigin.cn/tags/ubuntu/"/>
+    
+      <category term="HDFS" scheme="http://timeorigin.cn/tags/HDFS/"/>
     
   </entry>
   
   <entry>
     <title>人工智能对人类真正的威胁是什么？--李开复</title>
-    <link href="http://timeorigin.cn/2016/03/10/ai/"/>
-    <id>http://timeorigin.cn/2016/03/10/ai/</id>
+    <link href="http://timeorigin.cn/ai/"/>
+    <id>http://timeorigin.cn/ai/</id>
     <published>2016-03-10T05:58:10.000Z</published>
-    <updated>2017-01-10T16:10:32.000Z</updated>
+    <updated>2017-03-16T16:17:32.820Z</updated>
     
     <content type="html"><![CDATA[<div align="left">昨天AlphaGo第一盘棋战胜了李世石，激起了各种“机器超越人类，科幻小说将成真”的讨论。特别有趣的是有人揣测AlphaGo下面会不会故意输下几盘棋，以免人类起疑心，阻挡了它统治人类的野心。其实，虽然机器在逻辑分析推算方面，能力会远超人类，但是依然是属于人类操控的工具。AlphaGo这类的“人工智能”机器真正可能带来的危机，不是奴役人类，而是让人类丧失斗志，无所事事。</div><br><a id="more"></a><br>&nbsp;<br><div align="left">有些人描述AlphaGo是“和人一样的方式思考，但是比人快无数倍”。这么说并不精确。AlphaGo确实比人快无数倍，但是AlphaGo的思考只能说是“被人的大脑启发”，而非和人类思考一样。AlphaGo是一个能自我学习的深度学习，经过专家的调节，它能在任何在可以纯凭逻辑分析推算的问题上，把人类远远低抛在后面。机器速度会越来越快，学习能力会越来越强，数据会越来越多。</div><br>&nbsp;<br><div align="left">基于深度学习的人工智能将带来什么改变呢？我们将看到无数的商机和产品，能够解决问题、拯救生命、产生巨大的商业和用户价值。未来，自动交易能得到更高的投资回报和风险比例，自动诊断+基因排序会达到个性化精准医疗，推荐引擎将能推荐你最可能会买的产品、想吃的菜，想认识的人。在拥有大数据+大计算+专家调节的领域，就不必再跟人类相比了，因为人类根本差的太远了（就像没有人能打败搜索引擎一样）。</div><br>&nbsp;<br><div align="left">这些技术可能辅助专家，也可能取代专家。非专家的工作者很多将会面临失业。未来十年，大部分今天的人类工作可被机器取代。机器将取代许多的护士、记者、会计、教师、股理财师。。。的工作。任何带有“助理”、“代理”或“经纪”等字样的职位都很可能被取代。 这些机器不需要工资，只需要供电和网，就会一年365天，一天24小时“上班”。这些机器将帮助我们创造世界上的大部分财富。</div><br>&nbsp;<br><div align="left">虽然这些机器确实很“聪明”，而且又高效、勤奋、低廉，但是他们并不“人性化”，只是冷冰冰的机器和工具。比如说，AlphaGo第一场就战胜了李世石，但是它不会感觉高兴，也不会理解我们对于它的讨论。甚至，它说不上这局棋是怎么赢的。因为，它的思考虽然周密，但是它不懂“赢了有什么感受？”，也不懂“为什么围棋好玩”，更不懂“人为什么要下棋？”，甚至连“你今天怎么赢的？”都说不上。今天的机器完全无法理解人的情感、喜怒哀乐、七情六欲、信任尊重、价值观等方面 。对于人文艺术、美和爱、幽默感，机器更是丝毫不懂。有位AI研究员做了一套研究幽默感的系统，然后输入了一篇文章，这个系统看了每句话，都说“哈哈”！今天的机器连个两岁小孩都不如。对人工智能的研究者，这应该是一大未来的挑战。</div><br>&nbsp;<br><div align="left"><img src="http://ww2.sinaimg.cn/large/475b3d56jw1f1rkukhf2kj20gg09wq4m.jpg" alt=""><br>图一：未来机器统治人类的预测还很遥远</div><br>&nbsp;<br><div align="left">所以，今天这些机器仅仅是我们的工具，会为创造价值。至少今天，我们不必担心人工智奴役我们（不过要盯好拥有机器学习+大数据的公司，别来作恶伤害用户）。那我们该担心什么呢？这些强大的机器，将带来人类能否度过有史以来最大的“下岗潮”。这次的“机器取代人类”将远超过去的工业革命和信息革命。不过，“下岗”还不是最可怕的，因为这些机器会产生巨大的商业价值，养活着这些下岗者，进而养活着人类。人类最应该担心的是：一旦当机器供养着人类，人类达到了马斯洛需求的基本需求，人类真的还会有动力去追求更宏伟的目标，自我实现吗？还是会醉生梦死、无所事事地或者？</div><br>&nbsp;<br><div align="left"><img src="http://ww4.sinaimg.cn/crop.0.0.580.325.1000.562/475b3d56jw1f1rks1gk11j20g40c4tb2.jpg" alt=""><br>图二：未来机器养活无所事事的人：真实的危机</div><br>&nbsp;<br><div align="left">面对这个担心，我们应该：</div><br>&nbsp;<br><div align="left">①关注启发式教育，用互动式教育启发孩子对学习的兴趣和效率。AlphaGo愿意跟人类学习，我们当然也要善用最善于分析，最博学的机器。善于学习，乐于学习的孩子，是不会醉生梦死的。</div><br>&nbsp;<br><div align="left">②正视发育右脑的学科领域，平衡文理。塞翁失马，焉知非福？机器超越人类的左脑（工程逻辑思维），也许就是要人类从过去几十年重视理工，倾斜回来，花更多的精力在机器不擅长的右脑，例如：文学诗歌、艺术音乐、电影话剧、文创设计、工匠之美、宗教哲学、沟通情商。这不是说就不要学理工了，而是说应该让适合理工，爱好理工的人学理工，适合人文，爱好人文的人学人文。我们应该平等看待文理，并且鼓励发展文理双全的人才。</div><br>&nbsp;<br><div align="left">③鼓励有上进心的年轻人挑战自己， 孜孜以求，成为专才。不要把时间浪费在“安稳”但是重复性的工作上，而要以“成为某个特殊又有用领域的最顶尖人才”为目标，为己任。</div>]]></content>
     
@@ -397,17 +415,21 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
     
     </summary>
     
-      <category term="Share" scheme="http://timeorigin.cn/categories/Share/"/>
+      <category term="Reprinted" scheme="http://timeorigin.cn/categories/Reprinted/"/>
     
+    
+      <category term="AI" scheme="http://timeorigin.cn/tags/AI/"/>
+    
+      <category term="Kai-Fu Lee" scheme="http://timeorigin.cn/tags/Kai-Fu-Lee/"/>
     
   </entry>
   
   <entry>
     <title>短篇｜王充闾：谈写流年</title>
-    <link href="http://timeorigin.cn/2016/02/04/Thelife/"/>
-    <id>http://timeorigin.cn/2016/02/04/Thelife/</id>
+    <link href="http://timeorigin.cn/Thelife/"/>
+    <id>http://timeorigin.cn/Thelife/</id>
     <published>2016-02-04T12:21:27.000Z</published>
-    <updated>2016-09-30T05:43:09.388Z</updated>
+    <updated>2017-03-16T16:14:45.248Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ooo.0o0.ooo/2016/02/04/56b3427290eaf.jpeg" alt=""></p>
 <p><strong>作者｜王充闾</strong></p>
@@ -426,17 +448,19 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
     
     </summary>
     
-      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
+      <category term="Reprinted" scheme="http://timeorigin.cn/categories/Reprinted/"/>
     
+    
+      <category term="life" scheme="http://timeorigin.cn/tags/life/"/>
     
   </entry>
   
   <entry>
-    <title>v6SS使用教程</title>
-    <link href="http://timeorigin.cn/2015/11/10/tutorials/"/>
-    <id>http://timeorigin.cn/2015/11/10/tutorials/</id>
+    <title>v6SS tutorial</title>
+    <link href="http://timeorigin.cn/v6ss_tutorials/"/>
+    <id>http://timeorigin.cn/v6ss_tutorials/</id>
     <published>2015-11-10T07:23:19.000Z</published>
-    <updated>2017-02-26T10:21:03.000Z</updated>
+    <updated>2017-03-16T16:19:16.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="网站地址：https-www-v6ss-club"><a href="#网站地址：https-www-v6ss-club" class="headerlink" title="网站地址：https://www.v6ss.club/"></a>网站地址：<a href="https://www.v6ss.club/" target="_blank" rel="external">https://www.v6ss.club/</a></h2><h1 id="Windows平台安装使用教程"><a href="#Windows平台安装使用教程" class="headerlink" title="Windows平台安装使用教程"></a>Windows平台安装使用教程</h1><h3 id="———————"><a href="#———————" class="headerlink" title="———————"></a><strong>———————</strong></h3><p><strong>配置客户端软件：</strong><br><a id="more"></a></p>
 <ul>
@@ -478,15 +502,15 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
     
     </summary>
     
-      <category term="教程" scheme="http://timeorigin.cn/categories/%E6%95%99%E7%A8%8B/"/>
+      <category term="Tutorial" scheme="http://timeorigin.cn/categories/Tutorial/"/>
     
     
   </entry>
   
   <entry>
     <title>关于申请Github Education Pack</title>
-    <link href="http://timeorigin.cn/2015/10/16/github-education-pack/"/>
-    <id>http://timeorigin.cn/2015/10/16/github-education-pack/</id>
+    <link href="http://timeorigin.cn/github-education-pack/"/>
+    <id>http://timeorigin.cn/github-education-pack/</id>
     <published>2015-10-16T09:17:18.000Z</published>
     <updated>2016-09-30T05:42:17.613Z</updated>
     
@@ -510,10 +534,10 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
   
   <entry>
     <title>教育网简单配置访问Youtube</title>
-    <link href="http://timeorigin.cn/2015/09/23/ipv6/"/>
-    <id>http://timeorigin.cn/2015/09/23/ipv6/</id>
+    <link href="http://timeorigin.cn/ipv6/"/>
+    <id>http://timeorigin.cn/ipv6/</id>
     <published>2015-09-23T03:23:25.000Z</published>
-    <updated>2017-01-10T16:14:16.042Z</updated>
+    <updated>2017-03-16T16:16:44.000Z</updated>
     
     <content type="html"><![CDATA[<p><img src="https://ooo.0o0.ooo/2017/01/11/5875067b49e34.jpg" alt=""></p>
 <p><strong>观看4K的速度！</strong><br><a id="more"></a><br><!--more--></p>
@@ -552,17 +576,23 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
     
     </summary>
     
-      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
+      <category term="Tutorial" scheme="http://timeorigin.cn/categories/Tutorial/"/>
     
+    
+      <category term="ipv6" scheme="http://timeorigin.cn/tags/ipv6/"/>
+    
+      <category term="Youtube" scheme="http://timeorigin.cn/tags/Youtube/"/>
+    
+      <category term="Google" scheme="http://timeorigin.cn/tags/Google/"/>
     
   </entry>
   
   <entry>
     <title>教育网利用DigitalOcean搭建IPv6—Shadowscoks实现免流量&amp;科学上网</title>
-    <link href="http://timeorigin.cn/2015/09/17/digitalocean/"/>
-    <id>http://timeorigin.cn/2015/09/17/digitalocean/</id>
+    <link href="http://timeorigin.cn/digitalocean/"/>
+    <id>http://timeorigin.cn/digitalocean/</id>
     <published>2015-09-17T13:58:10.000Z</published>
-    <updated>2016-10-22T10:34:03.655Z</updated>
+    <updated>2017-03-16T16:15:54.471Z</updated>
     
     <content type="html"><![CDATA[<h2 id="博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www-v6ss-club"><a href="#博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www-v6ss-club" class="headerlink" title="博主搭建了shadowsocks-manyuser，可以来我的网站免费试用www.v6ss.club"></a>博主搭建了shadowsocks-manyuser，可以来我的网站免费试用<a href="https://www.v6ss.club" target="_blank" rel="external">www.v6ss.club</a></h2><h2 id="搭建ipv6的SS背景"><a href="#搭建ipv6的SS背景" class="headerlink" title="搭建ipv6的SS背景"></a><strong>搭建ipv6的SS背景</strong></h2><p>自从在VPS搭建了ipv6-Shadowscoks以后就一直觉得有这样一个免流量无墙的通道不好好玩一玩貌似可惜了。 于是本人折腾了半天的时间，租用了DigitalOcean一个VPS搭建了一个支持ipv6的VPN，不仅可以免流量还自带科学上网。支持ipv6免流量的高校应该都是可以的。</p>
 <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a><strong>效果</strong></h2><p>效果自然是非常的感人</p>
@@ -671,8 +701,14 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
     
     </summary>
     
-      <category term="Personal" scheme="http://timeorigin.cn/categories/Personal/"/>
+      <category term="Tutorial" scheme="http://timeorigin.cn/categories/Tutorial/"/>
     
+    
+      <category term="digitalocean" scheme="http://timeorigin.cn/tags/digitalocean/"/>
+    
+      <category term="shadowsocks" scheme="http://timeorigin.cn/tags/shadowsocks/"/>
+    
+      <category term="vps" scheme="http://timeorigin.cn/tags/vps/"/>
     
   </entry>
   
