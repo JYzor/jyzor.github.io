@@ -256,6 +256,113 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/07/ELK&SENSU_AWS_GUIDE/" itemprop="url">
+                  ELK&SENSU_AWS_GUIDE
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-07T16:30:30+08:00" content="2017-03-07">
+              2017-03-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/07/ELK&SENSU_AWS_GUIDE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/ELK&SENSU_AWS_GUIDE/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="SENSU"><a href="#SENSU" class="headerlink" title="SENSU"></a>SENSU</h2><h3 id="Sensu-Server-and-API-installation"><a href="#Sensu-Server-and-API-installation" class="headerlink" title="Sensu Server and API installation"></a>Sensu Server and API installation</h3><h4 id="Install-Redis-and-Configure-Redis"><a href="#Install-Redis-and-Configure-Redis" class="headerlink" title="Install Redis and Configure Redis"></a>Install Redis and Configure Redis</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get -y install redis-server</div><div class="line">sudo update-rc.d redis-server defaults</div><div class="line">sudo vim /etc/redis/redis.conf</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Change “bind 127.0.0.1” to “bind 0.0.0.0”</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo service redis-server restart</div><div class="line">redis-cli ping</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/07/ELK&SENSU_AWS_GUIDE/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/16/letsencrypt-certificate/" itemprop="url">
                   Let's Encrypt，免费好用的 HTTPS 证书
                 </a>
@@ -1252,7 +1359,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1269,7 +1376,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

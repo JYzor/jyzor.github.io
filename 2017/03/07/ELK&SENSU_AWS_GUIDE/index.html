@@ -1,0 +1,753 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SENSU,elk,AWS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="时间原点" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="SENSUSensu Server and API installationInstall Redis and Configure Redis123sudo apt-get -y install redis-serversudo update-rc.d redis-server defaultssudo vim /etc/redis/redis.conf
+
+Change “bind 127.0.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ELK&SENSU_AWS_GUIDE">
+<meta property="og:url" content="http://timeorigin.cn/2017/03/07/ELK&SENSU_AWS_GUIDE/index.html">
+<meta property="og:site_name" content="时间原点">
+<meta property="og:description" content="SENSUSensu Server and API installationInstall Redis and Configure Redis123sudo apt-get -y install redis-serversudo update-rc.d redis-server defaultssudo vim /etc/redis/redis.conf
+
+Change “bind 127.0.0">
+<meta property="og:updated_time" content="2017-03-16T16:00:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ELK&SENSU_AWS_GUIDE">
+<meta name="twitter:description" content="SENSUSensu Server and API installationInstall Redis and Configure Redis123sudo apt-get -y install redis-serversudo update-rc.d redis-server defaultssudo vim /etc/redis/redis.conf
+
+Change “bind 127.0.0">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Mod'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://timeorigin.cn/2017/03/07/ELK&SENSU_AWS_GUIDE/"/>
+
+  <title> ELK&SENSU_AWS_GUIDE | 时间原点 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67741178-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">时间原点</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ELK&SENSU_AWS_GUIDE
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-07T16:30:30+08:00" content="2017-03-07">
+              2017-03-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/07/ELK&SENSU_AWS_GUIDE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/ELK&SENSU_AWS_GUIDE/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="SENSU"><a href="#SENSU" class="headerlink" title="SENSU"></a>SENSU</h2><h3 id="Sensu-Server-and-API-installation"><a href="#Sensu-Server-and-API-installation" class="headerlink" title="Sensu Server and API installation"></a>Sensu Server and API installation</h3><h4 id="Install-Redis-and-Configure-Redis"><a href="#Install-Redis-and-Configure-Redis" class="headerlink" title="Install Redis and Configure Redis"></a>Install Redis and Configure Redis</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get -y install redis-server</div><div class="line">sudo update-rc.d redis-server defaults</div><div class="line">sudo vim /etc/redis/redis.conf</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Change “bind 127.0.0.1” to “bind 0.0.0.0”</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo service redis-server restart</div><div class="line">redis-cli ping</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<blockquote>
+<p>return pong  and redis is ok.</p>
+</blockquote>
+<h4 id="Install-sensu-server"><a href="#Install-sensu-server" class="headerlink" title="Install sensu server"></a>Install sensu server</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget -q https://sensu.global.ssl.fastly.net/apt/pubkey.gpg -O- |- sudo apt-key add -</div><div class="line"><span class="built_in">echo</span>​ ​<span class="string">"deb https://sensu.global.ssl.fastly.net/apt sensu main"</span>​ | sudo tee /etc/apt/sources.list.d/sensu.list</div><div class="line">sudo apt-get update &amp;&amp; sudo apt-get install sensu</div></pre></td></tr></table></figure>
+<h4 id="Config-sensu-server"><a href="#Config-sensu-server" class="headerlink" title="Config sensu server"></a>Config sensu server</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sensu/conf.d/api.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   <span class="attr">"api"</span>:&#123;  </div><div class="line">      <span class="attr">"host"</span>:<span class="string">"0.0.0.0"</span>,</div><div class="line">      <span class="attr">"port"</span>:<span class="number">4567</span></div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sensu/conf.d/client.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   <span class="attr">"client"</span>:&#123;  </div><div class="line">      <span class="attr">"name"</span>:<span class="string">"sensu-server"</span>,</div><div class="line">      <span class="attr">"address"</span>:<span class="string">" local-ip "</span>,</div><div class="line">      <span class="attr">"environment"</span>:<span class="string">"sensu"</span>,</div><div class="line">      <span class="attr">"subscriptions"</span>:[  </div><div class="line">         <span class="string">" linux "</span>,</div><div class="line">         <span class="string">" dev "</span></div><div class="line">      ],</div><div class="line">      <span class="attr">"socket"</span>:&#123;  </div><div class="line">         <span class="attr">"bind"</span>:<span class="string">"127.0.0.1"</span>,</div><div class="line">         <span class="attr">"port"</span>:<span class="number">3030</span></div><div class="line">      &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sensu/conf.d/redis.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   <span class="attr">"redis"</span>:&#123;  </div><div class="line">      <span class="attr">"host"</span>:<span class="string">" local-ip(redis install in localhost) "</span>,</div><div class="line">      <span class="attr">"port"</span>:<span class="number">6379</span>,</div><div class="line">      <span class="attr">"reconnect_on_error"</span>:<span class="literal">true</span>,</div><div class="line">      <span class="attr">"auto_reconnect"</span>:<span class="literal">true</span></div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sensu/conf.d/transport.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   <span class="attr">"transport"</span>:&#123;  </div><div class="line">      <span class="attr">"name"</span>:<span class="string">"redis"</span>,</div><div class="line">      <span class="attr">"reconnect_on_error"</span>:<span class="literal">true</span></div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="Enable-the-Sensu-services-to-start-on-boot-and-Start-Sensu"><a href="#Enable-the-Sensu-services-to-start-on-boot-and-Start-Sensu" class="headerlink" title="Enable the Sensu services to start on boot and Start Sensu"></a>Enable the Sensu services to start on boot and Start Sensu</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo update-rc.d sensu-server defaults</div><div class="line">sudo update-rc.d sensu-api defaults</div><div class="line">sudo update-rc.d sensu-client defaults</div><div class="line">sudo service sensu-server start &amp;&amp; sudo service sensu-api start &amp;&amp;- sudo service sensu-client start</div></pre></td></tr></table></figure>
+<h3 id="Installation-on-the-Client"><a href="#Installation-on-the-Client" class="headerlink" title="Installation on the Client"></a>Installation on the Client</h3><h4 id="Install-sensu-client"><a href="#Install-sensu-client" class="headerlink" title="Install sensu client"></a>Install sensu client</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget -q https://sensu.global.ssl.fastly.net/apt/pubkey.gpg -O- |- sudo apt-key add -</div><div class="line"><span class="built_in">echo</span>​ ​<span class="string">"deb https://sensu.global.ssl.fastly.net/apt sensu main"</span>​ | sudo- tee /etc/apt/sources.list.d/sensu.list</div><div class="line">sudo apt-get update &amp;&amp; sudo apt-get install sensu uchiwa</div></pre></td></tr></table></figure>
+<h4 id="Configure-sensu-client-and-uchiwa"><a href="#Configure-sensu-client-and-uchiwa" class="headerlink" title="Configure sensu client and uchiwa"></a>Configure sensu client and uchiwa</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sensu/conf.d/client.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   <span class="attr">"client"</span>:&#123;  </div><div class="line">      <span class="attr">"name"</span>:<span class="string">" hostname "</span>,</div><div class="line">      <span class="attr">"address"</span>:<span class="string">" local-ip "</span>,</div><div class="line">      <span class="attr">"environment"</span>:<span class="string">"sensu"</span>,</div><div class="line">      <span class="attr">"subscriptions"</span>:[  </div><div class="line">         <span class="string">"linux"</span>,</div><div class="line">         <span class="string">"dev"</span></div><div class="line">      ]</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sensu/conf.d/redis.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   <span class="attr">"redis"</span>:&#123;  </div><div class="line">      <span class="attr">"host"</span>:<span class="string">" redis-server-ip "</span>,</div><div class="line">      <span class="attr">"port"</span>:<span class="number">6379</span>,</div><div class="line">      <span class="attr">"reconnect_on_error"</span>:<span class="literal">true</span>,</div><div class="line">      <span class="attr">"auto_reconnect"</span>:<span class="literal">true</span></div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sensu/conf.d/transport.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   <span class="attr">"transport"</span>:&#123;  </div><div class="line">      <span class="attr">"name"</span>:<span class="string">"redis"</span>,</div><div class="line">      <span class="attr">"reconnect_on_error"</span>:<span class="literal">true</span></div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo update-rc.d sensu-client defaults</div><div class="line">sudo update-rc.d uchiwa defaults</div><div class="line">sudo vim /etc/sensu/uchiwa.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   <span class="attr">"sensu"</span>:[  </div><div class="line">      &#123;  </div><div class="line">         <span class="attr">"name"</span>:<span class="string">"sensu"</span>,</div><div class="line">         <span class="attr">"host"</span>:<span class="string">" sensu-server-ip or hostname "</span>,</div><div class="line">         <span class="attr">"port"</span>:<span class="number">4567</span>,</div><div class="line">         <span class="attr">"timeout"</span>:<span class="number">10</span></div><div class="line">      &#125;</div><div class="line">   ],</div><div class="line">   <span class="attr">"uchiwa"</span>:&#123;  </div><div class="line">      <span class="attr">"host"</span>:<span class="string">"0.0.0.0"</span>,</div><div class="line">      <span class="attr">"port"</span>:<span class="number">3000</span>,</div><div class="line">      <span class="attr">"refresh"</span>:<span class="number">10</span></div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo service sensu-client start</div><div class="line">sudo service uchiwa start</div></pre></td></tr></table></figure>
+<h3 id="Set-Up-a-Check"><a href="#Set-Up-a-Check" class="headerlink" title="Set Up a Check"></a>Set Up a Check</h3><h4 id="Add-a-check-on-both-server"><a href="#Add-a-check-on-both-server" class="headerlink" title="Add a check on both server"></a>Add a check on both server</h4><blockquote>
+<p>Install sensu-plugins-XXX on all sensu client for check.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo sensu-install -p sensu-plugins-network-checks</div></pre></td></tr></table></figure>
+<p>……</p>
+<blockquote>
+<p>Add check_xxx.json file on only the Sensu master server.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sensu/conf.d/check.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   <span class="attr">"checks"</span>:&#123;  </div><div class="line">      <span class="attr">"check_ssh"</span>:&#123;  </div><div class="line">         <span class="attr">"type"</span>:<span class="string">"metric"</span>,</div><div class="line">         <span class="attr">"command"</span>:<span class="string">"check-ports.rb -h 127.0.0.1 -p 22 -t 30"</span>,</div><div class="line">         <span class="attr">"interval"</span>:<span class="number">60</span>,</div><div class="line">         <span class="attr">"subscribers"</span>:[  </div><div class="line">            <span class="string">"dev"</span></div><div class="line">         ],</div><div class="line">         <span class="attr">"handlers"</span>:[  </div><div class="line">            <span class="string">"logstash"</span></div><div class="line">         ]</div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"check_dns"</span>:&#123;  </div><div class="line">         <span class="attr">"type"</span>:<span class="string">"metric"</span>,</div><div class="line">         <span class="attr">"command"</span>:<span class="string">"check-ports.rb -h 127.0.0.1 -p 53 -t 30"</span>,</div><div class="line">         <span class="attr">"interval"</span>:<span class="number">60</span>,</div><div class="line">         <span class="attr">"subscribers"</span>:[  </div><div class="line">            <span class="string">"dev"</span></div><div class="line">         ],</div><div class="line">         <span class="attr">"handlers"</span>:[  </div><div class="line">            <span class="string">"logstash"</span></div><div class="line">         ]</div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"check_http"</span>:&#123;  </div><div class="line">         <span class="attr">"type"</span>:<span class="string">"metric"</span>,</div><div class="line">         <span class="attr">"command"</span>:<span class="string">"check-ports.rb -h 127.0.0.1 -p 80 -t 30"</span>,</div><div class="line">         <span class="attr">"interval"</span>:<span class="number">60</span>,</div><div class="line">         <span class="attr">"subscribers"</span>:[  </div><div class="line">            <span class="string">"dev"</span></div><div class="line">         ],</div><div class="line">         <span class="attr">"handlers"</span>:[  </div><div class="line">            <span class="string">"logstash"</span></div><div class="line">         ]</div><div class="line">      &#125;,</div><div class="line">      <span class="attr">"check_https"</span>:&#123;  </div><div class="line">         <span class="attr">"type"</span>:<span class="string">"metric"</span>,</div><div class="line">         <span class="attr">"command"</span>:<span class="string">"check-ports.rb -h 127.0.0.1 -p 443 -t 30"</span>,</div><div class="line">         <span class="attr">"interval"</span>:<span class="number">60</span>,</div><div class="line">         <span class="attr">"subscribers"</span>:[  </div><div class="line">            <span class="string">"dev"</span></div><div class="line">         ],</div><div class="line">         <span class="attr">"handlers"</span>:[  </div><div class="line">            <span class="string">"logstash"</span></div><div class="line">         ]</div><div class="line">      &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service sensu-client restart</div></pre></td></tr></table></figure>
+<h3 id="Set-Up-a-Handler"><a href="#Set-Up-a-Handler" class="headerlink" title="Set Up a Handler"></a>Set Up a Handler</h3><blockquote>
+<p> Add a handler</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install -y build-essential</div><div class="line">sudo sensu-install -p sensu-plugins-logstash</div></pre></td></tr></table></figure>
+<blockquote>
+<p>On the Sensu master server, create and edit thehandler_logstash.json file.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sensu/conf.d/handlers.json</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   <span class="attr">"handlers"</span>:&#123;  </div><div class="line">      <span class="attr">"logstash"</span>:&#123;  </div><div class="line">         <span class="attr">"type"</span>:<span class="string">"pipe"</span>,</div><div class="line">         <span class="attr">"command"</span>:<span class="string">"handler-logstash.rb"</span></div><div class="line">      &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sensu/conf.d/handler_logstash.json</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&#123;  </div><div class="line">   "logstash"   ​:&#123;  </div><div class="line">      "server"      ​:​"127.0.0.1"​,</div><div class="line">      "port"      ​:6379,</div><div class="line">      "list"      ​:​"logstash"​,</div><div class="line">      "type"      ​:​"sensu"​,</div><div class="line">      "output"      ​:​"redis"​,</div><div class="line">      "custom"      ​:&#123;  </div><div class="line">         "​thisFieldWillBeMergedIntoTheTopLevelOfOutgoingJSON​"         ​:&#123;  </div><div class="line">            "metadata"            ​:​"some metadata"​,</div><div class="line">            "moreMetadata"            ​:42</div><div class="line">         &#125;</div><div class="line">      &#125;</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service sensu-server restart &amp;&amp; sudo service sensu-api restart</div></pre></td></tr></table></figure>
+<h2 id="Logstash"><a href="#Logstash" class="headerlink" title="Logstash"></a>Logstash</h2><h3 id="Install-Java-8"><a href="#Install-Java-8" class="headerlink" title="Install Java 8"></a>Install Java 8</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository -y ppa:webupd8team/java</div><div class="line">sudo apt-get update &amp;&amp; sudo apt-get -y install oracle-java8-installer</div></pre></td></tr></table></figure>
+<h3 id="Install-logstash"><a href="#Install-logstash" class="headerlink" title="Install logstash"></a>Install logstash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo- apt-key add -</div><div class="line"><span class="built_in">echo</span>​ ​<span class="string">"deb https://artifacts.elastic.co/packages/5.x/apt stable main"</span>- | sudo tee <span class="_">-a</span> /etc/apt/sources.list.d/elastic-5.x.list</div><div class="line">sudo apt-get update &amp;&amp; sudo apt-get install logstash</div><div class="line">sudo initctl start logstash</div></pre></td></tr></table></figure>
+<h3 id="Configure-logstash"><a href="#Configure-logstash" class="headerlink" title="Configure logstash"></a>Configure logstash</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/logstash/conf.d/sensu-input-logstash.conf</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">input&#123;</div><div class="line">    redis&#123;  </div><div class="line">        data_type =&gt; &quot;list&quot; </div><div class="line">        key =&gt; &quot;logstash&quot; </div><div class="line">        host =&gt; &quot;127.0.0.1&quot; </div><div class="line">        port =&gt; 6379 </div><div class="line">        threads =&gt; 5</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/logstash/conf.d/elasticsearch-output.conf</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">output &#123;</div><div class="line">    elasticsearch &#123;</div><div class="line">        hosts =&gt; [ &quot;localhost:9200&quot; ]</div><div class="line">        manage_template =&gt; false</div><div class="line">        index =&gt; &quot;logstash-%&#123;type&#125;-%&#123;+YYYY.MM.dd&#125;&quot;</div><div class="line">        document_type =&gt; &quot;%&#123;type&#125;&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo initctl start logstash</div></pre></td></tr></table></figure>
+<h2 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h2><h3 id="Install-elasticsearch"><a href="#Install-elasticsearch" class="headerlink" title="Install elasticsearch"></a>Install elasticsearch</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install elasticsearch</div><div class="line">sudo update-rc.d elasticsearch defaults 95 10</div><div class="line">sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-smartcn</div><div class="line">sudo -i service elasticsearch start</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Change user to root and add “network.host: 0.0.0.0” to<br>/etc/elasticsearch/elasticsearch.yml<br>#This file only access by root can not use sudo to modify.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo su</div><div class="line">Vim /etc/elasticsearch/elasticsearch.yml</div><div class="line">network.host: 0.0.0.0</div><div class="line">sudo -i service elasticsearch restart</div></pre></td></tr></table></figure>
+<h2 id="Kibana-–-install-in-another-instance"><a href="#Kibana-–-install-in-another-instance" class="headerlink" title="Kibana – install in another instance"></a>Kibana – install in another instance</h2><h3 id="Install-kibana"><a href="#Install-kibana" class="headerlink" title="Install kibana"></a>Install kibana</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo- apt-key add -</div><div class="line"><span class="built_in">echo</span> <span class="string">"deb https://artifacts.elastic.co/packages/5.x/apt stable main"</span> | sudo tee <span class="_">-a</span> /etc/apt/sources.list.d/elastic-5.x.list</div><div class="line">sudo apt-get update &amp;&amp; sudo apt-get install kibana</div></pre></td></tr></table></figure>
+<h3 id="Install-plugin-own-home"><a href="#Install-plugin-own-home" class="headerlink" title="Install plugin own_home"></a>Install plugin own_home</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /usr/share/kibana/bin/kibana-plugin install https://github.com/wtakase/kibana-own-home/releases/download/v5.2.2/own_home-5.2.2.zip</div></pre></td></tr></table></figure>
+<h4 id="Configure-and-run"><a href="#Configure-and-run" class="headerlink" title="Configure and run"></a>Configure and run</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/kibana/kibana.yml</div></pre></td></tr></table></figure>
+<p><span style="color: #ff0000;">Notice change the follow ‘es-ip’ to ip address which elasticsearch bind.  </span><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">server.host: <span class="string">"0.0.0.0"</span></div><div class="line">elasticsearch.url: ​<span class="string">"http://localhost:19200"</span></div><div class="line">elasticsearch.requestHeadersWhitelist: [x-proxy-user, cookie ]</div><div class="line">own_home.elasticsearch.url: <span class="string">"http://es-ip:9200"</span></div><div class="line">own_home.session.secretkey: f9e794323b453885f5181f1b624d0a</div><div class="line">own_home.session.isSecure: ​<span class="literal">false</span></div><div class="line">own_home.local.groups: [share01, share02]</div></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service kibana start</div></pre></td></tr></table></figure>
+<h4 id="Setup-front-end-web-server-we-use-nginx-and-configure-Authentication-only-for-test"><a href="#Setup-front-end-web-server-we-use-nginx-and-configure-Authentication-only-for-test" class="headerlink" title="Setup front end web server (we use nginx) and configure Authentication (only for test)"></a>Setup front end web server (we use nginx) and configure Authentication (only for test)</h4><h5 id="Install-nginx"><a href="#Install-nginx" class="headerlink" title="Install nginx"></a>Install nginx</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get -y install nginx</div></pre></td></tr></table></figure>
+<h5 id="Create-user-admin"><a href="#Create-user-admin" class="headerlink" title="Create user admin"></a>Create user admin</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo sh -c ​<span class="string">"echo -n 'admin:' &gt;&gt; /etc/nginx/.htpasswd"</span></div><div class="line">sudo sh -c ​<span class="string">"openssl passwd -apr1 &gt;&gt; /etc/nginx/.htpasswd"</span></div></pre></td></tr></table></figure>
+<h5 id="Create-user-user01"><a href="#Create-user-user01" class="headerlink" title="Create user user01"></a>Create user user01</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo sh -c ​<span class="string">"echo -n 'user01:' &gt;&gt; /etc/nginx/.htpasswd"</span></div><div class="line">sudo sh -c ​<span class="string">"openssl passwd -apr1 &gt;&gt; /etc/nginx/.htpasswd"</span></div></pre></td></tr></table></figure>
+<h5 id="Configure-Nginx"><a href="#Configure-Nginx" class="headerlink" title="Configure Nginx"></a>Configure Nginx</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/nginx/sites-available/kibana</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">	listen <span class="number">80</span> default_server;</div><div class="line">	listen [::]:<span class="number">80</span> default_server ipv6only=on;</div><div class="line">	server_name localhost(yourdomain.com);</div><div class="line">		location / &#123;</div><div class="line">			auth_basic <span class="string">"Restricted Content"</span> ;</div><div class="line">			auth_basic_user_file /etc/nginx/.htpasswd;</div><div class="line">			proxy_pass http:<span class="comment">//localhost:5601;</span></div><div class="line">			proxy_http_version <span class="number">1.1</span>;</div><div class="line">			proxy_set_header Upgrade $http_upgrade ;</div><div class="line">			proxy_set_header Connection <span class="string">'upgrade'</span> ;</div><div class="line">			proxy_set_header Host $host ;</div><div class="line">			proxy_cache_bypass $http_upgrade ;</div><div class="line">			proxy_set_header x-proxy-user $remote_user ;</div><div class="line">		&#125;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rm /etc/nginx/sites-enabled/default  &amp;&amp; sudo ln <span class="_">-s</span> /etc/nginx/sites-available/kibana /etc/nginx/sites-enabled/kibana</div></pre></td></tr></table></figure>
+<h5 id="Restart-nginx"><a href="#Restart-nginx" class="headerlink" title="Restart nginx"></a>Restart nginx</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service nginx restart</div></pre></td></tr></table></figure>
+<h5 id="More-flexible-configuration"><a href="#More-flexible-configuration" class="headerlink" title="More flexible configuration"></a>More flexible configuration</h5><p><a href="https://github.com/wtakase/kibana-own-home" target="_blank" rel="external">https://github.com/wtakase/kibana-own-home</a></p>
+<h2 id="Grafana-–install-in-the-Instance-where-Kibana-was-installed"><a href="#Grafana-–install-in-the-Instance-where-Kibana-was-installed" class="headerlink" title="Grafana –install in the Instance where Kibana was installed."></a>Grafana –install in the Instance where Kibana was installed.</h2><h3 id="Install-grafana"><a href="#Install-grafana" class="headerlink" title="Install grafana"></a>Install grafana</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl https://packagecloud.io/gpg.key | sudo apt-key add -</div><div class="line">sudo ​<span class="built_in">echo</span>​ ​<span class="string">"deb https://packagecloud.io/grafana/stable/debian/ jessie- main"</span>​ |sudo tee <span class="_">-a</span> /etc/apt/sources.list.d/grafana.list</div><div class="line">sudo apt-get update &amp;&amp; sudo apt-get -y install grafana</div></pre></td></tr></table></figure>
+<blockquote>
+<p>As 3000 port has been used by uchiwa so we change the port default 3000 to ​3300​.  Add  “http_port = ​3300”.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/grafana/grafana.ini</div><div class="line">http_port = ​3300</div><div class="line">sudo service grafana-server start</div></pre></td></tr></table></figure>
+<blockquote>
+<p>Open your browser at <a href="http://:3300" target="_blank" rel="external">http://:3300</a> and use admin/admin as the credentials to access Grafana:</p>
+</blockquote>
+<h3 id="Configure-grafana"><a href="#Configure-grafana" class="headerlink" title="Configure grafana"></a>Configure grafana</h3><p><a href="http://docs.grafana.org/features/datasources/elasticsearch/" target="_blank" rel="external">http://docs.grafana.org/features/datasources/elasticsearch/</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SENSU/" rel="tag">#SENSU</a>
+          
+            <a href="/tags/elk/" rel="tag">#elk</a>
+          
+            <a href="/tags/AWS/" rel="tag">#AWS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/16/letsencrypt-certificate/" rel="next" title="Let's Encrypt，免费好用的 HTTPS 证书">
+                <i class="fa fa-chevron-left"></i> Let's Encrypt，免费好用的 HTTPS 证书
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/07/ELK&SENSU_AWS_GUIDE/"
+           data-title="ELK&SENSU_AWS_GUIDE" data-url="http://timeorigin.cn/2017/03/07/ELK&SENSU_AWS_GUIDE/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/02.png"
+               alt="Junyangz" />
+          <p class="site-author-name" itemprop="name">Junyangz</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JYzor" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.timeorigin.cn" title="Home" target="_blank">Home</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.v6ss.club" title="v6ss" target="_blank">v6ss</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SENSU"><span class="nav-number">1.</span> <span class="nav-text">SENSU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sensu-Server-and-API-installation"><span class="nav-number">1.1.</span> <span class="nav-text">Sensu Server and API installation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Install-Redis-and-Configure-Redis"><span class="nav-number">1.1.1.</span> <span class="nav-text">Install Redis and Configure Redis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Install-sensu-server"><span class="nav-number">1.1.2.</span> <span class="nav-text">Install sensu server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Config-sensu-server"><span class="nav-number">1.1.3.</span> <span class="nav-text">Config sensu server</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enable-the-Sensu-services-to-start-on-boot-and-Start-Sensu"><span class="nav-number">1.1.4.</span> <span class="nav-text">Enable the Sensu services to start on boot and Start Sensu</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Installation-on-the-Client"><span class="nav-number">1.2.</span> <span class="nav-text">Installation on the Client</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Install-sensu-client"><span class="nav-number">1.2.1.</span> <span class="nav-text">Install sensu client</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Configure-sensu-client-and-uchiwa"><span class="nav-number">1.2.2.</span> <span class="nav-text">Configure sensu client and uchiwa</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-Up-a-Check"><span class="nav-number">1.3.</span> <span class="nav-text">Set Up a Check</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-a-check-on-both-server"><span class="nav-number">1.3.1.</span> <span class="nav-text">Add a check on both server</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-Up-a-Handler"><span class="nav-number">1.4.</span> <span class="nav-text">Set Up a Handler</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logstash"><span class="nav-number">2.</span> <span class="nav-text">Logstash</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Java-8"><span class="nav-number">2.1.</span> <span class="nav-text">Install Java 8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-logstash"><span class="nav-number">2.2.</span> <span class="nav-text">Install logstash</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-logstash"><span class="nav-number">2.3.</span> <span class="nav-text">Configure logstash</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elasticsearch"><span class="nav-number">3.</span> <span class="nav-text">Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-elasticsearch"><span class="nav-number">3.1.</span> <span class="nav-text">Install elasticsearch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kibana-–-install-in-another-instance"><span class="nav-number">4.</span> <span class="nav-text">Kibana – install in another instance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-kibana"><span class="nav-number">4.1.</span> <span class="nav-text">Install kibana</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-plugin-own-home"><span class="nav-number">4.2.</span> <span class="nav-text">Install plugin own_home</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Configure-and-run"><span class="nav-number">4.2.1.</span> <span class="nav-text">Configure and run</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Setup-front-end-web-server-we-use-nginx-and-configure-Authentication-only-for-test"><span class="nav-number">4.2.2.</span> <span class="nav-text">Setup front end web server (we use nginx) and configure Authentication (only for test)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Install-nginx"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">Install nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Create-user-admin"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">Create user admin</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Create-user-user01"><span class="nav-number">4.2.2.3.</span> <span class="nav-text">Create user user01</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Configure-Nginx"><span class="nav-number">4.2.2.4.</span> <span class="nav-text">Configure Nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Restart-nginx"><span class="nav-number">4.2.2.5.</span> <span class="nav-text">Restart nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#More-flexible-configuration"><span class="nav-number">4.2.2.6.</span> <span class="nav-text">More flexible configuration</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grafana-–install-in-the-Instance-where-Kibana-was-installed"><span class="nav-number">5.</span> <span class="nav-text">Grafana –install in the Instance where Kibana was installed.</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-grafana"><span class="nav-number">5.1.</span> <span class="nav-text">Install grafana</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Configure-grafana"><span class="nav-number">5.2.</span> <span class="nav-text">Configure grafana</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junyangz</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"timeorigin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" src="/js/src/particle.js"></script>
+</body>
+</html>
