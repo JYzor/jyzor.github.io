@@ -5,10 +5,10 @@
   
 
 
-<html class="theme-next pisces use-motion">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -27,9 +27,12 @@
 
 
 
+
+
+
   
   
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -63,9 +66,9 @@
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="hadoop,ubuntu,HDFS," />
@@ -79,7 +82,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
 
 
 
@@ -117,24 +120,35 @@ Use SSH">
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
-      author: 'Mod'
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
 
 
 
-
   <link rel="canonical" href="http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/"/>
+
+
+
+
 
   <title> How to Install Hadoop on Ubuntu 13.10 | TimeOrigin </title>
 </head>
@@ -144,14 +158,18 @@ Use SSH">
   
 
 
+
+
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-67741178-3', 'auto');
   ga('send', 'pageview');
 </script>
+
+
 
 
 
@@ -166,29 +184,33 @@ Use SSH">
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">TimeOrigin</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TimeOrigin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-  <p class="site-subtitle"></p>
-</div>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
 <nav class="site-nav">
@@ -255,6 +277,8 @@ Use SSH">
   
 </nav>
 
+
+
  </div>
     </header>
 
@@ -268,13 +292,23 @@ Use SSH">
     
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junyangz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/02.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TimeOrigin">
+    </span>
 
     
       <header class="post-header">
@@ -293,24 +327,36 @@ Use SSH">
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-06-06T17:29:49+08:00" content="2016-06-06">
-              2016-06-06
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-06T17:29:49+08:00">
+                2016-06-06
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Tutorial/" itemprop="url" rel="index">
                     <span itemprop="name">Tutorial</span>
                   </a>
@@ -318,7 +364,6 @@ Use SSH">
 
                 
                 
-
               
             </span>
           
@@ -326,20 +371,26 @@ Use SSH">
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
                 <a href="/how-to-install-hadoop-on-ubuntu-13-10/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="how-to-install-hadoop-on-ubuntu-13-10/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="how-to-install-hadoop-on-ubuntu-13-10/" itemprop="commentCount"></span>
                 </a>
               </span>
             
           
 
           
-
-          
           
 
           
+
+          
+
+          
+
         </div>
       </header>
     
@@ -514,17 +565,28 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
       
     </div>
 
+    <div>
+      
+        
+
+      
+    </div>
+
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/hadoop/" rel="tag">#hadoop</a>
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
           
-            <a href="/tags/ubuntu/" rel="tag">#ubuntu</a>
+            <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
           
-            <a href="/tags/HDFS/" rel="tag">#HDFS</a>
+            <a href="/tags/HDFS/" rel="tag"># HDFS</a>
           
         </div>
+      
+
+      
+        
       
 
       
@@ -536,6 +598,8 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
               </a>
             
           </div>
+
+          <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
@@ -567,8 +631,11 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="how-to-install-hadoop-on-ubuntu-13-10/"
-           data-title="How to Install Hadoop on Ubuntu 13.10" data-url="http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
       </div>
     
   </div>
@@ -602,25 +669,32 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
         </ul>
       
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/02.png"
                alt="Junyangz" />
           <p class="site-author-name" itemprop="name">Junyangz</p>
-          <p class="site-description motion-element" itemprop="description"></p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">9</span>
-              <span class="site-state-item-name">posts</span>
-            </a>
-          </div>
 
           
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
             <div class="site-state-item site-state-categories">
-              <a href="/categories">
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">categories</span>
               </a>
@@ -628,8 +702,10 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
           
 
           
+            
+            
             <div class="site-state-item site-state-tags">
-              <a href="/tags">
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">tags</span>
               </a>
@@ -670,7 +746,7 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
           <div class="links-of-blogroll motion-element links-of-blogroll-inline">
             <div class="links-of-blogroll-title">
               <i class="fa  fa-fw fa-globe"></i>
-              友情链接
+              Links
             </div>
             <ul class="links-of-blogroll-list">
               
@@ -686,19 +762,29 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
           </div>
         
 
+        
+
+
       </section>
 
       
+      <!--noindex-->
         <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
+
             
               
             
+
             
               <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Prerequisites"><span class="nav-number">1.</span> <span class="nav-text">Prerequisites</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Hadoop"><span class="nav-number"></span> <span class="nav-text">What is Hadoop?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Benefits-of-using-Hadoop"><span class="nav-number"></span> <span class="nav-text">Benefits of using Hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-Hadoop"><span class="nav-number"></span> <span class="nav-text">Installing Hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Install-Java"><span class="nav-number">1.</span> <span class="nav-text">1. Install Java</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#i-Editing-bashrc"><span class="nav-number">1.1.</span> <span class="nav-text">i. Editing ~/.bashrc</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ii-Editing-usr-local-hadoop-etc-hadoop-hadoop-env-sh"><span class="nav-number">2.</span> <span class="nav-text">ii. Editing /usr/local/hadoop/etc/hadoop/hadoop-env.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iii-Editing-usr-local-hadoop-etc-hadoop-core-site-xml"><span class="nav-number">3.</span> <span class="nav-text">iii. Editing /usr/local/hadoop/etc/hadoop/core-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iv-Editing-usr-local-hadoop-etc-hadoop-yarn-site-xml"><span class="nav-number">4.</span> <span class="nav-text">iv. Editing /usr/local/hadoop/etc/hadoop/yarn-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-Creating-and-Editing-usr-local-hadoop-etc-hadoop-mapred-site-xml"><span class="nav-number">5.</span> <span class="nav-text">v. Creating and Editing /usr/local/hadoop/etc/hadoop/mapred-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vi-Editing-usr-local-hadoop-etc-hadoop-hdfs-site-xml"><span class="nav-number">6.</span> <span class="nav-text">vi. Editing /usr/local/hadoop/etc/hadoop/hdfs-site.xml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Format-the-New-Hadoop-Filesystem"><span class="nav-number"></span> <span class="nav-text">Format the New Hadoop Filesystem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-Hadoop"><span class="nav-number"></span> <span class="nav-text">Start Hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Next-Steps"><span class="nav-number">1.</span> <span class="nav-text">Next Steps</span></a></li></ol></div>
             
+
           </div>
         </section>
+      <!--/noindex-->
+      
+
       
 
     </div>
@@ -713,13 +799,14 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
       <div class="footer-inner">
         <div class="copyright" >
   
-  &copy;  2016 - 
+  &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Junyangz</span>
 </div>
+
 
 <div class="powered-by">
   Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
@@ -732,15 +819,20 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
   </a>
 </div>
 
+
         
 
         
       </div>
     </footer>
 
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
   </div>
 
   
@@ -763,95 +855,120 @@ mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</st
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
   
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
-
-
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
   
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"timeorigin"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
-    <script src="/js/src/hook-duoshuo.js"></script>
-  
-
-
-
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'timeorigin';
+      var disqus_identifier = 'how-to-install-hadoop-on-ubuntu-13-10/';
+
+      var disqus_title = "How to Install Hadoop on Ubuntu 13.10";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
 
   
 
   
-<script type="text/javascript" src="/js/src/particle.js"></script>
+
+  
+  
+
+
+  
+
 </body>
 </html>
