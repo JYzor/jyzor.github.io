@@ -1,0 +1,908 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AWS,ec2,IPv6,Centos 7," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TimeOrigin" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;nbsp;&amp;nbsp;If you have an existing VPC that supports IPv4 only, and resources in your subnet that are configured to use IPv4 only, you can enable IPv6 support for your VPC and resources. Your VPC can">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Migrating to IPv6 on AWS">
+<meta property="og:url" content="http://timeorigin.cn/IPv6-AWS/index.html">
+<meta property="og:site_name" content="TimeOrigin">
+<meta property="og:description" content="&amp;nbsp;&amp;nbsp;If you have an existing VPC that supports IPv4 only, and resources in your subnet that are configured to use IPv4 only, you can enable IPv6 support for your VPC and resources. Your VPC can">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/04/08/58e8c9c12a57e.png">
+<meta property="og:updated_time" content="2017-04-08T11:36:27.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Migrating to IPv6 on AWS">
+<meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;If you have an existing VPC that supports IPv4 only, and resources in your subnet that are configured to use IPv4 only, you can enable IPv6 support for your VPC and resources. Your VPC can">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/04/08/58e8c9c12a57e.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://timeorigin.cn/IPv6-AWS/"/>
+
+
+
+
+
+  <title> Migrating to IPv6 on AWS | TimeOrigin </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67741178-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TimeOrigin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://timeorigin.cn/IPv6-AWS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junyangz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/02.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TimeOrigin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Migrating to IPv6 on AWS
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-04T11:13:08+08:00">
+                2017-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Reprinted/" itemprop="url" rel="index">
+                    <span itemprop="name">Reprinted</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/IPv6-AWS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="IPv6-AWS/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&nbsp;&nbsp;If you have an existing VPC that supports IPv4 only, and resources in your subnet that are configured to use IPv4 only, you can enable IPv6 support for your VPC and resources. Your VPC can operate in dual-stack mode — your resources can communicate over IPv4, or IPv6, or both. IPv4 and IPv6 communication are independent of each other.<br>&nbsp;&nbsp;You cannot disable IPv4 support for your VPC and subnets; this is the default IP addressing system for Amazon VPC and Amazon EC2.The following steps to enable your VPC and subnets to use IPv6.<br>&nbsp;&nbsp;Before you migrate to using IPv6, ensure that you have read the features of IPv6 addressing for Amazon VPC: <a href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-ip-addressing.html#vpc-ipv4-ipv6-comparison" target="_blank" rel="external">IPv4 and IPv6 Characteristics and Restrictions</a>.<br><a id="more"></a></p>
+<h2 id="Step-1-Associate-an-IPv6-CIDR-Block-with-Your-VPC-and-Subnets"><a href="#Step-1-Associate-an-IPv6-CIDR-Block-with-Your-VPC-and-Subnets" class="headerlink" title="Step 1: Associate an IPv6 CIDR Block with Your VPC and Subnets"></a>Step 1: Associate an IPv6 CIDR Block with Your VPC and Subnets</h2><p>You can associate an IPv6 CIDR block with your VPC, and then associate a /64 CIDR block from that range with each subnet.</p>
+<h3 id="To-associate-an-IPv6-CIDR-block-with-a-VPC"><a href="#To-associate-an-IPv6-CIDR-block-with-a-VPC" class="headerlink" title="To associate an IPv6 CIDR block with a VPC"></a><strong>To associate an IPv6 CIDR block with a VPC</strong></h3><ol>
+<li>Open the Amazon VPC console at <a href="https://console.aws.amazon.com/vpc/" target="_blank" rel="external">https://console.aws.amazon.com/vpc/</a>.</li>
+<li>In the navigation pane, choose <strong><em>Your VPCs</em></strong>.</li>
+<li>Select your VPC, choose <strong><em>Actions, Edit CIDRs</em></strong>.</li>
+<li>Choose <strong><em>Add IPv6 CIDR</em></strong>. After the IPv6 CIDR block has been added, choose <strong><em>Close</em></strong>.</li>
+</ol>
+<h3 id="To-associate-an-IPv6-CIDR-block-with-a-subnet"><a href="#To-associate-an-IPv6-CIDR-block-with-a-subnet" class="headerlink" title="To associate an IPv6 CIDR block with a subnet"></a><strong>To associate an IPv6 CIDR block with a subnet</strong></h3><ol>
+<li>Open the Amazon VPC console at <a href="https://console.aws.amazon.com/vpc/" target="_blank" rel="external">https://console.aws.amazon.com/vpc/</a>.</li>
+<li>In the navigation pane, choose <strong><em>Subnets</em></strong>.</li>
+<li>Select your subnet, choose <strong><em>Subnet Actions, Edit IPv6 CIDRs</em></strong>.</li>
+<li>Choose <strong><em>Add IPv6 CIDR</em></strong>. Specify the hexadecimal pair for the subnet (for example, 00) and confirm the entry by choosing the tick icon.</li>
+<li>Choose <strong><em>Close</em></strong>. Repeat the steps for the other subnets in your VPC.</li>
+</ol>
+<h2 id="Step-2-Create-and-Configure-an-Egress-Only-Internet-Gateway"><a href="#Step-2-Create-and-Configure-an-Egress-Only-Internet-Gateway" class="headerlink" title="Step 2: Create and Configure an Egress-Only Internet Gateway"></a>Step 2: Create and Configure an Egress-Only Internet Gateway</h2><p>Create an egress-only Internet gateway for your VPC.</p>
+<h3 id="To-create-an-egress-only-Internet-Gateway"><a href="#To-create-an-egress-only-Internet-Gateway" class="headerlink" title="To create an egress-only Internet Gateway"></a><strong>To create an egress-only Internet Gateway</strong></h3><ol>
+<li>Open the Amazon VPC console at <a href="https://console.aws.amazon.com/vpc/" target="_blank" rel="external">https://console.aws.amazon.com/vpc/</a>.</li>
+<li>In the navigation pane, choose <strong><em>Egress Only Internet Gateways, Create Egress Only Internet Gateway.</em></strong></li>
+<li>Select the VPC in which to create the egress-only Internet gateway. Choose <strong><em>Create</em></strong>.</li>
+</ol>
+<h2 id="Step-3-Update-Your-Route-Tables"><a href="#Step-3-Update-Your-Route-Tables" class="headerlink" title="Step 3: Update Your Route Tables"></a>Step 3: Update Your Route Tables</h2><p>&nbsp;&nbsp;For the example above, update the custom route table for the private subnet so that your database instance can use the egress-only Internet gateway for IPv6 traffic. You must also update the custom route table for the public subnet so that your web server can use the Internet gateway for IPv6 traffic.</p>
+<h3 id="To-update-your-route-tables"><a href="#To-update-your-route-tables" class="headerlink" title="To update your route tables"></a><strong>To update your route tables</strong></h3><ol>
+<li>Open the Amazon VPC console at <a href="https://console.aws.amazon.com/vpc/" target="_blank" rel="external">https://console.aws.amazon.com/vpc/</a>.</li>
+<li>In the navigation pane, choose <strong><em>Route Tables</em></strong> and select the route table that’s associated with the private subnet.</li>
+<li>On the <strong><em>Routes</em></strong> tab, choose <strong><em>Edit</em></strong>, specify ::/0 for <strong><em>Destination</em></strong>, select the egress-only Internet gateway ID for <strong><em>Target</em></strong>, and then choose <strong><em>Save</em></strong>.</li>
+<li>Select the route table that’s associated with the public subnet.</li>
+<li>On the <strong><em>Routes</em></strong> tab, choose <strong><em>Edit</em></strong>, specify ::/0 for <strong><em>Destination</em></strong>, select the Internet gateway ID for <strong><em>Target</em></strong>, and then choose <strong><em>Save</em></strong>.</li>
+</ol>
+<h2 id="Step-4-Update-Your-Security-Group-Rules"><a href="#Step-4-Update-Your-Security-Group-Rules" class="headerlink" title="Step 4: Update Your Security Group Rules"></a>Step 4: Update Your Security Group Rules</h2><p>&nbsp;&nbsp;For the example above, your web server security group (sg-11aa22bb) allows inbound access from IPv4 addresses over specific ports. You must add rules that allow the same inbound access from IPv6 addresses, namely HTTP and HTTPS access from all IPv6 addresses, and SSH access from a specific IPv6 address (if applicable). You do not need to make any changes to the inbound rules for your database security group; the rule that allows all communication from sg-11aa22bb includes IPv6 communication by default.</p>
+<h3 id="To-update-your-security-group-rules"><a href="#To-update-your-security-group-rules" class="headerlink" title="To update your security group rules"></a><strong>To update your security group rules</strong></h3><ol>
+<li>Open the Amazon VPC console at <a href="https://console.aws.amazon.com/vpc/" target="_blank" rel="external">https://console.aws.amazon.com/vpc/</a>.</li>
+<li>In the navigation pane, choose <strong><em>Security Groups</em></strong> and select your web server security group.</li>
+<li>In the <strong><em>Inbound Rules</em></strong> tab, choose <strong><em>Edit</em></strong>.</li>
+<li>For each rule, choose <strong><em>Add another rule</em></strong>, and choose <strong><em>Save</em></strong> when you’re done:<ul>
+<li>For <strong><em>Type</em></strong>, select <strong><em>HTTP</em></strong>. For <strong><em>Source</em></strong>, enter ::/0.</li>
+<li>For <strong><em>Type</em></strong>, select <strong><em>HTTPS</em></strong>. For <strong><em>Source</em></strong>, enter ::/0.</li>
+<li>For <strong><em>Type</em></strong>, select <strong><em>SSH</em></strong>. For <strong><em>Source</em></strong>, enter the IPv6 address of your local computer or the range of addresses for your local network.</li>
+</ul>
+</li>
+</ol>
+<p>&nbsp;&nbsp;In this scenario, an outbound rule that allows all IPv6 traffic is automatically added your security groups when you associate an IPv6 CIDR block with your VPC. However, if you modified the original outbound rules for your security group, this rule is not automatically added, and you must add equivalent outbound rules for IPv6 traffic. For more information, see <a href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html" target="_blank" rel="external">Security Groups for Your VPC</a>.</p>
+<h3 id="Update-Your-Network-ACL-Rules"><a href="#Update-Your-Network-ACL-Rules" class="headerlink" title="Update Your Network ACL Rules"></a><strong>Update Your Network ACL Rules</strong></h3><p>&nbsp;&nbsp;If you associate an IPv6 CIDR block with your VPC, we automatically add rules to the default network ACL to allow IPv6 traffic, provided you haven’t modified its default rules. If you’ve modified your default network ACL or if you’ve created a custom network ACL with rules to control the flow of traffic to and from your subnet, you must manually add rules for IPv6 traffic. For more information about recommended network ACL rules for a VPC with a private and public subnet, see <a href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Appendix_NACLs.html#VPC_Appendix_NACLs_Scenario_2" target="_blank" rel="external">Recommended Rules for Scenario 2</a>.</p>
+<h2 id="Step-5-Change-Your-Instance-Type"><a href="#Step-5-Change-Your-Instance-Type" class="headerlink" title="Step 5: Change Your Instance Type"></a>Step 5: Change Your Instance Type</h2><ul>
+<li>see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html" target="_blank" rel="external">Instance Types</a> which supports IPv6.</li>
+</ul>
+<h2 id="Step-6-Assign-IPv6-Addresses-to-Your-Instances"><a href="#Step-6-Assign-IPv6-Addresses-to-Your-Instances" class="headerlink" title="Step 6: Assign IPv6 Addresses to Your Instances"></a>Step 6: Assign IPv6 Addresses to Your Instances</h2><p>&nbsp;&nbsp;After you’ve verified that your instance type supports IPv6, you can assign an IPv6 address to your instance using the Amazon EC2 console. The IPv6 address is assigned to the primary network interface (eth0) for the instance.</p>
+<h3 id="To-assign-an-IPv6-address-to-your-instance"><a href="#To-assign-an-IPv6-address-to-your-instance" class="headerlink" title="To assign an IPv6 address to your instance"></a><strong>To assign an IPv6 address to your instance</strong></h3><ol>
+<li>Open the Amazon EC2 console at <a href="https://console.aws.amazon.com/ec2/" target="_blank" rel="external">https://console.aws.amazon.com/ec2/</a>.</li>
+<li>In the navigation pane, choose <strong><em>Instances</em></strong>.</li>
+<li>Select your instance, and choose <strong><em>Actions, Networking, Manage IP Addresses</em></strong>.</li>
+<li>Under <strong><em>IPv6 Addresses</em></strong>, choose <strong><em>Assign new IP</em></strong>. You can enter a specific IPv6 address from the range of your subnet, or you can leave the default Auto-Assign value to let Amazon choose one for you.</li>
+<li>Choose <strong><em>Yes, Update</em></strong>.</li>
+</ol>
+<p>&nbsp;&nbsp;Alternatively, if you launch a replacement instance (for example, if you were unable to resize your instance and you created a new AMI instead), you can assign an IPv6 address during launch.</p>
+<h3 id="To-assign-an-IPv6-address-to-an-instance-during-launch"><a href="#To-assign-an-IPv6-address-to-an-instance-during-launch" class="headerlink" title="To assign an IPv6 address to an instance during launch"></a><strong>To assign an IPv6 address to an instance during launch</strong></h3><ol>
+<li>Open the Amazon EC2 console at <a href="https://console.aws.amazon.com/ec2/" target="_blank" rel="external">https://console.aws.amazon.com/ec2/</a>.</li>
+<li>Select your AMI and an IPv6-compatible instance type, and choose <strong><em>Next: Configure Instance Details</em></strong>.</li>
+<li>On the <strong><em>Configure Instance Details</em></strong> page, select a VPC for <strong><em>Network</em></strong> and a subnet for <strong><em>Subnet</em></strong>. For <strong><em>Auto-assign IPv6 IP</em></strong>, select <strong><em>Enable</em></strong>.</li>
+<li>Follow the remaining steps in the wizard to launch your instance.</li>
+</ol>
+<h2 id="Step-7-Configure-IPv6-on-Your-Instances"><a href="#Step-7-Configure-IPv6-on-Your-Instances" class="headerlink" title="Step 7: Configure IPv6 on Your Instances"></a>Step 7: Configure IPv6 on Your Instances</h2><h3 id="RHEL-CentOS"><a href="#RHEL-CentOS" class="headerlink" title="RHEL/CentOS"></a>RHEL/CentOS</h3><p><strong>To configure DHCPv6 on RHEL 7 or CentOS 7</strong></p>
+<ol>
+<li>Connect to your instance using the instance’s public IPv4 address.</li>
+<li><p>Using a text editor of your choice, open /etc/sysconfig/network-scripts/ifcfg-eth0 and locate the following line:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">IPV6INIT=<span class="string">"no"</span></div><div class="line">Replace that line with the following:</div></pre></td></tr></table></figure>
+<p>Replace that line with the following:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IPV6INIT=<span class="string">"yes"</span></div></pre></td></tr></table></figure>
+<p>Add the following two lines, and save your changes:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">DHCPV6C=yes</div><div class="line">NM_CONTROLLED=no</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol>
+<li><p>Open /etc/sysconfig/network, add or amend the following line as follows, and save your changes:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NETWORKING_IPV6=yes</div></pre></td></tr></table></figure>
+</li>
+<li><p>Restart networking on your instance by running the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service network restart</div></pre></td></tr></table></figure>
+<p>You can use the ifconfig command to verify that the IPv6 address is recognized on the primary network interface.</p>
+</li>
+</ol>
+<p><strong>To configure DHCPv6 on RHEL 6 or CentOS 6</strong></p>
+<ol>
+<li>Connect to your instance using the instance’s public IPv4 address.</li>
+<li>Follow steps 2 - 4 in the procedure above for configuring RHEL 7/CentOS 7.</li>
+<li><p>If you restart networking and you get an error that an IPv6 address cannot be obtained, open <strong><em>/etc/sysconfig/network-scripts/ifup-eth</em></strong> and locate the following line (by default, it’s line 327):</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> /sbin/dhclient <span class="string">"<span class="variable">$DHCLIENTARGS</span>"</span>; <span class="keyword">then</span></div></pre></td></tr></table></figure>
+<p>Remove the quotes that surround $DHCLIENTARGS and save your changes. Restart networking on your instance:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service network restart</div></pre></td></tr></table></figure>
+<p>The picture shows the routing information from CERNET2 to AWS Seoul.<br><img src="https://ooo.0o0.ooo/2017/04/08/58e8c9c12a57e.png" alt="tarcert"></p>
+</li>
+</ol>
+<h3 id="Other-Platform"><a href="#Other-Platform" class="headerlink" title="Other Platform"></a>Other Platform</h3><ol>
+<li><a href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-migrate-ipv6.html#ipv6-dhcpv6-amazon-linux" target="_blank" rel="external">Amazon Linux</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-migrate-ipv6.html#ipv6-dhcpv6-ubuntu" target="_blank" rel="external">Ubuntu</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-migrate-ipv6.html#ipv6-dhcpv6-windows" target="_blank" rel="external">Windows</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AWS/" rel="tag"># AWS</a>
+          
+            <a href="/tags/ec2/" rel="tag"># ec2</a>
+          
+            <a href="/tags/IPv6/" rel="tag"># IPv6</a>
+          
+            <a href="/tags/Centos-7/" rel="tag"># Centos 7</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ELK&SENSU_AWS_GUIDE/" rel="next" title="ELK&SENSU_AWS_GUIDE">
+                <i class="fa fa-chevron-left"></i> ELK&SENSU_AWS_GUIDE
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/02.png"
+               alt="Junyangz" />
+          <p class="site-author-name" itemprop="name">Junyangz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JYzor" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.timeorigin.cn" title="Home" target="_blank">Home</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.v6ss.club" title="v6ss" target="_blank">v6ss</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1-Associate-an-IPv6-CIDR-Block-with-Your-VPC-and-Subnets"><span class="nav-number">1.</span> <span class="nav-text">Step 1: Associate an IPv6 CIDR Block with Your VPC and Subnets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#To-associate-an-IPv6-CIDR-block-with-a-VPC"><span class="nav-number">1.1.</span> <span class="nav-text">To associate an IPv6 CIDR block with a VPC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#To-associate-an-IPv6-CIDR-block-with-a-subnet"><span class="nav-number">1.2.</span> <span class="nav-text">To associate an IPv6 CIDR block with a subnet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-Create-and-Configure-an-Egress-Only-Internet-Gateway"><span class="nav-number">2.</span> <span class="nav-text">Step 2: Create and Configure an Egress-Only Internet Gateway</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#To-create-an-egress-only-Internet-Gateway"><span class="nav-number">2.1.</span> <span class="nav-text">To create an egress-only Internet Gateway</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3-Update-Your-Route-Tables"><span class="nav-number">3.</span> <span class="nav-text">Step 3: Update Your Route Tables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#To-update-your-route-tables"><span class="nav-number">3.1.</span> <span class="nav-text">To update your route tables</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4-Update-Your-Security-Group-Rules"><span class="nav-number">4.</span> <span class="nav-text">Step 4: Update Your Security Group Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#To-update-your-security-group-rules"><span class="nav-number">4.1.</span> <span class="nav-text">To update your security group rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update-Your-Network-ACL-Rules"><span class="nav-number">4.2.</span> <span class="nav-text">Update Your Network ACL Rules</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5-Change-Your-Instance-Type"><span class="nav-number">5.</span> <span class="nav-text">Step 5: Change Your Instance Type</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-6-Assign-IPv6-Addresses-to-Your-Instances"><span class="nav-number">6.</span> <span class="nav-text">Step 6: Assign IPv6 Addresses to Your Instances</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#To-assign-an-IPv6-address-to-your-instance"><span class="nav-number">6.1.</span> <span class="nav-text">To assign an IPv6 address to your instance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#To-assign-an-IPv6-address-to-an-instance-during-launch"><span class="nav-number">6.2.</span> <span class="nav-text">To assign an IPv6 address to an instance during launch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-7-Configure-IPv6-on-Your-Instances"><span class="nav-number">7.</span> <span class="nav-text">Step 7: Configure IPv6 on Your Instances</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RHEL-CentOS"><span class="nav-number">7.1.</span> <span class="nav-text">RHEL/CentOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Other-Platform"><span class="nav-number">7.2.</span> <span class="nav-text">Other Platform</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junyangz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'timeorigin';
+      var disqus_identifier = 'IPv6-AWS/';
+
+      var disqus_title = "Migrating to IPv6 on AWS";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+</body>
+</html>
