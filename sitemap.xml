@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://timeorigin.cn/about/index.html</loc>
+    
+    <lastmod>2017-08-01T15:23:36.041Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://timeorigin.cn/hadoop/</loc>
     
     <lastmod>2017-06-28T11:35:20.460Z</lastmod>
@@ -89,13 +96,6 @@
     <loc>http://timeorigin.cn/ELK&SENSU_AWS_GUIDE/</loc>
     
     <lastmod>2017-03-16T16:14:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/about/index.html</loc>
-    
-    <lastmod>2016-11-15T05:22:43.014Z</lastmod>
     
   </url>
   
