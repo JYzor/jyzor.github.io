@@ -1,0 +1,779 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="TimeOrigin" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Install Apache Hadoop to build Distributed File System.This example is based on the environment below.1) dlp.srv.world (Master Node)2) node01.srv.world (Slave Node)3) node02.srv.world (Slave Node)[1]I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Install Apache Hadoop on CentOS 7">
+<meta property="og:url" content="http://timeorigin.cn/install-apache-hadoop-on-centos-7/index.html">
+<meta property="og:site_name" content="TimeOrigin">
+<meta property="og:description" content="Install Apache Hadoop to build Distributed File System.This example is based on the environment below.1) dlp.srv.world (Master Node)2) node01.srv.world (Slave Node)3) node02.srv.world (Slave Node)[1]I">
+<meta property="og:image" content="https://www.server-world.info/en/CentOS_7/hadoop/img/1.png">
+<meta property="og:image" content="https://www.server-world.info/en/CentOS_7/hadoop/img/2.png">
+<meta property="og:updated_time" content="2016-09-30T04:40:51.785Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Install Apache Hadoop on CentOS 7">
+<meta name="twitter:description" content="Install Apache Hadoop to build Distributed File System.This example is based on the environment below.1) dlp.srv.world (Master Node)2) node01.srv.world (Slave Node)3) node02.srv.world (Slave Node)[1]I">
+<meta name="twitter:image" content="https://www.server-world.info/en/CentOS_7/hadoop/img/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://timeorigin.cn/install-apache-hadoop-on-centos-7/"/>
+
+
+
+
+
+  <title> Install Apache Hadoop on CentOS 7 | TimeOrigin </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67741178-3', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TimeOrigin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://timeorigin.cn/install-apache-hadoop-on-centos-7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Junyangz">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/02.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TimeOrigin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Install Apache Hadoop on CentOS 7
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-06T17:16:43+08:00">
+                2016-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Apache/" itemprop="url" rel="index">
+                    <span itemprop="name">Apache</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/install-apache-hadoop-on-centos-7/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="install-apache-hadoop-on-centos-7/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <table class="base" summary="1"><br><tbody><br><tr><br><td class="num"></td><br><td><br><div class="block">Install Apache Hadoop to build Distributed File System.</div><br><div class="block">This example is based on the environment below.</div><br><div class="block">1) dlp.srv.world (Master Node)<br>2) node01.srv.world (Slave Node)<br>3) node02.srv.world (Slave Node)</div></td><br></tr><br><tr><br><td class="num">[1]</td><br><td><br><div class="block"><a href="http://www.server-world.info/en/note?os=CentOS_7&amp;p=jdk8" target="_blank" rel="external">Install JDK on all Nodes, refer to here</a>.</div></td><br></tr><br><tr><br><td class="num">[2]</td><br><td>Create a user for Hadoop on all Nodes.</td><br></tr><br></tbody><br></table><br><table class="term" summary="2-1"><br><tbody><br><tr><br><td>[root@dlp ~]#<br><div class="color1"><a href="http://www.server-world.info/en/command/html/useradd.html" target="_blank" rel="external">useradd</a> -d /usr/hadoop hadoop</div><br>[root@dlp ~]#<br><div class="color1"><a href="http://www.server-world.info/en/command/html/chmod.html" target="_blank" rel="external">chmod</a> 755 /usr/hadoop</div><br>[root@dlp ~]#<br><div class="color1"><a href="http://www.server-world.info/en/command/html/passwd.html" target="_blank" rel="external">passwd</a> hadoop</div><br>Changing password for user hadoop.<br>New password:<br>Retype new password:<br>passwd: all authentication tokens updated successfully.</td><br></tr><br></tbody><br></table><br><table class="base" summary="3"><br><tbody><br><tr><br><td class="num">[3]</td><br><td>Login as hadoop user to Master Node and create SSH key-pair (no-passphrase) and send it to other nodes.</td><br></tr><br></tbody><br></table><br><table class="term" summary="3-1"><br><tbody><br><tr><br><td><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1">ssh-keygen</div><br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/usr/hadoop/.ssh/id_rsa):<br>Created directory ‘/usr/hadoop/.ssh’.<br>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved in /usr/hadoop/.ssh/id_rsa.<br>Your public key has been saved in /usr/hadoop/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx hadoop@dlp.srv.world<br>The key’s randomart image is:<br><br></div><br><div class="color2"># send key to nodes included localhost</div><br>[hadoop@dlp ~]$<br><div class="color1">ssh-copy-id localhost</div><br>The authenticity of host ‘localhost (::1)’ can’t be established.<br>ECDSA key fingerprint is xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx.<br>Are you sure you want to continue connecting (yes/no)?<br><div class="color1">yes</div><br><pre>/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed<br>/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed – if you are prompted now it is to install the new keys<br>hadoop@localhost’s password:<br><br>Number of key(s) added: 1<br><br>Now try logging into the machine, with:   “ssh ‘localhost’”<br>and check to make sure that only the key(s) you wanted were added.<br><br></pre><br>[hadoop@dlp ~]$<br><div class="color1">ssh-copy-id node01.srv.world</div><br>[hadoop@dlp ~]$<br><div class="color1">ssh-copy-id node02.srv.world</div></td><br></tr><br></tbody><br></table><br><table class="base" summary="4"><br><tbody><br><tr><br><td class="num">[4]</td><br><td>Install Hadoop on all Nodes. Work as hadoop user.<br>Make sure the latest version of Hadoop on the site below before downloading.<br>⇒ <a href="https://hadoop.apache.org/releases.html" target="_blank" rel="external">https://hadoop.apache.org/releases.html</a></td><br></tr><br></tbody><br></table><br><table class="term" summary="4-1"><br><tbody><br><tr><br><td>[hadoop@dlp ~]$<br><div class="color1">curl -O <a href="http://ftp.jaist.ac.jp/pub/apache/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz" target="_blank" rel="external">http://ftp.jaist.ac.jp/pub/apache/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz</a></div><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/tar.html" target="_blank" rel="external">tar</a> zxvf hadoop-2.7.1.tar.gz -C /usr/hadoop –strip-components 1</div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/.bash_profile</div><br></div><br><div class="block"><br><div class="color2"># add follows to the end</div><br><div class="color1">export HADOOP_HOME=/usr/hadoop<br>export HADOOP_COMMON_HOME=$HADOOP_HOME<br>export HADOOP_HDFS_HOME=$HADOOP_HOME<br>export HADOOP_MAPRED_HOME=$HADOOP_HOME<br>export HADOOP_YARN_HOME=$HADOOP_HOME<br>export HADOOP_OPTS=”-Djava.library.path=$HADOOP_HOME/lib/native”<br>export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native<br>export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin</div><br></div><br>[hadoop@dlp ~]$<br><div class="color1">source ~/.bash_profile</div></td><br></tr><br></tbody><br></table><br><table class="base" summary="5"><br><tbody><br><tr><br><td class="num">[5]</td><br><td>Configure Hadoop on Master Node. Work as hadoop user.</td><br></tr><br></tbody><br></table><br><table class="term" summary="5-1"><br><tbody><br><tr><br><td><br><div class="block"><br><div class="color2"># create directory for data on all nodes.</div><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/mkdir.html" target="_blank" rel="external">mkdir</a> ~/datanode</div><br>[hadoop@dlp ~]$<br><div class="color1">ssh node01.srv.world “mkdir ~/datanode”</div><br>[hadoop@dlp ~]$<br><div class="color1">ssh node02.srv.world “mkdir ~/datanode”</div><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/hdfs-site.xml</div><br></div><br><div class="block"><br><div class="color2"># add into &lt;configuration&gt; - &lt;/configuration&gt; section</div><br>&lt;configuration&gt;<br><div class="color1">  &lt;property&gt;<br>&lt;name&gt;dfs.replication&lt;/name&gt;<br>&lt;value&gt;2&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;<br>&lt;value&gt;file:///usr/hadoop/datanode&lt;/value&gt;<br>&lt;/property&gt;</div><br>&lt;/configuration&gt;<br><br></div><br><div class="block"><br><div class="color2"># send to slaves</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/hdfs-site.xml node01.srv.world:~/etc/hadoop/</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/hdfs-site.xml node02.srv.world:~/etc/hadoop/</div><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/core-site.xml</div><br></div><br><div class="block"><br><div class="color2"># add into &lt;configuration&gt; - &lt;/configuration&gt; section</div><br>&lt;configuration&gt;<br><div class="color1">  &lt;property&gt;<br>&lt;name&gt;fs.defaultFS&lt;/name&gt;<br>&lt;value&gt;hdfs://dlp.srv.world:9000/&lt;/value&gt;<br>&lt;/property&gt;</div><br>&lt;/configuration&gt;<br><br></div><br><div class="block"><br><div class="color2"># send to slaves</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/core-site.xml node01.srv.world:~/etc/hadoop/</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/core-site.xml node02.srv.world:~/etc/hadoop/</div><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1">sed -i -e ‘s/\${JAVA_HOME}/\/usr\/java\/default/‘ ~/etc/hadoop/hadoop-env.sh</div><br><div class="color2"># send to slaves</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/hadoop-env.sh node01.srv.world:~/etc/hadoop/</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/hadoop-env.sh node02.srv.world:~/etc/hadoop/</div><br></div><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/mkdir.html" target="_blank" rel="external">mkdir</a> ~/namenode</div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/hdfs-site.xml</div><br></div><br><div class="block"><br><div class="color2"># add into &lt;configuration&gt; - &lt;/configuration&gt; section</div><br>&lt;configuration&gt;<br><div class="color1">  &lt;property&gt;<br>&lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;<br>&lt;value&gt;file:///usr/hadoop/namenode&lt;/value&gt;<br>&lt;/property&gt;</div><br>&lt;/configuration&gt;<br><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/mapred-site.xml</div><br></div><br><div class="block"><br><div class="color1"><br><div class="color2"># create new</div><br>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;mapreduce.framework.name&lt;/name&gt;<br>&lt;value&gt;yarn&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;<br><br></div><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/yarn-site.xml</div><br></div><br><div class="block"><br><div class="color2"># add into &lt;configuration&gt; - &lt;/configuration&gt; section</div><br>&lt;configuration&gt;<br><div class="color1">  &lt;property&gt;<br>&lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;<br>&lt;value&gt;dlp.srv.world&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;yarn.nodemanager.hostname&lt;/name&gt;<br>&lt;value&gt;dlp.srv.world&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;<br>&lt;value&gt;mapreduce_shuffle&lt;/value&gt;<br>&lt;/property&gt;</div><br>&lt;/configuration&gt;<br><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/slaves</div><br></div><br><div class="color2"># add all nodes (remove localhost)</div><br><div class="color1">dlp.srv.world<br>node01.srv.world<br>node02.srv.world</div></td><br></tr><br></tbody><br></table><br><table class="base" summary="6"><br><tbody><br><tr><br><td class="num">[6]</td><br><td>Format NameNode and start Hadoop services.</td><br></tr><br></tbody><br></table><br><table class="term" summary="6-1"><br><tbody><br><tr><br><td>[hadoop@dlp ~]$<br><div class="color1">hdfs namenode -format</div><br><pre>15/07/28 19:58:14 INFO namenode.NameNode: STARTUP_MSG:<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>STARTUP_MSG: Starting NameNode<br>STARTUP_MSG:   host = dlp.srv.world/10.0.0.30<br>STARTUP_MSG:   args = [-format]<br>STARTUP_MSG:   version = 2.7.1<br>…..<br>…..<br>15/07/28 19:58:17 INFO namenode.NameNode: SHUTDOWN_MSG:<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>SHUTDOWN_MSG: Shutting down NameNode at dlp.srv.world/10.0.0.30<br><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/<br><br></pre><br>[hadoop@dlp ~]$<br><div class="color1">start-dfs.sh</div><br><pre>Starting namenodes on [dlp.srv.world]<br>dlp.srv.world: starting namenode, logging to /usr/hadoop/logs/hadoop-hadoop-namenode-dlp.srv.world.out<br>dlp.srv.world: starting datanode, logging to /usr/hadoop/logs/hadoop-hadoop-datanode-dlp.srv.world.out<br>node02.srv.world: starting datanode, logging to /usr/hadoop/logs/hadoop-hadoop-datanode-node02.srv.world.out<br>node01.srv.world: starting datanode, logging to /usr/hadoop/logs/hadoop-hadoop-datanode-node01.srv.world.out<br>Starting secondary namenodes [0.0.0.0]<br>0.0.0.0: starting secondarynamenode, logging to /usr/hadoop/logs/hadoop-hadoop-secondarynamenode-dlp.srv.world.out<br><br></pre><br>[hadoop@dlp ~]$<br><div class="color1">start-yarn.sh</div><br><pre>starting yarn daemons<br>starting resourcemanager, logging to /usr/hadoop/logs/yarn-hadoop-resourcemanager-dlp.srv.world.out<br>dlp.srv.world: starting nodemanager, logging to /usr/hadoop/logs/yarn-hadoop-nodemanager-dlp.srv.world.out<br>node02.srv.world: starting nodemanager, logging to /usr/hadoop/logs/yarn-hadoop-nodemanager-node02.srv.world.out<br>node01.srv.world: starting nodemanager, logging to /usr/hadoop/logs/yarn-hadoop-nodemanager-node01.srv.world.out<br><br></pre><br><div class="color2"># show status (it’s OK if result is like follows)</div><br>[hadoop@dlp ~]$<br><div class="color1">jps</div><br>2130 NameNode<br>2437 SecondaryNameNode<br>2598 ResourceManager<br>2710 NodeManager<br>3001 Jps<br>2267 DataNode</td><br></tr><br></tbody><br></table><br><table class="base" summary="7"><br><tbody><br><tr><br><td class="num">[7]</td><br><td>Execute a sample program to make sure it works normally.</td><br></tr><br></tbody><br></table><br><table class="term" summary="7-1"><br><tbody><br><tr><br><td><br><div class="block"><br><div class="color2"># create a directory</div><br>[hadoop@dlp ~]$<br><div class="color1">hdfs dfs -mkdir /test</div><br></div><br><div class="block"><br><div class="color2"># copy a local file to /test</div><br>[hadoop@dlp ~]$<br><div class="color1">hdfs dfs -copyFromLocal ~/NOTICE.txt /test</div><br></div><br><div class="color2"># show contents of a file</div><br>[hadoop@dlp ~]$<br><div class="color1">hdfs dfs -cat /test/NOTICE.txt</div><br><pre>This product includes software developed by The Apache Software<br>Foundation (<a href="http://www.apache.org/" target="_blank" rel="external">http://www.apache.org/</a>).<br><br></pre><br><div class="color2"># execute a sample program</div><br>[hadoop@dlp ~]$<br><div class="color1">hadoop jar ~/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar wordcount /test/NOTICE.txt /output01</div><br><pre>15/07/28 19:28:47 INFO client.RMProxy: Connecting to ResourceManager at dlp.srv.world/10.0.0.30:8032<br>15/07/28 19:28:48 INFO input.FileInputFormat: Total input paths to process : 1<br>15/07/28 19:28:48 INFO mapreduce.JobSubmitter: number of splits:1<br>…..<br>…..<br><br></pre><br><div class="color2"># show results</div><br>[hadoop@dlp ~]$<br><div class="color1">hdfs dfs -ls /output01</div><br><pre>Found 2 items<br>-rw-r–r–   2 hadoop supergroup      0 2015-07-29 14:29 /output01/_SUCCESS<br>-rw-r–r–   2 hadoop supergroup    123 2015-07-29 14:29 /output01/part-r-00000<br><br></pre><br><div class="color2"># show contents of a file of results (wordcounts is generated)</div><br>[hadoop@dlp ~]$<br><div class="color1">hdfs dfs -cat /output01/part-r-00000</div><br><pre>(<a href="http://www.apache.org/" target="_blank" rel="external">http://www.apache.org/</a>).       1<br>Apache          1<br>Foundation      1<br>Software        1<br>The             1<br>This            1<br>by              1<br>developed       1<br>includes        1<br>product         1<br>software        1<br></pre><br></td><br></tr><br></tbody><br></table><br><table class="base_win" summary="8"><br><tbody><br><tr><br><td class="num">[8]</td><br><td>Access to “<a href="http://(server&#39;s" target="_blank" rel="external">http://(server&#39;s</a> hostname or IP address):50070/“, then it’s possbile to see Hadoop cluster’s summary.</td><br></tr><br></tbody><br></table><br><table class="base_win" summary="8-1"><br><tbody><br><tr><br><td><img src="https://www.server-world.info/en/CentOS_7/hadoop/img/1.png" alt=""></td><br></tr><br></tbody><br></table><br><table class="base_win" summary="9"><br><tbody><br><tr><br><td class="num">[9]</td><br><td>Access to <a href="http://(server&#39;s" target="_blank" rel="external">http://(server&#39;s</a> hostname or IP address):8088/“, then then it’s possbile to see Hadoop cluster’s information.</td><br></tr><br></tbody><br></table><br><table class="base_win" summary="9-1"><br><tbody><br><tr><br><td><img src="https://www.server-world.info/en/CentOS_7/hadoop/img/2.png" alt=""></td><br></tr><br></tbody><br></table>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/ai/" rel="next" title="人工智能对人类真正的威胁是什么？--李开复">
+                <i class="fa fa-chevron-left"></i> 人工智能对人类真正的威胁是什么？--李开复
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/how-to-install-hadoop-on-ubuntu-13-10/" rel="prev" title="How to Install Hadoop on Ubuntu 13.10">
+                How to Install Hadoop on Ubuntu 13.10 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/02.png"
+               alt="Junyangz" />
+          <p class="site-author-name" itemprop="name">Junyangz</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/JYzor" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://home.timeorigin.cn" title="Home" target="_blank">Home</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://eduvpn.cn" title="v6ss" target="_blank">v6ss</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Junyangz</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'timeorigin';
+      var disqus_identifier = 'install-apache-hadoop-on-centos-7/';
+
+      var disqus_title = "Install Apache Hadoop on CentOS 7";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+</body>
+</html>
