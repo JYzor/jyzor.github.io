@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://timeorigin.cn/ctf/</loc>
+    
+    <lastmod>2017-11-20T08:51:52.457Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://timeorigin.cn/about/index.html</loc>
     
     <lastmod>2017-08-01T15:23:36.041Z</lastmod>
@@ -65,13 +72,6 @@
   </url>
   
   <url>
-    <loc>http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/</loc>
-    
-    <lastmod>2017-03-16T16:15:47.117Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://timeorigin.cn/letsencrypt-certificate/</loc>
     
     <lastmod>2017-03-16T16:14:52.646Z</lastmod>
@@ -117,13 +117,6 @@
     <loc>http://timeorigin.cn/aboutme/index.html</loc>
     
     <lastmod>2016-09-30T04:40:51.798Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/install-apache-hadoop-on-centos-7/</loc>
-    
-    <lastmod>2016-09-30T04:40:51.785Z</lastmod>
     
   </url>
   

