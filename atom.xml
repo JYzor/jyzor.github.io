@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://timeorigin.cn/"/>
-  <updated>2017-11-20T08:51:52.457Z</updated>
+  <updated>2017-12-03T16:35:51.231Z</updated>
   <id>http://timeorigin.cn/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://timeorigin.cn/ctf/"/>
     <id>http://timeorigin.cn/ctf/</id>
     <published>2017-11-20T08:32:10.000Z</published>
-    <updated>2017-11-20T08:51:52.457Z</updated>
+    <updated>2017-12-03T16:35:51.231Z</updated>
     
     <content type="html"><![CDATA[<p></p><p style="text-align: center;"> Junyangz | emhhbmdqdW55YW5nMTdAbWFpbHMudWNhcy5hYy5jbg==</p>
 <h1 id="签。。签到题？"><a href="#签。。签到题？" class="headerlink" title="签。。签到题？"></a>签。。签到题？</h1><h2 id="你想要什么？告诉我"><a href="#你想要什么？告诉我" class="headerlink" title="你想要什么？告诉我"></a>你想要什么？告诉我</h2><p><a href="http://124.16.71.62:30004" target="_blank" rel="external">http://124.16.71.62:30004</a></p>
@@ -87,7 +87,7 @@
 <p>$filename = md5($_FILES[“file”][“name”]) . $filetype;</p>
 </blockquote>
 </li>
-<li><p>base64.encode(Junyangz.php)=f0480f39a6cb1a1ff5f55021ac0824f7</p>
+<li><p>MD5.hash(Junyangz.php)=f0480f39a6cb1a1ff5f55021ac0824f7</p>
 </li>
 <li>as f0480f39a6cb1a1ff5f55021ac0824f7.php</li>
 </ul>
