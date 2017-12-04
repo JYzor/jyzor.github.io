@@ -477,6 +477,8 @@
       <category term="ops" scheme="http://timeorigin.cn/categories/ops/"/>
     
     
+      <category term="AWS" scheme="http://timeorigin.cn/tags/AWS/"/>
+    
       <category term="SENSU" scheme="http://timeorigin.cn/tags/SENSU/"/>
     
       <category term="ELK Stack" scheme="http://timeorigin.cn/tags/ELK-Stack/"/>
@@ -488,8 +490,6 @@
       <category term="Logstash" scheme="http://timeorigin.cn/tags/Logstash/"/>
     
       <category term="Grafana" scheme="http://timeorigin.cn/tags/Grafana/"/>
-    
-      <category term="AWS" scheme="http://timeorigin.cn/tags/AWS/"/>
     
   </entry>
   
