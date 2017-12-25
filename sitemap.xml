@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://timeorigin.cn/ipv6/</loc>
+    
+    <lastmod>2017-12-25T15:31:21.174Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://timeorigin.cn/letsencrypt-certificate/</loc>
+    
+    <lastmod>2017-12-25T14:28:39.866Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://timeorigin.cn/about/index.html</loc>
     
     <lastmod>2017-12-04T02:57:56.772Z</lastmod>
@@ -61,20 +75,6 @@
     <loc>http://timeorigin.cn/ai/</loc>
     
     <lastmod>2017-03-16T16:17:32.820Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/ipv6/</loc>
-    
-    <lastmod>2017-03-16T16:16:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://timeorigin.cn/letsencrypt-certificate/</loc>
-    
-    <lastmod>2017-03-16T16:14:52.646Z</lastmod>
     
   </url>
   

@@ -95,12 +95,10 @@
 <meta property="og:url" content="http://timeorigin.cn/letsencrypt-certificate/index.html">
 <meta property="og:site_name" content="TimeOrigin">
 <meta property="og:description" content="很早之前我就在关注 Let’s Encrypt 这个免费、自动化、开放的证书签发服务。它由 ISRG（Internet Security Research Group，互联网安全研究小组）提供服务，而 ISRG 是来自于美国加利福尼亚州的一个公益组织。Let’s Encrypt 得到了 Mozilla、Cisco、Akamai、Electronic Frontier Foundation 和 Ch">
-<meta property="og:image" content="https://st.imququ.com/static/uploads/2015/12/letsencrypt-intermediate-cert-on-winxp.png">
-<meta property="og:updated_time" content="2017-03-16T16:14:52.646Z">
+<meta property="og:updated_time" content="2017-12-25T14:28:39.866Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Let's Encrypt，免费好用的 HTTPS 证书">
 <meta name="twitter:description" content="很早之前我就在关注 Let’s Encrypt 这个免费、自动化、开放的证书签发服务。它由 ISRG（Internet Security Research Group，互联网安全研究小组）提供服务，而 ISRG 是来自于美国加利福尼亚州的一个公益组织。Let’s Encrypt 得到了 Mozilla、Cisco、Akamai、Electronic Frontier Foundation 和 Ch">
-<meta name="twitter:image" content="https://st.imququ.com/static/uploads/2015/12/letsencrypt-intermediate-cert-on-winxp.png">
 
 
 
@@ -428,21 +426,10 @@
 <p>crontab 中使用绝对路径比较保险，<code>crontab -e</code> 加入以下内容：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0 0 1 * * /home/xxx/shell/renew_cert.sh &gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
 <p>这样以后证书每个月都会自动更新，一劳永逸。实际上，Let’s Encrypt 官方将证书有效期定为 90 天一方面是为了更安全，更重要的是鼓励用户采用自动化部署方案。</p>
-<h3 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h3><p>Let’s Encrypt 证书的兼容性，所有操作系统、浏览器默认是否都能识别是大家最关心的问题。实际上，由于 Let’s Encrypt 与 IdenTrust 的 DST Root CA 做了交叉认证，兼容性还是不错的，目前我只是发现在 Android 2 和 Windows XP 下有问题（Firefox 的证书那一套是自己实现的，不依赖于系统，XP 下只有 Firefox 信任 Let’s Encrypt 证书），其它环境都正常。</p>
-<p><img alt="letsencrypt intermediate cert on winxp" src="https://st.imququ.com/static/uploads/2015/12/letsencrypt-intermediate-cert-on-winxp.png" width="413" itemprop="image">（Windows XP 不信任 Let’s Encrypt 的中间证书）</p>
-<p>更新：根据 Let’s Encrypt 官方说明，Windows XP 下的问题很快就会解决：</p>
-<blockquote>
-<p>A bug in Windows XP causes parsing of our current cross-signature from IdenTrust to fail. We will be correcting this by getting new cross-signatures from IdenTrust which work on Windows XP.<br><br>注：已于 2016 年 3 月 26 日解决。</p>
-</blockquote>
-<p>另外一个问题有关 ECC 证书，官网表示计划将在 2016 年提供对 ECC 证书的支持：</p>
-<blockquote>
-<p>Right now all of our root and intermediate keys use RSA. We’re planning to generate ECC keys and make an ECC option available to subscribers in 2016. <a href="https://community.letsencrypt.org/t/elliptic-curve-cryptography-ecc-support/34" target="_blank" rel="external">via</a><br><br>注：Let’s Encrypt 已于 2016 年 2 月 11 日开始支持签发 ECC 证书。</p>
-</blockquote>
-<p>Let’s Encrypt 官方的新特性预告可以在<a href="https://letsencrypt.org/upcoming-features/" target="_blank" rel="external">这个页面查看</a>。</p>
-<p>我个人建议：对于个人用户来说，如果非常在意证书兼容性，可以购买 RapidSSL Standard 或者 Comodo Positive SSL 这两种证书。其中 RapidSSL 证书一共才三级，比较小；Comodo Positive 有四级，但可以申请 ECC 证书；二者都有着不错的兼容性，也非常廉价（一年不到 10$）。当然，如果不用考虑 Windows XP 用户，那么强烈推荐 Let’s Encrypt！</p>
-<p>更新：Let’s Encrypt 已经支持 Windows XP 和签发 ECC 证书，对于个人用户来说，目前 Let’s Encrypt 无疑是最好的选择。</p>
+<h3 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h3><p>Let’s Encrypt 官方的新特性预告可以在<a href="https://letsencrypt.org/upcoming-features/" target="_blank" rel="external">这个页面查看</a>。</p>
+<p>更新：对于个人用户来说，目前 Let’s Encrypt 无疑是最好的选择。</p>
 <p>本文先写到这里，如果你在申请 Let’s Encrypt 证书的过程中遇到问题，可以给我留言，也欢迎交流各种心得！</p>
-<p>原文链接：<a href="https://imququ.com/post/letsencrypt-certificate.html" target="_blank" rel="external">https://imququ.com/post/letsencrypt-certificate.html</a>，<a href="https://imququ.com/post/letsencrypt-certificate.html#comments" target="_blank" rel="external">前往原文评论 »</a></p>
+<p>原文链接：<a href="https://imququ.com/post/letsencrypt-certificate.html" target="_blank" rel="external">https://imququ.com/post/letsencrypt-certificate.html</a></p>
 
       
     </div>

@@ -498,7 +498,7 @@
     <link href="http://timeorigin.cn/letsencrypt-certificate/"/>
     <id>http://timeorigin.cn/letsencrypt-certificate/</id>
     <published>2016-10-16T03:30:30.000Z</published>
-    <updated>2017-03-16T16:14:52.646Z</updated>
+    <updated>2017-12-25T14:28:39.866Z</updated>
     
     <content type="html"><![CDATA[<p>很早之前我就在关注 <a href="https://letsencrypt.org" target="_blank" rel="external">Let’s Encrypt</a> 这个免费、自动化、开放的证书签发服务。它由 ISRG（Internet Security Research Group，互联网安全研究小组）提供服务，而 ISRG 是来自于美国加利福尼亚州的一个公益组织。Let’s Encrypt 得到了 Mozilla、Cisco、Akamai、Electronic Frontier Foundation 和 Chrome 等众多公司和机构的支持，发展十分迅猛。</p>
 <p>申请 Let’s Encrypt 证书不但免费，还非常简单，虽然每次只有 90 天的有效期，但可以通过脚本定期更新，配好之后一劳永逸。经过一段时间的观望，我也正式启用 Let’s Encrypt 证书了，本文记录本站申请过程和遇到的问题。<a id="more"></a></p>
@@ -542,21 +542,10 @@
 <p>crontab 中使用绝对路径比较保险，<code>crontab -e</code> 加入以下内容：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0 0 1 * * /home/xxx/shell/renew_cert.sh &gt;/dev/null 2&gt;&amp;1</div></pre></td></tr></table></figure>
 <p>这样以后证书每个月都会自动更新，一劳永逸。实际上，Let’s Encrypt 官方将证书有效期定为 90 天一方面是为了更安全，更重要的是鼓励用户采用自动化部署方案。</p>
-<h3 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h3><p>Let’s Encrypt 证书的兼容性，所有操作系统、浏览器默认是否都能识别是大家最关心的问题。实际上，由于 Let’s Encrypt 与 IdenTrust 的 DST Root CA 做了交叉认证，兼容性还是不错的，目前我只是发现在 Android 2 和 Windows XP 下有问题（Firefox 的证书那一套是自己实现的，不依赖于系统，XP 下只有 Firefox 信任 Let’s Encrypt 证书），其它环境都正常。</p>
-<p><img alt="letsencrypt intermediate cert on winxp" src="https://st.imququ.com/static/uploads/2015/12/letsencrypt-intermediate-cert-on-winxp.png" width="413" itemprop="image">（Windows XP 不信任 Let’s Encrypt 的中间证书）</p>
-<p>更新：根据 Let’s Encrypt 官方说明，Windows XP 下的问题很快就会解决：</p>
-<blockquote>
-<p>A bug in Windows XP causes parsing of our current cross-signature from IdenTrust to fail. We will be correcting this by getting new cross-signatures from IdenTrust which work on Windows XP.<br><br>注：已于 2016 年 3 月 26 日解决。</p>
-</blockquote>
-<p>另外一个问题有关 ECC 证书，官网表示计划将在 2016 年提供对 ECC 证书的支持：</p>
-<blockquote>
-<p>Right now all of our root and intermediate keys use RSA. We’re planning to generate ECC keys and make an ECC option available to subscribers in 2016. <a href="https://community.letsencrypt.org/t/elliptic-curve-cryptography-ecc-support/34" target="_blank" rel="external">via</a><br><br>注：Let’s Encrypt 已于 2016 年 2 月 11 日开始支持签发 ECC 证书。</p>
-</blockquote>
-<p>Let’s Encrypt 官方的新特性预告可以在<a href="https://letsencrypt.org/upcoming-features/" target="_blank" rel="external">这个页面查看</a>。</p>
-<p>我个人建议：对于个人用户来说，如果非常在意证书兼容性，可以购买 RapidSSL Standard 或者 Comodo Positive SSL 这两种证书。其中 RapidSSL 证书一共才三级，比较小；Comodo Positive 有四级，但可以申请 ECC 证书；二者都有着不错的兼容性，也非常廉价（一年不到 10$）。当然，如果不用考虑 Windows XP 用户，那么强烈推荐 Let’s Encrypt！</p>
-<p>更新：Let’s Encrypt 已经支持 Windows XP 和签发 ECC 证书，对于个人用户来说，目前 Let’s Encrypt 无疑是最好的选择。</p>
+<h3 id="几个问题"><a href="#几个问题" class="headerlink" title="几个问题"></a>几个问题</h3><p>Let’s Encrypt 官方的新特性预告可以在<a href="https://letsencrypt.org/upcoming-features/" target="_blank" rel="external">这个页面查看</a>。</p>
+<p>更新：对于个人用户来说，目前 Let’s Encrypt 无疑是最好的选择。</p>
 <p>本文先写到这里，如果你在申请 Let’s Encrypt 证书的过程中遇到问题，可以给我留言，也欢迎交流各种心得！</p>
-<p>原文链接：<a href="https://imququ.com/post/letsencrypt-certificate.html" target="_blank" rel="external">https://imququ.com/post/letsencrypt-certificate.html</a>，<a href="https://imququ.com/post/letsencrypt-certificate.html#comments" target="_blank" rel="external">前往原文评论 »</a></p>
+<p>原文链接：<a href="https://imququ.com/post/letsencrypt-certificate.html" target="_blank" rel="external">https://imququ.com/post/letsencrypt-certificate.html</a></p>
 ]]></content>
     
     <summary type="html">
@@ -708,57 +697,47 @@
   </entry>
   
   <entry>
-    <title>教育网简单配置访问Youtube</title>
+    <title>一份简要的IPv6入门姿势</title>
     <link href="http://timeorigin.cn/ipv6/"/>
     <id>http://timeorigin.cn/ipv6/</id>
     <published>2015-09-23T03:23:25.000Z</published>
-    <updated>2017-03-16T16:16:44.000Z</updated>
+    <updated>2017-12-25T15:31:21.174Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://ooo.0o0.ooo/2017/01/11/5875067b49e34.jpg" alt=""></p>
-<p><strong>观看4K的速度！</strong><br><a id="more"></a><br><!--more--></p>
-<h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a><strong>前言：</strong></h1><p>前段时间这个blog刚建立的时候，写过这么一篇文章，中间出现了服务器崩溃，数据库数据没能保存下来。所以就有了现在这份。</p>
-<h1 id="流程："><a href="#流程：" class="headerlink" title="流程："></a><strong>流程：</strong></h1><p>简化了配置流程，操作仅需以下几步(我发现这真的很难懂欸！！）：</p>
+    <content type="html"><![CDATA[<h2 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h2><p>  IPv6是“Internet Protocol Version 6”的缩写，是由国际互联网标准化组织IETF设计的用于替代现行版本IPv4的下一代互联网核心协议，对过渡、路由、网管、传输、安全等已有比较成熟的标准。<br><a href="https://www.wikiwand.com/en/IPv6" target="_blank" rel="external">IPv6 wiki</a><br><a href="https://www.wikiwand.com/en/China_Next_Generation_Internet" target="_blank" rel="external">China_Next_Generation_Internet</a></p>
+<a id="more"></a>
+<h2 id="IPv6发展"><a href="#IPv6发展" class="headerlink" title="IPv6发展"></a>IPv6发展</h2><p>  目前，中国教育网ISP下IPv6部署率和使用率都比较高，中科院系统内的科技网也有部署IPv6。<br>本文主要针对这两个ISP下的IPv6.</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>  在接入IPv6网络环境中，一般都可通过DHCPv6自动获取的IPv6地址。所有主流操作系统均支持，但大多数家用路由器不支持。所以如果你要使用IPv6请不要通过普通路由器再和上层网络连接。（直连或者使用支持IPv6的路由器均可）</p>
+<p>  如何确定接入IPv6网络呢? 本文列出一些方式供检测：</p>
 <ul>
-<li>先从这里<a href="http://go.netsh.org/link/getipv6hosts" target="_blank" rel="external">获取hosts</a>；</li>
-<li>在选择并获取到相应的 hosts 后，按下 “全部选中” 按钮，并右键选择 “复制”，您需要将它们粘贴到文件里使用。</li>
+<li><a href="http://ip6.me" target="_blank" rel="external">ip6.me</a></li>
+<li><a href="http://ipv6.icanhazip.com/" target="_blank" rel="external">ipv6.icanhazip.com</a></li>
+<li><a href="https:/test-ipv6.com/" target="_blank" rel="external">IPv6 连接测试</a></li>
 </ul>
-<p><span class="date">Windows</span> 在开始屏幕搜索 “notepad”，右键选择 “以管理员身份运行” 记事本程序，按下 Ctrl+O 定位到 hosts 文件修改并直接保存。</p>
-<p><span class="date">OS X</span> 在 Finder 窗口按下［前往］［前往文件夹…］，输入 <strong>/etc</strong> 回车，将 hosts 文件拖拽到桌面，双击修改保存，再将其拖拽回 <strong>/etc</strong> ，鉴定替换。</p>
-<p><span class="date">Linux</span> 在终端运行命令 <strong>sudo vi /etc/hosts</strong> 修改。</p>
-<p><span class="date">Android、iOS</span> 使用 iFile 或其它文件管理器应用修改 <strong>/etc/hosts</strong>，并照原样修改好权限和所有者。</p>
-<p>修改完成之后，您可以参照上一点刷新 DNS 缓存。</p>
-<ul>
-<li>控制面板\网络和 Internet\网络连接—-&gt;以太网属性 修改 IPV6 协议（双击Internet 协议版本6）DNS 为 2001:470:20::2 、 2001:638:902:1::10 、 2001:4860:4860::8888（推荐） 、 2001:4860:4860::8844（推荐），考虑到教育网需要内部 DNS 解析内网地址，所以仍然需要保留校内的 DNS，一般是默认的内网 DNS 配置。</li>
-<li>对于 Windows/Mac 等桌面操作系统，下载使用 <a href="https://chrome.google.com/" target="_blank" rel="external">Chrome 浏览器</a>。</li>
-<li>对于 Windows/Mac 等桌面操作系统，用 Chrome 打开 chrome://flags ，并把下述的选项改为 Enabled (已启用)。可能要求浏览器重新启动。chrome://flags/#enable-quic</li>
-<li><p><a href="http://blog.netsh.org/posts/chrome-http-redirect-https_369.netsh.html" target="_blank" rel="external">总是以 HTTPS 的方式</a>打开 Youtube。下面详细步骤。</p>
-<ul>
-<li>1、打开<a href="chrome://net-internals/#hsts" target="_blank" rel="external">chrome://net-internals/#hsts</a>2、在HSTS选项卡下的Domain中输入你想要实现这个强制跳转的域名，比如Twitter.com，plus.google.com等，如下图：</li>
-</ul>
-</li>
-</ul>
-<p><a href="http://blog.netsh.org/posts/chrome-http-redirect-https_369.netsh.html/chrome-redirect-http-to-https" target="_blank" rel="external"><img src="https://o1lk7rmd9.qnssl.com/wp-content/uploads/2011/07/chrome-redirect-http-to-https-600x297.gif" alt="chrome-redirect-http-to-https" title="chrome-redirect-http-to-https"></a></p>
-<p>3、最后勾选上Include subdomains，这样可以确保Twitter的所有二级域名都被重定向到https，比如<a href="http://search.twitter.com/" title="Twitter搜索" target="_blank" rel="external">search.twitter.com</a>。</p>
-<p>4、点击Add按钮，现在大功告成。<br>更新于:20160707</p>
-<!--more-->
-<p>refer to:</p>
+<h2 id="一些小技巧"><a href="#一些小技巧" class="headerlink" title="一些小技巧"></a>一些小技巧</h2><p>  一些小技巧，更好的使用IPv6网络。</p>
+<h3 id="使用IPv6-DNS"><a href="#使用IPv6-DNS" class="headerlink" title="使用IPv6 DNS"></a>使用IPv6 DNS</h3><p>  这里推荐大家一个国内无污染IPv6 DNS.</p>
+<blockquote>
+<p><strong>2001:da8::666</strong></p>
+</blockquote>
+<p>  DNS666，由tuna和lug联合提供。感谢~</p>
+<h3 id="使用IPv6-Hosts"><a href="#使用IPv6-Hosts" class="headerlink" title="使用IPv6 Hosts"></a>使用IPv6 Hosts</h3><p>  更改dns可能会有某些网站访问缓慢或不能访问的情况，所以使用本地hosts也是一个不错的选择。<br>  这里给出一个链接，Windows下自动更换Hosts脚本（支持IPv6 hosts）<br>  <a href="https://github.com/Junyangz/WinHosts" target="_blank" rel="external">https://github.com/Junyangz/WinHosts</a><br>  可以git clone也可以直接下载下来，如果没有git环境可以直接下载zip包。<br>  <a href="https://github.com/Junyangz/WinHosts/archive/master.zip" target="_blank" rel="external">https://github.com/Junyangz/WinHosts/archive/master.zip</a><br>  具体使用方法见README.md</p>
+<h3 id="一些网站"><a href="#一些网站" class="headerlink" title="一些网站"></a>一些网站</h3><p><a href="https://ipv6.google.com" target="_blank" rel="external">Google IPv6</a><br><a href="https://www.youtube.com" target="_blank" rel="external">Youtube</a></p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>本文原先介绍的是教育网下如何访问Youtube等，现于17年末更新。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;&lt;img src=&quot;https://ooo.0o0.ooo/2017/01/11/5875067b49e34.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;观看4K的速度！&lt;/strong&gt;&lt;br&gt;
+      &lt;h2 id=&quot;IPv6&quot;&gt;&lt;a href=&quot;#IPv6&quot; class=&quot;headerlink&quot; title=&quot;IPv6&quot;&gt;&lt;/a&gt;IPv6&lt;/h2&gt;&lt;p&gt;  IPv6是“Internet Protocol Version 6”的缩写，是由国际互联网标准化组织IETF设计的用于替代现行版本IPv4的下一代互联网核心协议，对过渡、路由、网管、传输、安全等已有比较成熟的标准。&lt;br&gt;&lt;a href=&quot;https://www.wikiwand.com/en/IPv6&quot;&gt;IPv6 wiki&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://www.wikiwand.com/en/China_Next_Generation_Internet&quot;&gt;China_Next_Generation_Internet&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
       <category term="Tutorial" scheme="http://timeorigin.cn/categories/Tutorial/"/>
     
     
-      <category term="ipv6" scheme="http://timeorigin.cn/tags/ipv6/"/>
-    
       <category term="Youtube" scheme="http://timeorigin.cn/tags/Youtube/"/>
     
       <category term="Google" scheme="http://timeorigin.cn/tags/Google/"/>
+    
+      <category term="IPv6" scheme="http://timeorigin.cn/tags/IPv6/"/>
     
   </entry>
   
