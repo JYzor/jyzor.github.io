@@ -477,8 +477,6 @@
       <category term="ops" scheme="http://timeorigin.cn/categories/ops/"/>
     
     
-      <category term="AWS" scheme="http://timeorigin.cn/tags/AWS/"/>
-    
       <category term="SENSU" scheme="http://timeorigin.cn/tags/SENSU/"/>
     
       <category term="ELK Stack" scheme="http://timeorigin.cn/tags/ELK-Stack/"/>
@@ -490,6 +488,8 @@
       <category term="Logstash" scheme="http://timeorigin.cn/tags/Logstash/"/>
     
       <category term="Grafana" scheme="http://timeorigin.cn/tags/Grafana/"/>
+    
+      <category term="AWS" scheme="http://timeorigin.cn/tags/AWS/"/>
     
   </entry>
   
@@ -695,7 +695,7 @@
     <link href="http://timeorigin.cn/ipv6/"/>
     <id>http://timeorigin.cn/ipv6/</id>
     <published>2015-09-23T03:23:25.000Z</published>
-    <updated>2018-03-01T08:30:12.480Z</updated>
+    <updated>2018-03-27T16:29:54.071Z</updated>
     
     <content type="html"><![CDATA[<h1 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h1><p>  IPv6是“Internet Protocol Version 6”的缩写，是由国际互联网标准化组织IETF设计的用于替代现行版本IPv4的下一代互联网核心协议，对过渡、路由、网管、传输、安全等已有比较成熟的标准。<br><a href="https://www.wikiwand.com/en/IPv6" target="_blank" rel="external">IPv6 wiki</a><br><a href="https://www.wikiwand.com/en/China_Next_Generation_Internet" target="_blank" rel="external">China_Next_Generation_Internet</a></p>
 <a id="more"></a>
@@ -705,7 +705,7 @@
 <ul>
 <li><a href="http://ip6.me" target="_blank" rel="external">ip6.me</a></li>
 <li><a href="http://ipv6.icanhazip.com/" target="_blank" rel="external">ipv6.icanhazip.com</a></li>
-<li><a href="https:/test-ipv6.com/" target="_blank" rel="external">IPv6 连接测试</a></li>
+<li><a href="https://test-ipv6.com/" target="_blank" rel="external">IPv6 连接测试</a></li>
 </ul>
 <h2 id="一些小技巧"><a href="#一些小技巧" class="headerlink" title="一些小技巧"></a>一些小技巧</h2><p>  一些小技巧，更好的使用IPv6网络。</p>
 <h3 id="使用IPv6-DNS"><a href="#使用IPv6-DNS" class="headerlink" title="使用IPv6 DNS"></a>使用IPv6 DNS</h3><p>  这里推荐大家一个国内无污染IPv6 DNS.</p>
