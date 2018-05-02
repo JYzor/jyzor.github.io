@@ -695,12 +695,12 @@
     <link href="http://timeorigin.cn/ipv6/"/>
     <id>http://timeorigin.cn/ipv6/</id>
     <published>2015-09-23T03:23:25.000Z</published>
-    <updated>2018-03-27T16:29:54.071Z</updated>
+    <updated>2018-05-02T09:47:23.495Z</updated>
     
     <content type="html"><![CDATA[<h1 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h1><p>  IPv6是“Internet Protocol Version 6”的缩写，是由国际互联网标准化组织IETF设计的用于替代现行版本IPv4的下一代互联网核心协议，对过渡、路由、网管、传输、安全等已有比较成熟的标准。<br><a href="https://www.wikiwand.com/en/IPv6" target="_blank" rel="external">IPv6 wiki</a><br><a href="https://www.wikiwand.com/en/China_Next_Generation_Internet" target="_blank" rel="external">China_Next_Generation_Internet</a></p>
 <a id="more"></a>
 <h2 id="IPv6发展"><a href="#IPv6发展" class="headerlink" title="IPv6发展"></a>IPv6发展</h2><p>  目前，中国教育网ISP下IPv6部署率和使用率都比较高，中科院系统内的科技网也有部署IPv6。<br>本文主要针对这两个ISP下的IPv6.</p>
-<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>  在接入IPv6网络环境中，一般都可通过DHCPv6自动获取的IPv6地址。所有主流操作系统均支持，但大多数家用路由器不支持。所以如果你要使用IPv6请不要通过普通路由器再和上层网络连接。（直连或者使用支持IPv6的路由器均可）</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p>  在接入IPv6网络环境中，一般都可通过DHCPv6自动获取到IPv6地址。所有主流操作系统均支持，但大多数家用路由器不支持。所以如果你要使用IPv6请不要通过普通路由器再和上层网络连接。（直连或者使用支持IPv6的路由器均可）</p>
 <p>  如何确定接入IPv6网络呢? 本文列出一些方式供检测：</p>
 <ul>
 <li><a href="http://ip6.me" target="_blank" rel="external">ip6.me</a></li>
